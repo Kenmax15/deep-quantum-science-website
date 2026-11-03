@@ -358,6 +358,9 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
 .dl .meta{display:grid;gap:4px;min-width:0}
 .dl .meta b{font:600 var(--step-1)/1.3 var(--display);overflow-wrap:anywhere}
 .dl .meta span{font:400 12.5px/1.6 var(--mono);color:var(--muted);overflow-wrap:anywhere}
+.dl-hint{grid-column:1/-1;display:flex;gap:8px;align-items:flex-start;margin:-6px 0 0;padding-top:14px;border-top:1px dashed var(--rule);font-size:14px;line-height:1.5;color:var(--text-2)}
+.dl-hint svg{flex:none;margin-top:2px;color:var(--teal)}
+.dl-hint b{color:var(--text)}
 .note{margin-top:16px;padding:14px 16px;border-radius:12px;background:color-mix(in srgb,var(--panel) 70%,transparent);border:1px solid var(--rule);font-size:14px;color:var(--text-2)}
 .note b{color:var(--text)}
 .faq{display:grid;margin-top:36px;border-top:1px solid var(--rule)}
@@ -410,7 +413,7 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
         <a class="btn btn-primary" href="#trial"><span class="en">Download free trial</span><span class="de">Kostenlos testen</span><span class="arr" aria-hidden="true">↓</span></a>
         <a class="btn btn-ghost" href="#buy"><span class="en">Buy licence</span><span class="de">Lizenz kaufen</span></a>
       </div>
-      <p class="fine"><span class="en">Version 0.2.2 beta 1 · Windows 10/11 (64-bit) · 5 free conversions per direction</span><span class="de">Version 0.2.2 Beta 1 · Windows 10/11 (64 Bit) · 5 kostenlose Umwandlungen je Richtung</span></p>
+      <p class="fine"><span class="en">Version 0.2.3 beta 1 · Windows 10/11 (64-bit) · 5 free conversions per direction</span><span class="de">Version 0.2.3 Beta 1 · Windows 10/11 (64 Bit) · 5 kostenlose Umwandlungen je Richtung</span></p>
     </div>
     <figure class="shot"><img src="assets/manuscript-app.webp" width="1400" height="2036" alt="DeepQ Manuscript window: choose Word to LaTeX or LaTeX to Word, drop a file, choose an output folder and convert"></figure>
   </div>
@@ -469,13 +472,14 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
     </div>
     <div class="dl">
       <div class="meta">
-        <b>DeepQ_Manuscript_Setup_0.2.2_beta1_x64.exe</b>
-        <span><span class="en">Windows installer · 268 MB · version 0.2.2 beta 1</span><span class="de">Windows-Installer · 268 MB · Version 0.2.2 Beta 1</span></span>
-        <span>SHA-256: abd228db23c5854e112de56c8f9356326f117fb22cf01b435410e108bcdcf53a</span>
+        <b>DeepQ_Manuscript_Setup_0.2.3_beta1_x64.exe</b>
+        <span><span class="en">Windows installer · 55 MB · version 0.2.3 beta 1</span><span class="de">Windows-Installer · 55 MB · Version 0.2.3 Beta 1</span></span>
+        <span>SHA-256: b01182a3623b83806ff327b92e7618dd96323bc3b9b39910d5def91a8d1c9c97</span>
       </div>
-      <a class="btn btn-primary" id="trial-download" href="https://github.com/Kenmax15/deepq-manuscript/releases/latest/download/DeepQ_Manuscript_Setup_0.2.2_beta1_x64.exe"><span class="en">Download free trial</span><span class="de">Testversion herunterladen</span><span class="arr" aria-hidden="true">↓</span></a>
+      <a class="btn btn-primary" id="trial-download" href="https://github.com/Kenmax15/deepq-manuscript/releases/download/v0.2.3-beta1/DeepQ_Manuscript_Setup_0.2.3_beta1_x64.exe"><span class="en">Download free trial</span><span class="de">Testversion herunterladen</span><span class="arr" aria-hidden="true">↓</span></a>
+      <p class="dl-hint"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 8v5M12 16.5v.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="en">Windows warning when you start the installer? Click <b>More info</b> → <b>Run anyway</b>.</span><span class="de">Windows-Warnung beim Start des Installers? Klicken Sie auf <b>Weitere Informationen</b> → <b>Trotzdem ausführen</b>.</span></p>
     </div>
-    <p class="note"><span class="en"><b>Windows may show “Windows protected your PC”.</b> This beta installer is not yet code-signed. Click <b>More info</b>, then <b>Run anyway</b>. You can compare the SHA-256 checksum above to make sure the file is authentic.</span><span class="de"><b>Windows zeigt eventuell „Der Computer wurde durch Windows geschützt“.</b> Dieser Beta-Installer ist noch nicht code-signiert. Klicken Sie auf <b>Weitere Informationen</b> und dann auf <b>Trotzdem ausführen</b>. Mit der SHA-256-Prüfsumme oben können Sie die Echtheit der Datei prüfen.</span></p>
+    <p class="note"><span class="en"><b>Why the warning?</b> Microsoft SmartScreen shows “Windows protected your PC” for new installers that are not yet code-signed. The file is safe to run: click <b>More info</b>, then <b>Run anyway</b>. You can compare the SHA-256 checksum above to make sure the file is authentic.</span><span class="de"><b>Warum die Warnung?</b> Microsoft SmartScreen zeigt „Der Computer wurde durch Windows geschützt“ bei neuen Installern, die noch nicht code-signiert sind. Die Datei kann bedenkenlos ausgeführt werden: Klicken Sie auf <b>Weitere Informationen</b> und dann auf <b>Trotzdem ausführen</b>. Mit der SHA-256-Prüfsumme oben können Sie die Echtheit der Datei prüfen.</span></p>
   </div>
 </section>
 
@@ -487,6 +491,7 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
     </div>
     <table class="spec">
       <tr><th><span class="en">System</span><span class="de">System</span></th><td><span class="en">Windows 10 or 11, 64-bit</span><span class="de">Windows 10 oder 11, 64 Bit</span></td></tr>
+      <tr><th><span class="en">Internet</span><span class="de">Internet</span></th><td><span class="en">Not needed for converting. Only once at first start if Microsoft WebView2 is missing (it is built into Windows 11 and updated Windows 10).</span><span class="de">Für die Umwandlung nicht nötig. Nur einmal beim ersten Start, falls Microsoft WebView2 fehlt (in Windows 11 und aktuellem Windows 10 enthalten).</span></td></tr>
       <tr><th><span class="en">Input</span><span class="de">Eingabe</span></th><td><span class="en">Word: .docx · LaTeX: .tex (UTF-8) or a project .zip with images and .bib files</span><span class="de">Word: .docx · LaTeX: .tex (UTF-8) oder ein Projekt-.zip mit Bildern und .bib-Dateien</span></td></tr>
       <tr><th><span class="en">PDF building</span><span class="de">PDF-Erstellung</span></th><td><span class="en">Optional: MiKTeX or TeX Live installed. Conversion works without it.</span><span class="de">Optional: installiertes MiKTeX oder TeX Live. Die Umwandlung funktioniert auch ohne.</span></td></tr>
       <tr><th><span class="en">Not supported</span><span class="de">Nicht unterstützt</span></th><td><span class="en">Legacy MathType/OLE equations, scanned documents (OCR) and TikZ drawings</span><span class="de">Alte MathType/OLE-Gleichungen, gescannte Dokumente (OCR) und TikZ-Zeichnungen</span></td></tr>
