@@ -59,7 +59,9 @@ export function issueLicence(privateKey, customer, { licenseId, issuedAt } = {})
 export function loadPrivateKey() {
   const raw = process.env.LICENSE_PRIVATE_KEY;
   if (!raw) throw new Error('LICENSE_PRIVATE_KEY is not configured.');
-  const key = JSON.parse(raw);
+  let key;
+  try { key = JSON.parse(raw); }
+  catch { throw new Error('LICENSE_PRIVATE_KEY is not valid JSON (it must be the full contents of private_key.json, starting with {).'); }
   if (!key.n || !key.d || !key.key_id) throw new Error('LICENSE_PRIVATE_KEY is incomplete.');
   return key;
 }

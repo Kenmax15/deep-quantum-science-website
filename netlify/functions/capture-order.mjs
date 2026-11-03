@@ -41,6 +41,12 @@ export default async (req) => {
   catch (e) {
     console.error('licence error', e);
     await store.set(id, { ...record, status: 'paid-no-key', captureId: cap.id, email: payer.email, paidAt: new Date().toISOString() });
+    if (process.env.OWNER_EMAIL) {
+      try {
+        await sendMail({ to: process.env.OWNER_EMAIL, subject: `ACTION NEEDED: paid order without key (${id})`,
+          text: `A customer paid but the licence key could not be created.\n\nName on licence: ${name}\nBuyer email: ${payer.email}\nPayPal order: ${id}\nPayPal transaction: ${cap.id}\nError: ${e.message}\n\nPlease create the key with CREATE_LICENSE.cmd and email it to the buyer.\n` });
+      } catch (m) { console.error('owner alert failed', id, m.message); }
+    }
     return fail('Payment received, but the key could not be created automatically. We will email it to you shortly.', 500);
   }
 
