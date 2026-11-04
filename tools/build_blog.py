@@ -49,6 +49,13 @@ BLOG_CSS = """
 @media(max-width:520px){.watch{flex-direction:column;align-items:stretch}.watch img{width:100%}}
 .lang-note{font-size:var(--step--1);color:var(--muted);margin-top:10px}
 .back{display:inline-block;margin-top:36px}
+.article pre.algo{font:400 .92em/1.6 var(--mono);background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:16px 20px;overflow-x:auto;margin:18px 0;white-space:pre}
+.article pre.algo b{color:var(--mint);font-weight:500}
+.article pre.algo i{color:var(--muted);font-style:normal}
+.article .algo-title{font:500 var(--step--1)/1.3 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mint);margin:26px 0 -8px}
+.article table{border-collapse:collapse;width:100%;margin:18px 0;font-size:var(--step--1)}
+.article th,.article td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+.article th{color:var(--mint);font-weight:500}
 """
 
 POSTS = [
@@ -158,6 +165,13 @@ POSTS = [
 """),
 ]
 
+import sys as _sys
+_sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from blog_post_manuscript import POST as _MANUSCRIPT
+POSTS.append(_MANUSCRIPT)
+
+PAPER_NOTE = '<div class="note">Paper: <a href="https://doi.org/10.1016/j.physb.2026.419578" target="_blank" rel="noopener">Dirac representation for lattice spin operators: Spin-1/2 and spin-1 cases</a>, <i>Physica B: Condensed Matter</i> (2026).</div>'
+
 NAV = """<nav class="nav" aria-label="Main navigation">
   <div class="wrap">
     <a class="brand" href="../index.html" aria-label="Deep Quantum Science">
@@ -261,9 +275,9 @@ def build():
   <h1>{html.escape(p['title'])}</h1>
   <p class="lead">{html.escape(p['summary'])}</p>
   <p class="lang-note de">Dieser Artikel ist auf Englisch verfügbar.</p>
-  <a class="watch" href="{vurl}" target="_blank" rel="noopener"><img src="img/{p['img']}" alt=""><div><b>{html.escape(vtitle)}</b><span>{html.escape(vsub)} ↗</span></div></a>
+  <a class="watch" href="{vurl}"{'' if vurl.startswith('..') else ' target="_blank" rel="noopener"'}><img src="{p.get('watch_img', 'img/' + p['img'])}" alt=""><div><b>{html.escape(vtitle)}</b><span>{html.escape(vsub)}{'' if vurl.startswith('..') else ' ↗'}</span></div></a>
   {p['body']}
-  <div class="note">Paper: <a href="https://doi.org/10.1016/j.physb.2026.419578" target="_blank" rel="noopener">Dirac representation for lattice spin operators: Spin-1/2 and spin-1 cases</a>, <i>Physica B: Condensed Matter</i> (2026).</div>
+  {p.get('footer', PAPER_NOTE)}
   <a class="btn btn-ghost back" href="index.html"><span class="en">← All articles</span><span class="de">← Alle Artikel</span></a>
 </div></article>
 </main>"""
