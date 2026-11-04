@@ -119,7 +119,7 @@ POSTS = [
   de='Eine Maschine für alle Energien',
   summary='A compact matrix recursion gives every eigenvalue and eigenstate at once, to any order. We run it, and show exactly when and why it breaks.',
   img='mm-hero.webp',
-  video=('https://www.facebook.com/reel/1120901490635579/', 'Watch: One machine, all the energies (3:12)', 'Facebook · Research explained'),
+  video=('https://youtu.be/Aia_6b0e7Uc', 'Watch: One machine, all the energies (3:13)', 'YouTube · Research explained'),
   body="""
 <p>The previous article built the energy by hand, order by order. The appendix of our paper turns the whole procedure into a machine that only uses matrix operations, and that gives every state at once.</p>
 <h2>The problem as a table of numbers</h2>
@@ -144,7 +144,7 @@ POSTS = [
   de='Kann sich ein Quantensystem erinnern?',
   summary='Most systems forget where they started. With strong disorder, interacting quantum spins can refuse to. Three fingerprints, computed exactly.',
   img='mbl-hero.webp',
-  video=('https://www.facebook.com/deepquantumscience/reels/', 'Watch: Can a quantum system remember its past? (3:44)', 'Facebook · Research explained'),
+  video=('https://youtu.be/h4KV_LYPWY8', 'Watch: Can a quantum system remember its past? (3:45)', 'YouTube · Research explained'),
   body="""
 <p>Drop ink in water and wait: it spreads everywhere, and soon you cannot tell where the drop was. Physicists call this thermalisation, and almost every system does it. Many-body localisation (MBL) is a striking exception: with enough disorder, a system of interacting quantum particles can keep a memory of its initial state.</p>
 <h2>The memory experiment</h2>
