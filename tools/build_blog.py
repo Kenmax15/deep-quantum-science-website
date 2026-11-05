@@ -202,6 +202,45 @@ POSTS = [
 </table>
 <p>The pattern is the same for every spin: count in base 2S+1, and spin operators become gated jumps on the integers. Spin-1 chains, such as the Haldane chain, and qutrit quantum processors are natural playgrounds for this tool.</p>
 """),
+ dict(slug='haldane-chain', date='2026-11-05', tag='Research explained',
+  title='The Haldane chain: a gap that should not be there',
+  de='Die Haldane-Kette: eine unerwartete Energielücke',
+  summary='Integer spins keep an energy gap, hide a perfect up–down order and carry half spins at their ends. We compute it all exactly with our base-3 representation.',
+  img='haldane-hero.webp',
+  video=('https://youtu.be/ob3NWTuTd98', 'Watch: The Haldane chain (3:27)', 'YouTube · Research explained'),
+  body="""
+<p>In the previous article we wrote spin-1 operators as jumps between integers written in base 3. Here we put this representation to work on one of the most famous problems of quantum magnetism: the spin-1 Heisenberg chain, better known as the Haldane chain. Every number below comes from our own exact calculations.</p>
+<h2>A chain of spin-1 magnets</h2>
+<p>Line up spin-1 magnets whose neighbours prefer to point in opposite directions. This is the Heisenberg antiferromagnet:</p>
+<div class="eq">H = J Σ<sub>j</sub> <b>S</b><sub>j</sub> · <b>S</b><sub>j+1</sub> ,&nbsp;&nbsp; J &gt; 0</div>
+<p>In the base-3 representation, the S<sup>z</sup>S<sup>z</sup> part is diagonal: it just reads the digits of each configuration n. The exchange part moves one unit of spin between neighbours, which is a jump n → n ± (q<sub>j</sub> − q<sub>j+1</sub>) with amplitude exactly 1 whenever the gatekeepers allow it. The chain becomes a hopping problem on the integers. We checked that the resulting Hamiltonian has exactly the same eigenvalues as the usual tensor-product construction (largest difference 10<sup>−14</sup>).</p>
+<figure><img src="img/haldane-chain.webp" alt="A chain of spin-1 magnets and the Heisenberg Hamiltonian as jumps between integers" loading="lazy"><figcaption>In base 3, a neighbour exchange is a jump between two integers.</figcaption></figure>
+<h2>Haldane's conjecture</h2>
+<p>The energy gap is the energy needed to create the smallest excitation. For spin ½, our exact gap on rings of up to 20 spins shrinks like 1/L: a long chain has no gap. For spin 1, on rings of up to 12 spins, the gap decreases much more slowly (0.48 J at L = 12) and approaches the value Δ ≈ 0.41 J obtained by large-scale numerical studies.</p>
+<p>In 1983 Duncan Haldane predicted exactly this difference: chains of half-integer spins are gapless, chains of integer spins are gapped. The prediction was surprising at the time; it is now firmly established, and it was part of the work recognised by the 2016 Nobel Prize in Physics.</p>
+<figure><img src="img/haldane-gap.webp" alt="Energy gap versus 1/L for spin 1/2 and spin 1 chains" loading="lazy"><figcaption>Exact gaps: spin ½ (blue) closes like 1/L, spin 1 (yellow) levels off near 0.41 J.</figcaption></figure>
+<h2>A hidden order</h2>
+<p>A typical configuration of the ground state looks disordered: up, flat and down spins mixed together. But delete every flat spin, and what remains alternates perfectly: up, down, up, down. In base 3 this is easy to test, because we only need to read the digits of each n. In our exact ground state of 12 spins, <b>84%</b> of the weight has this hidden pattern.</p>
+<figure><img src="img/haldane-hidden.webp" alt="Removing the flat spins reveals a perfect up-down pattern" loading="lazy"><figcaption>Delete the flat spins: the rest alternates.</figcaption></figure>
+<h2>String order</h2>
+<p>Physicists measure this hidden order with the string correlator of den Nijs and Rommelse:</p>
+<div class="eq">𝒪(r) = ⟨ S<sup>z</sup><sub>0</sub> e<sup>iπ Σ<sub>0&lt;k&lt;r</sub> S<sup>z</sup><sub>k</sub></sup> S<sup>z</sup><sub>r</sub> ⟩</div>
+<p>Each flat spin in between contributes +1, each up or down spin −1, so in base 3 the string is just a product of ±1 read from the trits. The ordinary spin correlation fades with distance (on a long chain it dies out after about six sites), while the string order settles near 0.37 on our 12-spin ring, close to the infinite-chain value 0.374.</p>
+<figure><img src="img/haldane-string.webp" alt="Ordinary spin correlation versus string order as a function of distance" loading="lazy"><figcaption>Ordinary correlations fade; the string order stays.</figcaption></figure>
+<h2>The AKLT picture</h2>
+<p>In 1987 Affleck, Kennedy, Lieb and Tasaki found an exactly solvable model in the same phase, with a simple picture. Split each spin 1 into two spin ½. Pair every half with a half on the neighbouring site into a singlet bond. The bulk is locked, which explains the gap and the hidden order. At the two ends of an open chain, however, one spin ½ has no partner: it is free.</p>
+<figure><img src="img/haldane-aklt.webp" alt="AKLT valence bond picture with free spin-1/2 at both ends" loading="lazy"><figcaption>Singlet bonds in the bulk, a free spin ½ at each end.</figcaption></figure>
+<h2>Edge states, computed exactly</h2>
+<p>We tested this on an open chain of 12 spins with one unit of total magnetisation. The magnetisation sits at the two ends, and each half of the chain carries exactly <b>0.50</b>: half a spin per edge. The two free halves also show up in the spectrum: the four lowest states, a singlet and a triplet, lie within 0.10 J of each other. This splitting shrinks exponentially with the length of the chain, while the next level lies 0.79 J higher.</p>
+<figure><img src="img/haldane-edge.webp" alt="Local magnetisation along an open chain and the lowest energy levels" loading="lazy"><figcaption>Local magnetisation of an open 12-spin chain: half a spin at each end.</figcaption></figure>
+<h2>Why it matters</h2>
+<ul>
+<li>The Haldane gap was measured in nickel-based chain compounds such as NENP by neutron scattering in 1987.</li>
+<li>The Haldane phase is the first example of a <b>symmetry-protected topological phase</b>, a concept now central in condensed-matter physics.</li>
+<li>AKLT-type states are resources for measurement-based quantum computing.</li>
+</ul>
+<p>For us, the Haldane chain is a demanding test of the base-3 Dirac representation: the gap, the hidden order and the edge states all follow from simple jumps between integers.</p>
+"""),
 ]
 
 import sys as _sys
