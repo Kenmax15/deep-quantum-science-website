@@ -163,6 +163,45 @@ POSTS = [
 <h2>Why it matters</h2>
 <p>An MBL system never heats up and never forgets, which makes it interesting for protecting quantum information and a test bed for quantum simulators with cold atoms and qubits. It is also still an open question: whether MBL survives in very large systems is actively debated, and small chains like ours shift the apparent transition point. Our Dirac representation turns these chains into hopping problems on a graph, a useful new angle on the puzzle.</p>
 """),
+ dict(slug='from-bits-to-trits-spin-1', date='2026-11-05', tag='Research explained',
+  title='From bits to trits: spin-1 operators as base-3 numbers',
+  de='Von Bits zu Trits: Spin-1 im Dreiersystem',
+  summary='A spin 1 has three positions. Read them as the digits 0, 1, 2, and spin-1 operators become jumps between integers written in base 3.',
+  img='trit-hero.webp',
+  video=('https://youtu.be/gfq7ZDGk9zA', 'Watch: From bits to trits (3:15)', 'YouTube · Research explained'),
+  body="""
+<p>In the first article of this series, a chain of spin-½ particles became a binary number, and spin operators became jumps between integers. Section V of our paper in <i>Physica B</i> asks the natural next question: what happens when each magnet has <b>three</b> positions instead of two?</p>
+<h2>Two positions, or three?</h2>
+<p>A spin 1 can point up (m = +1), lie flat (m = 0) or point down (m = −1). We write these as the digits <b>0</b>, <b>1</b> and <b>2</b>. One such three-level system is a <i>qutrit</i>, and it carries log<sub>2</sub>3 ≈ 1.58 bits of information. Qutrits are the building blocks of ternary quantum processors, which several experimental groups are now developing.</p>
+<figure><img src="img/trit-positions.webp" alt="A spin 1/2 has two positions (a bit), a spin 1 has three (a trit)" loading="lazy"><figcaption>A spin ½ is a bit; a spin 1 is a trit.</figcaption></figure>
+<h2>Counting in base 3</h2>
+<p>A row of K spin-1 sites is now a string of K trits, so every configuration is an integer n between 0 and 3<sup>K</sup>−1. For three sites, all spins down is |222⟩ = |26⟩. Counting upwards, each site again follows a regular staircase, and site j carries the weight</p>
+<div class="eq">q<sub>j</sub> = 3<sup>K−j</sup></div>
+<figure><img src="img/trit-counting.webp" alt="Each site follows a regular staircase pattern when counting in base 3" loading="lazy"><figcaption>Counting from 0 to 26: each site changes with its own regular rhythm.</figcaption></figure>
+<h2>Turning a spin is a jump</h2>
+<p>Lowering spin j by one unit (from up to flat, or from flat to down) increases its digit by one, so n increases by q<sub>j</sub>. Raising it does the opposite. The spin-1 ladder operators are therefore jumps on the number line, with the usual factor √2:</p>
+<div class="eq">S<sub>j</sub><sup>−</sup> = √2 Σ<sub>n</sub> Γ<sub>n</sub><sup>(j)−</sup> |n + q<sub>j</sub>⟩⟨n| ,&nbsp;&nbsp;&nbsp; S<sub>j</sub><sup>+</sup> = √2 Σ<sub>n</sub> Γ<sub>n</sub><sup>(j)+</sup> |n − q<sub>j</sub>⟩⟨n|</div>
+<p>On two sites, lowering the first spin takes 1 (digits 01) to 4 (digits 11), then to 7 (digits 21). From there the first spin is fully down and no further jump is allowed.</p>
+<figure><img src="img/trit-jump.webp" alt="Number line from 0 to 8 with jumps 1 to 4 to 7" loading="lazy"><figcaption>Lowering the first of two spins: jumps of q<sub>1</sub> = 3 until the spin is fully down.</figcaption></figure>
+<h2>The gatekeepers Γ</h2>
+<p>The coefficients Γ decide whether a jump is allowed. Γ<sup>−</sup> equals 1 when the digit of site j is 0 or 1 (the spin can still go down), Γ<sup>+</sup> equals 1 when it is 1 or 2 (it can still go up), and the diagonal operator S<sup>z</sup> uses Γ<sup>z</sup> = +1, 0, −1, which is simply Γ<sup>−</sup> − Γ<sup>+</sup>.</p>
+<p>As for spin ½, these digits have closed formulas built only from unit-step functions u, so one never needs to convert n to base 3:</p>
+<div class="eq">Γ<sub>n</sub><sup>(j)−</sup> = Σ<sub>m</sub> [ u(n − 3m q<sub>j</sub>) − u(n − (3m+2) q<sub>j</sub>) ]</div>
+<p>Each term is a window of width 2q<sub>j</sub> that repeats with period 3q<sub>j</sub>: exactly the values of n whose j-th trit is 0 or 1.</p>
+<figure><img src="img/trit-gate.webp" alt="Gatekeeper as a sum of unit-step windows" loading="lazy"><figcaption>The gatekeeper as repeating windows of unit steps.</figcaption></figure>
+<h2>Does it work?</h2>
+<p>For one qutrit the construction gives the familiar 3×3 spin-1 matrices. For chains of up to three qutrits we checked numerically that the operators coincide with the usual tensor products and that the full algebra holds exactly: [S<sup>+</sup>, S<sup>−</sup>] = 2S<sup>z</sup>, [S<sup>z</sup>, S<sup>±</sup>] = ±S<sup>±</sup> and S<sup>2</sup> = S(S+1) = 2 on every site.</p>
+<figure><img src="img/trit-check.webp" alt="The 3 by 3 spin-1 matrices obtained from the construction" loading="lazy"><figcaption>One qutrit: the construction reproduces the standard spin-1 matrices.</figcaption></figure>
+<h2>Any spin: change the base</h2>
+<table>
+<tr><th>Spin</th><th>Base</th><th>Digits</th><th>Weight of site j</th></tr>
+<tr><td>½</td><td>2</td><td>bits</td><td>2<sup>K−j</sup></td></tr>
+<tr><td>1</td><td>3</td><td>trits</td><td>3<sup>K−j</sup></td></tr>
+<tr><td>3/2</td><td>4</td><td>quarts</td><td>4<sup>K−j</sup></td></tr>
+<tr><td>S</td><td>2S+1</td><td>qudits</td><td>(2S+1)<sup>K−j</sup></td></tr>
+</table>
+<p>The pattern is the same for every spin: count in base 2S+1, and spin operators become gated jumps on the integers. Spin-1 chains, such as the Haldane chain, and qutrit quantum processors are natural playgrounds for this tool.</p>
+"""),
 ]
 
 import sys as _sys
