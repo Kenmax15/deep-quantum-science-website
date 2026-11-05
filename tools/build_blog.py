@@ -92,7 +92,7 @@ POSTS = [
   de='Störungstheorie, kindgerecht erklärt',
   summary='Tiny magnets on a bumpy road: how physicists estimate energies when the exact problem is too hard, step by step and with real numbers.',
   img='pt-hero.webp',
-  video=('https://youtu.be/fzENbadiQsU', 'Watch: Tiny magnets on a bumpy road (3:52)', 'YouTube · Research explained'),
+  video=('https://youtu.be/FgGHyZdjJX4', 'Watch: Tiny magnets on a bumpy road (3:52)', 'YouTube · Research explained'),
   body="""
 <p>Most quantum problems cannot be solved exactly. Perturbation theory is the art of starting from an easy problem and adding small corrections, one at a time. Here is the idea, using the disordered spin chain from our paper.</p>
 <h2>The easy world: nobody moves</h2>
@@ -119,7 +119,7 @@ POSTS = [
   de='Eine Maschine für alle Energien',
   summary='A compact matrix recursion gives every eigenvalue and eigenstate at once, to any order. We run it, and show exactly when and why it breaks.',
   img='mm-hero.webp',
-  video=('https://youtu.be/Aia_6b0e7Uc', 'Watch: One machine, all the energies (3:13)', 'YouTube · Research explained'),
+  video=('https://youtu.be/aNuu5XANGqY', 'Watch: One machine, all the energies (3:13)', 'YouTube · Research explained'),
   body="""
 <p>The previous article built the energy by hand, order by order. The appendix of our paper turns the whole procedure into a machine that only uses matrix operations, and that gives every state at once.</p>
 <h2>The problem as a table of numbers</h2>
@@ -144,7 +144,7 @@ POSTS = [
   de='Kann sich ein Quantensystem erinnern?',
   summary='Most systems forget where they started. With strong disorder, interacting quantum spins can refuse to. Three fingerprints, computed exactly.',
   img='mbl-hero.webp',
-  video=('https://youtu.be/h4KV_LYPWY8', 'Watch: Can a quantum system remember its past? (3:45)', 'YouTube · Research explained'),
+  video=('https://youtu.be/C-iMyRlEaZ8', 'Watch: Can a quantum system remember its past? (3:45)', 'YouTube · Research explained'),
   body="""
 <p>Drop ink in water and wait: it spreads everywhere, and soon you cannot tell where the drop was. Physicists call this thermalisation, and almost every system does it. Many-body localisation (MBL) is a striking exception: with enough disorder, a system of interacting quantum particles can keep a memory of its initial state.</p>
 <h2>The memory experiment</h2>
@@ -168,7 +168,7 @@ POSTS = [
   de='Von Bits zu Trits: Spin-1 im Dreiersystem',
   summary='A spin 1 has three positions. Read them as the digits 0, 1, 2, and spin-1 operators become jumps between integers written in base 3.',
   img='trit-hero.webp',
-  video=('https://youtu.be/gfq7ZDGk9zA', 'Watch: From bits to trits (3:15)', 'YouTube · Research explained'),
+  video=('https://youtu.be/mVNeiO_qvsg', 'Watch: From bits to trits (3:15)', 'YouTube · Research explained'),
   body="""
 <p>In the first article of this series, a chain of spin-½ particles became a binary number, and spin operators became jumps between integers. Section V of our paper in <i>Physica B</i> asks the natural next question: what happens when each magnet has <b>three</b> positions instead of two?</p>
 <h2>Two positions, or three?</h2>
@@ -207,7 +207,7 @@ POSTS = [
   de='Die Haldane-Kette: eine unerwartete Energielücke',
   summary='Integer spins keep an energy gap, hide a perfect up–down order and carry half spins at their ends. We compute it all exactly with our base-3 representation.',
   img='haldane-hero.webp',
-  video=('https://youtu.be/ob3NWTuTd98', 'Watch: The Haldane chain (3:27)', 'YouTube · Research explained'),
+  video=('https://youtu.be/c7lEqTH1iVk', 'Watch: The Haldane chain (3:27)', 'YouTube · Research explained'),
   body="""
 <p>In the previous article we wrote spin-1 operators as jumps between integers written in base 3. Here we put this representation to work on one of the most famous problems of quantum magnetism: the spin-1 Heisenberg chain, better known as the Haldane chain. Every number below comes from our own exact calculations.</p>
 <h2>A chain of spin-1 magnets</h2>
