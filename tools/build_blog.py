@@ -241,6 +241,40 @@ POSTS = [
 </ul>
 <p>For us, the Haldane chain is a demanding test of the base-3 Dirac representation: the gap, the hidden order and the edge states all follow from simple jumps between integers.</p>
 """),
+ dict(slug='ising-chain-pfaffians', date='2026-11-06', tag='Research explained',
+  title='Everything from pairs: the quantum Ising chain in the Dirac basis',
+  de='Alles aus Paaren: die Quanten-Ising-Kette in der Dirac-Basis',
+  summary='Appendix C of our paper: in the Dirac basis, every amplitude of the Ising ground state is a Pfaffian of one pair matrix, which obeys a single matrix Riccati equation.',
+  img='ising-hero.webp',
+  video=('https://youtu.be/KGfZsxdWGwE', 'Watch: Everything from pairs (3:39)', 'YouTube · Research explained'),
+  body="""
+<p>The quantum Ising chain in a transverse field is one of the classic exactly solvable models of physics. Its solution is textbook material. Appendix C of our paper does not provide a new solution; it shows how the known solution emerges directly from the Schrödinger equation written in the Dirac basis, with no Jordan–Wigner transformation. Every claim below was checked numerically on chains of 6 and 8 spins.</p>
+<h2>The model</h2>
+<div class="eq">H = h Σ<sub>j</sub> S<sup>z</sup><sub>j</sub> + J Σ<sub>j</sub> S<sup>x</sup><sub>j</sub> S<sup>x</sup><sub>j+1</sub></div>
+<p>A field h along z aligns the spins; the coupling J along x flips two neighbouring spins at once. Unlike the XXZ chain studied in the main text of our paper, the magnetisation is therefore not conserved.</p>
+<figure><img src="img/ising-chain.webp" alt="A chain of spin one-half magnets and the transverse-field Ising Hamiltonian" loading="lazy"><figcaption>The coupling never flips one spin alone: it flips a neighbouring pair.</figcaption></figure>
+<h2>Even and odd sectors</h2>
+<p>In the Dirac basis a configuration is a binary number n, with q<sub>j</sub> = 2<sup>K−j</sup>. A pair flip is a jump n → n ± q<sub>j</sub> ± q<sub>j+1</sub>, which changes the number of down spins by 0 or 2. Its parity is conserved, and the ground state lives in the even sector:</p>
+<div class="eq">|ψ⟩ = C<sub>0</sub>|0⟩ + Σ C<sub>j₁j₂</sub>|q<sub>j₁</sub>+q<sub>j₂</sub>⟩ + Σ C<sub>j₁j₂j₃j₄</sub>|…⟩ + …</div>
+<h2>The pair matrix</h2>
+<p>Divide each two-spin amplitude by the amplitude of the all-up state: P<sub>ij</sub> = C<sub>q<sub>i</sub>+q<sub>j</sub></sub>/C<sub>0</sub>. Exchanging the two spins changes the sign, so P is an antisymmetric matrix.</p>
+<figure><img src="img/ising-pairs.webp" alt="Heat map of the antisymmetric pair matrix P for the exact ground state of 8 spins" loading="lazy"><figcaption>The pair matrix P of the exact ground state (8 spins, h = −0.6 J).</figcaption></figure>
+<h2>Four spins are a Pfaffian</h2>
+<p>Four down spins can be grouped into two pairs in exactly three ways. Adding the three pairings with alternating signs gives the Pfaffian of P:</p>
+<div class="eq">P<sub>1234</sub> = P<sub>12</sub>P<sub>34</sub> − P<sub>13</sub>P<sub>24</sub> + P<sub>14</sub>P<sub>23</sub> = Pf[P]</div>
+<p>We compared this with the exact ground state of 8 spins: all 70 four-spin amplitudes agree with their Pfaffians to 10<sup>−16</sup>, and all 28 six-spin amplitudes to 6×10<sup>−17</sup>. The whole wave function is built from pairs, the same structure as in the theory of superconducting pairing.</p>
+<figure><img src="img/ising-pfaffian.webp" alt="The three pairings of four spins and the Pfaffian formula" loading="lazy"><figcaption>Three pairings, alternating signs: a Pfaffian.</figcaption></figure>
+<h2>One matrix equation</h2>
+<p>Inserting the Pfaffian form into the Schrödinger equation, the four-spin terms cancel. What remains is a single equation for the K×K matrix P, an algebraic matrix Riccati equation:</p>
+<div class="eq">A + BP + PB + PAP = 0,&nbsp;&nbsp; B = T − c·1,&nbsp;&nbsp; c = 4h/J</div>
+<p>where T and A are the symmetric and antisymmetric nearest-neighbour matrices. The exact pair matrix satisfies it to 10<sup>−15</sup>. No ansatz has been added: the equation follows from the Dirac-basis Schrödinger equation alone.</p>
+<h2>Linearise and solve</h2>
+<p>A Riccati equation becomes linear in a matrix twice as large, M = ((−B, −A), (A, B)). Its eigenvectors give P = YX<sup>−1</sup>, and its eigenvalues μ<sub>k</sub> give the energy, E = (J/8) Σ<sub>k</sub> μ<sub>k</sub> (summed over the K negative eigenvalues). For 8 spins this gives −2.777054 J, identical to exact diagonalisation. In the bulk the eigenvalues follow the textbook Ising dispersion μ<sub>k</sub><sup>2</sup> = c<sup>2</sup> + 4 − 4c cos k, with momenta fixed by the chain ends through sin((K+1)k) = λ sin(Kk).</p>
+<figure><img src="img/ising-dispersion.webp" alt="Ising dispersion with the eight exact levels" loading="lazy"><figcaption>The 8 exact levels lie on the Ising dispersion.</figcaption></figure>
+<h2>Bonus: a mode at the edges</h2>
+<p>For |h| &lt; J/2 one solution of the quantisation condition becomes complex, and one level drops to almost zero: μ = 0.0059 for 8 spins at h = 0.25 J. This mode is bound to the two ends of the chain. In fermion language it is the Majorana edge mode, a close relative of the edge spins of the Haldane chain.</p>
+<figure><img src="img/ising-edge.webp" alt="The eight levels versus field, with one level going to zero below h = J/2" loading="lazy"><figcaption>Below h = J/2, one level dives to zero: the edge mode.</figcaption></figure>
+"""),
 ]
 
 import sys as _sys
