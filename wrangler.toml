@@ -3,3 +3,14 @@ name = "deep-quantum-science"
 pages_build_output_dir = "site"
 compatibility_date = "2026-06-01"
 compatibility_flags = ["nodejs_compat"]
+
+# Public settings. Secrets (PAYPAL_CLIENT_SECRET, LICENSE_PRIVATE_KEY, RESEND_API_KEY, OWNER_EMAIL)
+# are entered in the Cloudflare dashboard, never here.
+[vars]
+PAYPAL_ENV = "live"
+PAYPAL_CLIENT_ID = "BAAFB76ocbY5-3W-DvNOpDc2jE77km6y22Gbcl8SpHGX-M-kxOs3Vd0T-mVFLWIw6dZJKAk3Vd_jkuWfWc"
+MAIL_FROM = "DeepQ Manuscript <licence@deep-quantum-science.com>"
+
+[[kv_namespaces]]
+binding = "ORDERS"
+id = "96cc91ff88564e808ba40a3040769271"
