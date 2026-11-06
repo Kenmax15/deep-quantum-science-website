@@ -33,3 +33,13 @@ licence sales for **DeepQ Manuscript** (29,99 €, PayPal).
 | `OWNER_EMAIL` | where sale notifications go, also the reply-to address | no |
 
 Never commit `private_key.json` or any secret to this repository.
+
+## Hosting on Cloudflare Pages
+
+The same site and checkout also run on Cloudflare Pages (free, unlimited deploys):
+
+- Build output directory: `site` (no build command). `wrangler.toml` sets `nodejs_compat`.
+- `functions/api/*.js` wrap the checkout handlers above; Cloudflare passes the project's
+  variables and secrets (same names as in the table) into them.
+- Orders are stored in a KV namespace bound as `ORDERS` instead of Netlify Blobs.
+- Headers come from `site/_headers`.
