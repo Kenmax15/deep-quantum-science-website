@@ -246,7 +246,7 @@ POSTS = [
   de='Alles aus Paaren: die Quanten-Ising-Kette in der Dirac-Basis',
   summary='Appendix C of our paper: in the Dirac basis, every amplitude of the Ising ground state is a Pfaffian of one pair matrix, which obeys a single matrix Riccati equation.',
   img='ising-hero.webp',
-  video=('https://youtu.be/KGfZsxdWGwE', 'Watch: Everything from pairs (3:39)', 'YouTube · Research explained'),
+  video=('https://youtu.be/48I68It2FNc', 'Watch: Everything from pairs (3:39)', 'YouTube · Research explained'),
   body="""
 <p>The quantum Ising chain in a transverse field is one of the classic exactly solvable models of physics. Its solution is textbook material. Appendix C of our paper does not provide a new solution; it shows how the known solution emerges directly from the Schrödinger equation written in the Dirac basis, with no Jordan–Wigner transformation. Every claim below was checked numerically on chains of 6 and 8 spins.</p>
 <h2>The model</h2>
