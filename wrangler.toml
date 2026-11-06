@@ -1,5 +1,5 @@
 # Cloudflare Pages project settings (static site in site/, checkout in functions/api).
-name = "deep-quantum-science"
+name = "deep-quantum-science-website"
 pages_build_output_dir = "site"
 compatibility_date = "2026-06-01"
 compatibility_flags = ["nodejs_compat"]
