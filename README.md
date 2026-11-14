@@ -12,6 +12,35 @@ licence sales for **DeepQ Manuscript** (29,99 €, PayPal).
 | `netlify/functions/lib/licence.mjs` | Creates `DQM1.` licence keys exactly like `issue_license.py` (RSA-3072, SHA-256). |
 | `tests/` | Offline test of the checkout with a **throwaway test key** (not the real licence key). Run `npm test`. |
 
+## Maintaining the site
+
+| Tool | What it does |
+|---|---|
+| `tools/build_blog.py` | Generates the blog pages, feed and article list. |
+| `tools/build_legal.py` | Generates the legal pages (privacy, terms, legal notice) and the 404 page, in English and German. |
+| `tools/site_polish.py` | Final pass over every page; run it after any change. It handles clean URLs, meta and social tags, favicons, the consent script, WOFF2/WebP, lazy-loading, image sizes, footer links, `sitemap.xml` and `robots.txt`. It is idempotent. |
+| `tools/check_links.py` | Crawls a local copy of the site and reports broken links, missing anchors, images without alt text and pages without a description (`--external` also checks outside links; DOIs are verified with the DOI registry). |
+
+Local preview with Cloudflare's own server (clean URLs, `_headers`, functions):
+`npx wrangler pages dev site --port 8788`.
+
+### Contact form
+
+`functions/api/contact.js` receives the homepage form. It checks every field again on the server and blocks spam in four ways:
+
+- a hidden honeypot field;
+- a minimum of 3 s on the page;
+- a limit on the number of links;
+- at most 5 messages per hour per visitor (salted IP hash in KV, kept for 1 hour).
+
+It then emails the message to `OWNER_EMAIL` via Resend, with reply-to set to the sender. Two variables are optional: `CONTACT_FROM` (sender) and `RATE_SALT`.
+
+### Consent and audience measurement
+
+`site/assets/consent.js` shows the consent banner on every page. Cloudflare Web Analytics (cookieless) is loaded **only after consent**, and the footer link "Cookie settings" reopens the choice.
+
+In the Cloudflare dashboard, the project's automatic Web Analytics injection must stay **off** (Workers & Pages → project → Metrics/Settings → Web Analytics). Otherwise the beacon would load without consent.
+
 ## How a sale works
 
 1. The buyer enters the licence name, accepts the terms and clicks **Continue to payment**; only then is PayPal loaded.

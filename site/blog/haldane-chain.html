@@ -4,23 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>The Haldane chain: a gap that should not be there · Deep Quantum Science</title>
-<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
-<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="Deep Quantum Science blog" href="https://deep-quantum-science.com/blog/feed.xml">
 <meta name="description" content="Integer spins keep an energy gap, hide a perfect up–down order and carry half spins at their ends. We compute it all exactly with our base-3 representation.">
-<meta property="og:title" content="The Haldane chain: a gap that should not be there · Deep Quantum Science">
-<meta property="og:description" content="Integer spins keep an energy gap, hide a perfect up–down order and carry half spins at their ends. We compute it all exactly with our base-3 representation.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://deep-quantum-science.com/blog/haldane-chain.html">
-<meta property="og:image" content="https://deep-quantum-science.com/blog/img/haldane-hero.webp">
-<link rel="canonical" href="https://deep-quantum-science.com/blog/haldane-chain.html">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "The Haldane chain: a gap that should not be there", "description": "Integer spins keep an energy gap, hide a perfect up–down order and carry half spins at their ends. We compute it all exactly with our base-3 representation.", "datePublished": "2026-11-05", "image": "https://deep-quantum-science.com/blog/img/haldane-hero.webp", "author": {"@type": "Organization", "name": "Deep Quantum Science"}, "publisher": {"@type": "Organization", "name": "Deep Quantum Science", "logo": "https://deep-quantum-science.com/assets/logo.png"}, "mainEntityOfPage": "https://deep-quantum-science.com/blog/haldane-chain.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "The Haldane chain: a gap that should not be there", "description": "Integer spins keep an energy gap, hide a perfect up–down order and carry half spins at their ends. We compute it all exactly with our base-3 representation.", "datePublished": "2026-11-05", "image": "https://deep-quantum-science.com/blog/img/haldane-hero.webp", "author": {"@type": "Organization", "name": "Deep Quantum Science"}, "publisher": {"@type": "Organization", "name": "Deep Quantum Science", "logo": "https://deep-quantum-science.com/assets/logo.png"}, "mainEntityOfPage": "https://deep-quantum-science.com/blog/haldane-chain"}</script>
 <style>
-@font-face{font-family:"Alegreya";src:url("../assets/fonts/alegreya.woff") format("woff");font-weight:500 600;font-style:normal;font-display:swap}
-@font-face{font-family:"Alegreya";src:url("../assets/fonts/alegreya-italic.woff") format("woff");font-weight:500;font-style:italic;font-display:swap}
-@font-face{font-family:"IBM Plex Sans";src:url("../assets/fonts/plex-sans.woff") format("woff");font-weight:400 600;font-style:normal;font-display:swap}
-@font-face{font-family:"IBM Plex Mono";src:url("../assets/fonts/plex-mono-400.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:"IBM Plex Mono";src:url("../assets/fonts/plex-mono-500.woff") format("woff");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Alegreya";src:url("../assets/fonts/alegreya.woff2") format("woff2");font-weight:500 600;font-style:normal;font-display:swap}
+@font-face{font-family:"Alegreya";src:url("../assets/fonts/alegreya-italic.woff2") format("woff2");font-weight:500;font-style:italic;font-display:swap}
+@font-face{font-family:"IBM Plex Sans";src:url("../assets/fonts/plex-sans.woff2") format("woff2");font-weight:400 600;font-style:normal;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url("../assets/fonts/plex-mono-400.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url("../assets/fonts/plex-mono-500.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
 
 
 /* Layout: a night-blue lab notebook. Left-aligned, asymmetric two-column sections on a faint measurement grid; one live wavefield in the hero. */
@@ -51,7 +43,7 @@
 }
 @media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
   --night:#eceff7;--navy:#f8f9fc;--panel:#ffffff;--rule:#d8dbeb;--text:#15113a;--muted:#585676;
-  --mint:#0c8a73;--teal:#1fa088;--mint-ink:#ffffff;--text-2:#34375a;
+  --mint:#0a7462;--teal:#1fa088;--mint-ink:#ffffff;--text-2:#34375a;
   --glow:#d9f3ec;--glow-2:#e2defa;--portrait:#e6e3fb;
   --btn-a:#14a88d;--btn-mid:#0f957e;--btn-b:#0b7565;--btn-ink:#ffffff;
   --wave-lo:#7fcfc0;--wave-hi:#0b6f5f;--logo-filter:saturate(1.35) brightness(.78);
@@ -59,7 +51,7 @@
 }}
 :root[data-theme="light"]{
   --night:#eceff7;--navy:#f8f9fc;--panel:#ffffff;--rule:#d8dbeb;--text:#15113a;--muted:#585676;
-  --mint:#0c8a73;--teal:#1fa088;--mint-ink:#ffffff;--text-2:#34375a;
+  --mint:#0a7462;--teal:#1fa088;--mint-ink:#ffffff;--text-2:#34375a;
   --glow:#d9f3ec;--glow-2:#e2defa;--portrait:#e6e3fb;
   --btn-a:#14a88d;--btn-mid:#0f957e;--btn-b:#0b7565;--btn-ink:#ffffff;
   --wave-lo:#7fcfc0;--wave-hi:#0b6f5f;--logo-filter:saturate(1.35) brightness(.78);
@@ -416,19 +408,39 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
 .article th,.article td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
 .article th{color:var(--mint);font-weight:500}
 </style>
+<style id="dqs-base">img{max-width:100%;height:auto}</style>
+<link rel="canonical" href="https://deep-quantum-science.com/blog/haldane-chain">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Deep Quantum Science">
+<meta property="og:title" content="The Haldane chain: a gap that should not be there">
+<meta property="og:description" content="Integer spins keep an energy gap, hide a perfect up–down order and carry half spins at their ends. We compute it all exactly with our base-3 representation.">
+<meta property="og:url" content="https://deep-quantum-science.com/blog/haldane-chain">
+<meta property="og:image" content="https://deep-quantum-science.com/assets/og/haldane-hero.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Haldane chain: a gap that should not be there">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0e082c">
+<script src="/assets/consent.js" defer></script>
 </head>
 <body>
 <nav class="nav" aria-label="Main navigation">
   <div class="wrap">
-    <a class="brand" href="../index.html" aria-label="Deep Quantum Science">
-      <img src="../assets/logo.png" alt="" width="34" height="37">
+    <a class="brand" href="../" aria-label="Deep Quantum Science">
+      <img src="../assets/logo-nav.webp" alt="" width="34" height="37">
       <span>Deep Quantum Science<small>Consulting · Regensburg</small></span>
     </a>
     <div class="links">
-      <a href="../index.html#leistungen"><span class="de">Leistungen</span><span class="en">Services</span></a>
-      <a href="../manuscript.html"><span class="de">Software</span><span class="en">Software</span></a>
-      <a href="../index.html#publikationen"><span class="de">Publikationen</span><span class="en">Publications</span></a>
-      <a href="index.html">Blog</a>
+      <a href="../#leistungen"><span class="de">Leistungen</span><span class="en">Services</span></a>
+      <a href="../manuscript"><span class="de">Software</span><span class="en">Software</span></a>
+      <a href="../#publikationen"><span class="de">Publikationen</span><span class="en">Publications</span></a>
+      <a href="./">Blog</a>
     </div>
     <div class="nav-actions">
       <button type="button" class="theme-btn" id="theme-toggle" aria-label="Switch light/dark mode" title="Light / dark mode">
@@ -439,7 +451,7 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
         <button type="button" id="lang-en" data-lang="en" aria-pressed="true">EN</button>
         <button type="button" id="lang-de" data-lang="de" aria-pressed="false">DE</button>
       </div>
-      <a class="btn btn-primary" href="../index.html#kontakt"><span class="de">Erstgespräch</span><span class="en">Free consultation</span></a>
+      <a class="btn btn-primary" href="../#kontakt"><span class="de">Erstgespräch</span><span class="en">Free consultation</span></a>
     </div>
   </div>
 </nav>
@@ -449,32 +461,32 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
   <h1>The Haldane chain: a gap that should not be there</h1>
   <p class="lead">Integer spins keep an energy gap, hide a perfect up–down order and carry half spins at their ends. We compute it all exactly with our base-3 representation.</p>
   <p class="lang-note de">Dieser Artikel ist auf Englisch verfügbar.</p>
-  <a class="watch" href="https://youtu.be/c7lEqTH1iVk" target="_blank" rel="noopener"><img src="img/haldane-hero.webp" alt=""><div><b>Watch: The Haldane chain (3:27)</b><span>YouTube · Research explained ↗</span></div></a>
+  <a class="watch" href="https://youtu.be/c7lEqTH1iVk" target="_blank" rel="noopener"><img fetchpriority="high" width="1280" height="720" src="img/haldane-hero.webp" alt=""><div><b>Watch: The Haldane chain (3:27)</b><span>YouTube · Research explained ↗</span></div></a>
   
 <p>In the previous article we wrote spin-1 operators as jumps between integers written in base 3. Here we put this representation to work on one of the most famous problems of quantum magnetism: the spin-1 Heisenberg chain, better known as the Haldane chain. Every number below comes from our own exact calculations.</p>
 <h2>A chain of spin-1 magnets</h2>
 <p>Line up spin-1 magnets whose neighbours prefer to point in opposite directions. This is the Heisenberg antiferromagnet:</p>
 <div class="eq">H = J Σ<sub>j</sub> <b>S</b><sub>j</sub> · <b>S</b><sub>j+1</sub> ,&nbsp;&nbsp; J &gt; 0</div>
 <p>In the base-3 representation, the S<sup>z</sup>S<sup>z</sup> part is diagonal: it just reads the digits of each configuration n. The exchange part moves one unit of spin between neighbours, which is a jump n → n ± (q<sub>j</sub> − q<sub>j+1</sub>) with amplitude exactly 1 whenever the gatekeepers allow it. The chain becomes a hopping problem on the integers. We checked that the resulting Hamiltonian has exactly the same eigenvalues as the usual tensor-product construction (largest difference 10<sup>−14</sup>).</p>
-<figure><img src="img/haldane-chain.webp" alt="A chain of spin-1 magnets and the Heisenberg Hamiltonian as jumps between integers" loading="lazy"><figcaption>In base 3, a neighbour exchange is a jump between two integers.</figcaption></figure>
+<figure><img loading="lazy" decoding="async" width="1280" height="720" src="img/haldane-chain.webp" alt="A chain of spin-1 magnets and the Heisenberg Hamiltonian as jumps between integers"><figcaption>In base 3, a neighbour exchange is a jump between two integers.</figcaption></figure>
 <h2>Haldane's conjecture</h2>
 <p>The energy gap is the energy needed to create the smallest excitation. For spin ½, our exact gap on rings of up to 20 spins shrinks like 1/L: a long chain has no gap. For spin 1, on rings of up to 12 spins, the gap decreases much more slowly (0.48 J at L = 12) and approaches the value Δ ≈ 0.41 J obtained by large-scale numerical studies.</p>
 <p>In 1983 Duncan Haldane predicted exactly this difference: chains of half-integer spins are gapless, chains of integer spins are gapped. The prediction was surprising at the time; it is now firmly established, and it was part of the work recognised by the 2016 Nobel Prize in Physics.</p>
-<figure><img src="img/haldane-gap.webp" alt="Energy gap versus 1/L for spin 1/2 and spin 1 chains" loading="lazy"><figcaption>Exact gaps: spin ½ (blue) closes like 1/L, spin 1 (yellow) levels off near 0.41 J.</figcaption></figure>
+<figure><img loading="lazy" decoding="async" width="1280" height="720" src="img/haldane-gap.webp" alt="Energy gap versus 1/L for spin 1/2 and spin 1 chains"><figcaption>Exact gaps: spin ½ (blue) closes like 1/L, spin 1 (yellow) levels off near 0.41 J.</figcaption></figure>
 <h2>A hidden order</h2>
 <p>A typical configuration of the ground state looks disordered: up, flat and down spins mixed together. But delete every flat spin, and what remains alternates perfectly: up, down, up, down. In base 3 this is easy to test, because we only need to read the digits of each n. In our exact ground state of 12 spins, <b>84%</b> of the weight has this hidden pattern.</p>
-<figure><img src="img/haldane-hidden.webp" alt="Removing the flat spins reveals a perfect up-down pattern" loading="lazy"><figcaption>Delete the flat spins: the rest alternates.</figcaption></figure>
+<figure><img loading="lazy" decoding="async" width="1280" height="720" src="img/haldane-hidden.webp" alt="Removing the flat spins reveals a perfect up-down pattern"><figcaption>Delete the flat spins: the rest alternates.</figcaption></figure>
 <h2>String order</h2>
 <p>Physicists measure this hidden order with the string correlator of den Nijs and Rommelse:</p>
 <div class="eq">𝒪(r) = ⟨ S<sup>z</sup><sub>0</sub> e<sup>iπ Σ<sub>0&lt;k&lt;r</sub> S<sup>z</sup><sub>k</sub></sup> S<sup>z</sup><sub>r</sub> ⟩</div>
 <p>Each flat spin in between contributes +1, each up or down spin −1, so in base 3 the string is just a product of ±1 read from the trits. The ordinary spin correlation fades with distance (on a long chain it dies out after about six sites), while the string order settles near 0.37 on our 12-spin ring, close to the infinite-chain value 0.374.</p>
-<figure><img src="img/haldane-string.webp" alt="Ordinary spin correlation versus string order as a function of distance" loading="lazy"><figcaption>Ordinary correlations fade; the string order stays.</figcaption></figure>
+<figure><img loading="lazy" decoding="async" width="1280" height="720" src="img/haldane-string.webp" alt="Ordinary spin correlation versus string order as a function of distance"><figcaption>Ordinary correlations fade; the string order stays.</figcaption></figure>
 <h2>The AKLT picture</h2>
 <p>In 1987 Affleck, Kennedy, Lieb and Tasaki found an exactly solvable model in the same phase, with a simple picture. Split each spin 1 into two spin ½. Pair every half with a half on the neighbouring site into a singlet bond. The bulk is locked, which explains the gap and the hidden order. At the two ends of an open chain, however, one spin ½ has no partner: it is free.</p>
-<figure><img src="img/haldane-aklt.webp" alt="AKLT valence bond picture with free spin-1/2 at both ends" loading="lazy"><figcaption>Singlet bonds in the bulk, a free spin ½ at each end.</figcaption></figure>
+<figure><img loading="lazy" decoding="async" width="1280" height="720" src="img/haldane-aklt.webp" alt="AKLT valence bond picture with free spin-1/2 at both ends"><figcaption>Singlet bonds in the bulk, a free spin ½ at each end.</figcaption></figure>
 <h2>Edge states, computed exactly</h2>
 <p>We tested this on an open chain of 12 spins with one unit of total magnetisation. The magnetisation sits at the two ends, and each half of the chain carries exactly <b>0.50</b>: half a spin per edge. The two free halves also show up in the spectrum: the four lowest states, a singlet and a triplet, lie within 0.10 J of each other. This splitting shrinks exponentially with the length of the chain, while the next level lies 0.79 J higher.</p>
-<figure><img src="img/haldane-edge.webp" alt="Local magnetisation along an open chain and the lowest energy levels" loading="lazy"><figcaption>Local magnetisation of an open 12-spin chain: half a spin at each end.</figcaption></figure>
+<figure><img loading="lazy" decoding="async" width="1280" height="720" src="img/haldane-edge.webp" alt="Local magnetisation along an open chain and the lowest energy levels"><figcaption>Local magnetisation of an open 12-spin chain: half a spin at each end.</figcaption></figure>
 <h2>Why it matters</h2>
 <ul>
 <li>The Haldane gap was measured in nickel-based chain compounds such as NENP by neutron scattering in 1987.</li>
@@ -484,13 +496,13 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
 <p>For us, the Haldane chain is a demanding test of the base-3 Dirac representation: the gap, the hidden order and the edge states all follow from simple jumps between integers.</p>
 
   <div class="note">Paper: <a href="https://doi.org/10.1016/j.physb.2026.419578" target="_blank" rel="noopener">Dirac representation for lattice spin operators: Spin-1/2 and spin-1 cases</a>, <i>Physica B: Condensed Matter</i> (2026).</div>
-  <a class="btn btn-ghost back" href="index.html"><span class="en">← All articles</span><span class="de">← Alle Artikel</span></a>
+  <a class="btn btn-ghost back" href="./"><span class="en">← All articles</span><span class="de">← Alle Artikel</span></a>
 </div></article>
 </main>
 <footer>
   <div class="wrap">
     <span>© <span id="year">2026</span> Deep Quantum Science Consulting · Regensburg</span>
-    <span class="motto">The future is you!</span><div class="legal"><a href="../impressum.html"><span class="en">Legal notice</span><span class="de">Impressum</span></a><a href="../datenschutz.html"><span class="en">Privacy</span><span class="de">Datenschutz</span></a></div>
+    <span class="motto">The future is you!</span><div class="legal"><a href="../impressum"><span class="en">Legal notice</span><span class="de">Impressum</span></a><a href="../terms"><span class="en">Terms</span><span class="de">AGB</span></a><a href="../datenschutz"><span class="en">Privacy</span><span class="de">Datenschutz</span></a></div>
     <div class="social">
       <a href="https://www.linkedin.com/in/maseim-bassis-kenmoe-22077" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://www.youtube.com/@DeepQuantumScience" target="_blank" rel="noopener">YouTube</a>

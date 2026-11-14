@@ -3,23 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Deep Quantum Science</title>
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<meta property="og:title" content="Deep Quantum Science Consulting">
-<meta property="og:description" content="AI, machine learning and deep learning consulting, data analysis and scientific simulation from Regensburg, Germany.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://deep-quantum-science.com/">
-<meta property="og:image" content="https://deep-quantum-science.com/assets/logo.png">
-<link rel="canonical" href="https://deep-quantum-science.com/">
+<title>Deep Quantum Science · AI, machine learning &amp; simulation consulting, Regensburg</title>
 
 <meta name="description" content="Deep Quantum Science Consulting: AI, machine learning and deep learning consulting, data analysis and scientific simulation from Regensburg, Germany.">
 <style>
-@font-face{font-family:"Alegreya";src:url("assets/fonts/alegreya.woff") format("woff");font-weight:500 600;font-style:normal;font-display:swap}
-@font-face{font-family:"Alegreya";src:url("assets/fonts/alegreya-italic.woff") format("woff");font-weight:500;font-style:italic;font-display:swap}
-@font-face{font-family:"IBM Plex Sans";src:url("assets/fonts/plex-sans.woff") format("woff");font-weight:400 600;font-style:normal;font-display:swap}
-@font-face{font-family:"IBM Plex Mono";src:url("assets/fonts/plex-mono-400.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:"IBM Plex Mono";src:url("assets/fonts/plex-mono-500.woff") format("woff");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Alegreya";src:url("assets/fonts/alegreya.woff2") format("woff2");font-weight:500 600;font-style:normal;font-display:swap}
+@font-face{font-family:"Alegreya";src:url("assets/fonts/alegreya-italic.woff2") format("woff2");font-weight:500;font-style:italic;font-display:swap}
+@font-face{font-family:"IBM Plex Sans";src:url("assets/fonts/plex-sans.woff2") format("woff2");font-weight:400 600;font-style:normal;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url("assets/fonts/plex-mono-400.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url("assets/fonts/plex-mono-500.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
 </style>
 <style>
 /* Layout: a night-blue lab notebook. Left-aligned, asymmetric two-column sections on a faint measurement grid; one live wavefield in the hero. */
@@ -34,6 +26,7 @@
   --mint:#92ffd8;       /* logo highlight */
   --teal:#26a58e;       /* logo shadow */
   --mint-ink:#062a24;   /* text on mint */
+  --err:#ff9b9e;        /* form errors */
   --display:"Alegreya",Georgia,"Times New Roman",serif;
   --sans:"IBM Plex Sans","Segoe UI",system-ui,-apple-system,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
@@ -50,7 +43,7 @@
 }
 @media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
   --night:#eceff7;--navy:#f8f9fc;--panel:#ffffff;--rule:#d8dbeb;--text:#15113a;--muted:#585676;
-  --mint:#0c8a73;--teal:#1fa088;--mint-ink:#ffffff;--text-2:#34375a;
+  --mint:#0a7462;--teal:#1fa088;--mint-ink:#ffffff;--text-2:#34375a;--err:#b4232a;
   --glow:#d9f3ec;--glow-2:#e2defa;--portrait:#e6e3fb;
   --btn-a:#14a88d;--btn-mid:#0f957e;--btn-b:#0b7565;--btn-ink:#ffffff;
   --wave-lo:#7fcfc0;--wave-hi:#0b6f5f;--logo-filter:saturate(1.35) brightness(.78);
@@ -58,7 +51,7 @@
 }}
 :root[data-theme="light"]{
   --night:#eceff7;--navy:#f8f9fc;--panel:#ffffff;--rule:#d8dbeb;--text:#15113a;--muted:#585676;
-  --mint:#0c8a73;--teal:#1fa088;--mint-ink:#ffffff;--text-2:#34375a;
+  --mint:#0a7462;--teal:#1fa088;--mint-ink:#ffffff;--text-2:#34375a;--err:#b4232a;
   --glow:#d9f3ec;--glow-2:#e2defa;--portrait:#e6e3fb;
   --btn-a:#14a88d;--btn-mid:#0f957e;--btn-b:#0b7565;--btn-ink:#ffffff;
   --wave-lo:#7fcfc0;--wave-hi:#0b6f5f;--logo-filter:saturate(1.35) brightness(.78);
@@ -274,6 +267,27 @@ section.block{padding-block:clamp(72px,10vw,128px);border-bottom:1px solid var(-
 .copy:hover{border-color:var(--teal)}
 .contact-card .btn{width:100%}
 .channels{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cform{display:grid;gap:14px}
+.field{display:grid;gap:6px}
+.field label{font:500 14px/1.4 var(--sans);color:var(--text)}
+.field label small{color:var(--muted);font-weight:400}
+.field input[type=text],.field input[type=email],.field textarea{width:100%;font:400 16px/1.5 var(--sans);color:var(--text);background:var(--navy);border:1px solid var(--rule);border-radius:12px;padding:11px 14px}
+.field textarea{resize:vertical;min-height:120px}
+.field input:focus-visible,.field textarea:focus-visible{outline:2px solid var(--mint);outline-offset:1px;border-color:transparent}
+.field [aria-invalid="true"]{border-color:var(--err)}
+.field .err{margin:0;font-size:13.5px;color:var(--err)}
+.field .err:empty{display:none}
+.field.check{grid-template-columns:auto 1fr;align-items:start;column-gap:10px}
+.field.check input{width:20px;height:20px;margin-top:2px;accent-color:var(--mint)}
+.field.check label{font-weight:400;color:var(--text-2)}
+.field.check label a{color:var(--text)}
+.field.check .err{grid-column:1/-1}
+.hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+.cform .status{margin:0;font-size:15px;color:var(--text-2)}
+.cform .status:empty{display:none}
+.cform .status.ok{color:var(--mint)}
+.cform .status.bad{color:var(--err)}
+.cform button[disabled]{opacity:.6;cursor:progress}
 @media(max-width:860px){.contact .wrap{grid-template-columns:1fr}}
 
 /* Footer */
@@ -297,12 +311,32 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
 .bridge-row small.math{margin-top:8px;font:400 14px/1.4 var(--sans);color:var(--text-2)}
 .bridge-row small.math .katex{font-size:1.25em}
 </style>
+<style id="dqs-base">img{max-width:100%;height:auto}</style>
+<link rel="canonical" href="https://deep-quantum-science.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Deep Quantum Science">
+<meta property="og:title" content="Deep Quantum Science · AI, machine learning &amp; simulation consulting, Regensburg">
+<meta property="og:description" content="Deep Quantum Science Consulting: AI, machine learning and deep learning consulting, data analysis and scientific simulation from Regensburg, Germany.">
+<meta property="og:url" content="https://deep-quantum-science.com/">
+<meta property="og:image" content="https://deep-quantum-science.com/assets/og/home.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Deep Quantum Science · AI, machine learning &amp; simulation consulting, Regensburg">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0e082c">
+<script src="/assets/consent.js" defer></script>
 </head>
 <body>
 <nav class="nav" aria-label="Main navigation">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Deep Quantum Science">
-      <img src="assets/logo.png" alt="" width="34" height="37">
+      <img src="assets/logo-nav.webp" alt="" width="34" height="37">
       <span>Deep Quantum Science<small>Consulting · Regensburg</small></span>
     </a>
     <div class="links">
@@ -503,7 +537,7 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
           <li><span class="de">Querverweise auf Gleichungen, Abbildungen und Tabellen</span><span class="en">Cross-references to equations, figures and tables</span></li>
           <li><span class="de">Optionaler PDF-Build und Prüfbericht</span><span class="en">Optional PDF build and check report</span></li>
         </ul>
-        <div class="cta-row" style="margin-top:6px"><a class="btn btn-primary" href="manuscript.html"><span class="en">Free trial &amp; licence · 29,99 €</span><span class="de">Testversion &amp; Lizenz · 29,99 €</span><span class="arr" aria-hidden="true">→</span></a></div>
+        <div class="cta-row" style="margin-top:6px"><a class="btn btn-ghost" href="manuscript"><span class="en">Free trial &amp; licence · 29,99 €</span><span class="de">Testversion &amp; Lizenz · 29,99 €</span><span class="arr" aria-hidden="true">→</span></a></div>
       </article>
       <div class="tool-list">
         <div class="tool"><h4>Research Assistant</h4><p><span class="de">Unterstützt bei Literatur, Datenauswertung und wiederkehrenden Analyseschritten.</span><span class="en">Helps with literature, data evaluation and recurring analysis steps.</span></p></div>
@@ -518,7 +552,7 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
 <section class="block grid-bg" id="ueber">
   <div class="wrap about">
     <figure class="portrait" style="margin:0">
-      <img src="assets/logo.png" alt="Deep Quantum Science Logo" width="185" height="200">
+      <img fetchpriority="high" src="assets/logo.webp" alt="Deep Quantum Science Logo" width="185" height="200">
       <figcaption><span>Deep Quantum Science</span><span>Regensburg</span></figcaption>
     </figure>
     <div>
@@ -597,18 +631,47 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
       <p class="lead"><span class="de">Das Erstgespräch ist kostenlos. Erzählen Sie uns, welches Problem Sie lösen möchten, und wir finden gemeinsam heraus, ob KI, Datenanalyse oder Simulation der richtige Weg ist.</span><span class="en">The first conversation is free. Tell us which problem you want to solve, and together we'll work out whether AI, data analysis or simulation is the right approach.</span></p>
     </div>
     <div class="contact-card">
+      <form id="contact-form" class="cform" action="/api/contact" method="post" novalidate>
+        <div class="field">
+          <label for="cf-name"><span class="en">Your name</span><span class="de">Ihr Name</span> *</label>
+          <input id="cf-name" name="name" type="text" autocomplete="name" required minlength="2" maxlength="100" aria-describedby="cf-name-err">
+          <p class="err" id="cf-name-err" aria-live="polite"></p>
+        </div>
+        <div class="field">
+          <label for="cf-email"><span class="en">Email</span><span class="de">E-Mail</span> *</label>
+          <input id="cf-email" name="email" type="email" autocomplete="email" required maxlength="254" aria-describedby="cf-email-err">
+          <p class="err" id="cf-email-err" aria-live="polite"></p>
+        </div>
+        <div class="field">
+          <label for="cf-org"><span class="en">Company or institute</span><span class="de">Unternehmen oder Institut</span> <small>(optional)</small></label>
+          <input id="cf-org" name="org" type="text" autocomplete="organization" maxlength="120">
+        </div>
+        <div class="field">
+          <label for="cf-msg"><span class="en">What would you like to solve?</span><span class="de">Was möchten Sie lösen?</span> *</label>
+          <textarea id="cf-msg" name="message" rows="5" required minlength="10" maxlength="5000" aria-describedby="cf-msg-err"></textarea>
+          <p class="err" id="cf-msg-err" aria-live="polite"></p>
+        </div>
+        <div class="hp" aria-hidden="true"><label for="cf-website">Website</label><input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+        <input type="hidden" name="t" id="cf-t">
+        <div class="field check">
+          <input id="cf-consent" name="consent" type="checkbox" required aria-describedby="cf-consent-err">
+          <label for="cf-consent"><span class="en">I agree that my details are used to answer my request, as described in the <a href="datenschutz">privacy policy</a>.</span><span class="de">Ich bin einverstanden, dass meine Angaben zur Beantwortung meiner Anfrage verwendet werden, wie in der <a href="datenschutz">Datenschutzerklärung</a> beschrieben.</span> *</label>
+          <p class="err" id="cf-consent-err" aria-live="polite"></p>
+        </div>
+        <button class="btn btn-primary" type="submit" id="cf-send"><span class="en">Request a free consultation</span><span class="de">Kostenloses Erstgespräch anfragen</span><span class="arr" aria-hidden="true">→</span></button>
+        <p class="status" id="cf-status" role="status" aria-live="polite"></p>
+      </form>
       <div class="contact-row">
-        <span class="label"><span class="en">Email</span><span class="de">E-Mail</span></span>
+        <span class="label"><span class="en">Or by email</span><span class="de">Oder per E-Mail</span></span>
         <div class="mail"><code id="mail">kenmoe@aims.edu.gh</code><button type="button" class="copy" id="copymail"><span class="de">Kopieren</span><span class="en">Copy</span></button></div>
       </div>
       <div class="contact-row">
         <span class="label"><span class="de">Standort</span><span class="en">Location</span></span>
         <span>Regensburg, <span class="de">Deutschland</span><span class="en">Germany</span></span>
       </div>
-      <a class="btn btn-primary" href="https://www.linkedin.com/in/maseim-bassis-kenmoe-22077" target="_blank" rel="noopener"><span class="de">Nachricht auf LinkedIn</span><span class="en">Message on LinkedIn</span><span class="arr" aria-hidden="true">→</span></a>
       <div class="channels" style="margin-top:0">
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/maseim-bassis-kenmoe-22077" target="_blank" rel="noopener">LinkedIn</a>
         <a class="btn btn-ghost" href="https://www.youtube.com/@DeepQuantumScience" target="_blank" rel="noopener">YouTube</a>
-        <a class="btn btn-ghost" href="https://www.facebook.com/profile.php?id=61573518324805" target="_blank" rel="noopener">Facebook</a>
       </div>
     </div>
   </div>
@@ -617,7 +680,7 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
 <footer>
   <div class="wrap">
     <span>© <span id="year">2026</span> Deep Quantum Science Consulting · Regensburg</span>
-    <span class="motto">The future is you!</span><div class="legal"><a href="impressum.html"><span class="en">Legal notice</span><span class="de">Impressum</span></a><a href="datenschutz.html"><span class="en">Privacy</span><span class="de">Datenschutz</span></a></div>
+    <span class="motto">The future is you!</span><div class="legal"><a href="impressum"><span class="en">Legal notice</span><span class="de">Impressum</span></a><a href="terms"><span class="en">Terms</span><span class="de">AGB</span></a><a href="datenschutz"><span class="en">Privacy</span><span class="de">Datenschutz</span></a></div>
     <div class="social">
       <a href="https://www.linkedin.com/in/maseim-bassis-kenmoe-22077" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://www.youtube.com/@DeepQuantumScience" target="_blank" rel="noopener">YouTube</a>
@@ -648,6 +711,37 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
   document.getElementById('theme-toggle').addEventListener('click',()=>{const next=effTheme()==='light'?'dark':'light';root.dataset.theme=next;try{localStorage.setItem('dqs-theme',next)}catch(e){}syncTheme()});
 
   /* copy e-mail */
+  /* contact form: validation in the browser (checked again on the server) */
+  const form=document.getElementById('contact-form');
+  if(form){
+    const M={en:{name:'Please enter your name.',email:'Please enter a valid email address.',message:'Please describe your request (at least 10 characters).',consent:'Please agree to the privacy policy so we can answer you.',sending:'Sending…',ok:'Thank you! Your request has been sent. We will reply within two working days.',rate:'Too many messages in a short time. Please try again later or write to us by email.',fail:'Your message could not be sent. Please try again or write to us by email.'},
+             de:{name:'Bitte geben Sie Ihren Namen ein.',email:'Bitte geben Sie eine gültige E-Mail-Adresse ein.',message:'Bitte beschreiben Sie Ihr Anliegen (mindestens 10 Zeichen).',consent:'Bitte stimmen Sie der Datenschutzerklärung zu, damit wir antworten können.',sending:'Wird gesendet…',ok:'Vielen Dank! Ihre Anfrage wurde gesendet. Wir antworten innerhalb von zwei Werktagen.',rate:'Zu viele Nachrichten in kurzer Zeit. Bitte versuchen Sie es später oder schreiben Sie uns eine E-Mail.',fail:'Ihre Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie uns eine E-Mail.'}};
+    const tr=k=>M[root.dataset.lang==='de'?'de':'en'][k];
+    const $=id=>document.getElementById(id);
+    $('cf-t').value=String(Date.now());
+    const checks={name:()=>$('cf-name').value.trim().length>=2,email:()=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test($('cf-email').value.trim()),message:()=>$('cf-msg').value.trim().length>=10,consent:()=>$('cf-consent').checked};
+    const ids={name:'cf-name',email:'cf-email',message:'cf-msg',consent:'cf-consent'};
+    function show(k,ok){const el=$(ids[k]);el.setAttribute('aria-invalid',String(!ok));$(ids[k]+'-err').textContent=ok?'':tr(k);}
+    Object.keys(checks).forEach(k=>$(ids[k]).addEventListener(k==='consent'?'change':'blur',()=>{if(k==='consent'||$(ids[k]).value!==''||$(ids[k]).getAttribute('aria-invalid')==='true')show(k,checks[k]())}));
+    form.addEventListener('submit',async e=>{
+      e.preventDefault();
+      let first=null;
+      Object.keys(checks).forEach(k=>{const ok=checks[k]();show(k,ok);if(!ok&&!first)first=$(ids[k]);});
+      if(first){first.focus();return;}
+      const st=$('cf-status'),btn=$('cf-send');
+      btn.disabled=true;st.className='status';st.textContent=tr('sending');
+      try{
+        const body={name:$('cf-name').value,email:$('cf-email').value,org:$('cf-org').value,message:$('cf-msg').value,consent:$('cf-consent').checked,website:$('cf-website').value,t:Number($('cf-t').value),lang:root.dataset.lang};
+        const r=await fetch(form.action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+        const d=await r.json().catch(()=>({}));
+        if(r.ok&&d.ok){form.reset();$('cf-t').value=String(Date.now());st.className='status ok';st.textContent=tr('ok');}
+        else{st.className='status bad';st.textContent=tr(r.status===429?'rate':'fail');
+          if(d.fields)Object.keys(d.fields).forEach(k=>ids[k]&&show(k,false));}
+      }catch(err){st.className='status bad';st.textContent=tr('fail');}
+      btn.disabled=false;
+    });
+  }
+
   const cb=document.getElementById('copymail');
   cb.addEventListener('click',()=>{const t=document.getElementById('mail').textContent;const done=()=>{cb.innerHTML=root.dataset.lang==='en'?'Copied':'Kopiert';setTimeout(()=>{cb.innerHTML='<span class="de">Kopieren</span><span class="en">Copy</span>'},1600)};
     const sel=()=>{const r=document.createRange();r.selectNodeContents(document.getElementById('mail'));const s=getSelection();s.removeAllRanges();s.addRange(r)};
@@ -657,40 +751,46 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
   const c=document.getElementById('wave'),ctx=c.getContext('2d');
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   let W=0,H=0,dpr=1,visible=true,t0=performance.now();
-  const COLS=78,ROWS=40;
-  let LO=[38,165,142],HI=[146,255,216];
+  let COLS=78,ROWS=40;
+  let LO=[38,165,142],HI=[146,255,216],PAL=[];
   const hex=h=>{h=h.trim().replace('#','');if(h.length===3)h=h.split('').map(x=>x+x).join('');const n=parseInt(h,16);return [n>>16&255,n>>8&255,n&255]};
-  window.__dqsWaveColors=function(){const cs=getComputedStyle(root);try{LO=hex(cs.getPropertyValue('--wave-lo'));HI=hex(cs.getPropertyValue('--wave-hi'))}catch(e){}if(W)draw(performance.now()-t0)};
-  function size(){dpr=Math.min(window.devicePixelRatio||1,2);W=c.clientWidth;H=c.clientHeight;c.width=W*dpr;c.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+  function palette(){PAL=[];for(let i=0;i<24;i++){const m=i/23;PAL.push(`rgb(${Math.round(LO[0]+(HI[0]-LO[0])*m)},${Math.round(LO[1]+(HI[1]-LO[1])*m)},${Math.round(LO[2]+(HI[2]-LO[2])*m)})`)}}
+  window.__dqsWaveColors=function(){const cs=getComputedStyle(root);try{LO=hex(cs.getPropertyValue('--wave-lo'));HI=hex(cs.getPropertyValue('--wave-hi'))}catch(e){}palette();if(W)draw(performance.now()-t0)};
+  function size(){W=c.clientWidth;H=c.clientHeight;const narrow=W<700;dpr=Math.min(window.devicePixelRatio||1,narrow?1.5:2);c.width=W*dpr;c.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+    COLS=narrow?48:78;ROWS=narrow?26:40}
   function draw(t){
     ctx.clearRect(0,0,W,H);
     const narrow=W<700, cx=narrow?W*.55:W*.7, horizon=H*(narrow?.18:.2), spread=narrow?W*1.3:W*.75;
-    const s1=[-.35,.25],s2=[.35,.25];
+    const s1=[-.35,.25],s2=[.35,.25],k=26,w=t*.0016;
     for(let r=0;r<ROWS;r++){
       const z=r/(ROWS-1);              // 0 far, 1 near
       const persp=.25+z*.95;
       const y0=horizon+Math.pow(z,1.35)*H*.85;
       for(let q=0;q<COLS;q++){
         const x=q/(COLS-1)-.5;
+        const px0=cx+x*spread*persp;
+        if(px0<-10||px0>W+10)continue;
         const d1=Math.hypot(x-s1[0],z-s1[1]),d2=Math.hypot(x-s2[0],z-s2[1]);
-        const k=26,w=t*.0016;
         const h=(Math.cos(k*d1-w)/(1+3*d1)+Math.cos(k*d2-w)/(1+3*d2))*.5;
-        const px=cx+x*spread*persp, py=y0-h*42*persp;
-        if(px<-10||px>W+10)continue;
-        const a=(.12+z*.55)*(.45+.55*Math.abs(h)*1.8);
+        const py=y0-h*42*persp;
         const m=Math.max(0,Math.min(1,.5+h*1.4));
-        const rC=Math.round(LO[0]+(HI[0]-LO[0])*m),gC=Math.round(LO[1]+(HI[1]-LO[1])*m),bC=Math.round(LO[2]+(HI[2]-LO[2])*m);
-        ctx.fillStyle=`rgba(${rC},${gC},${bC},${Math.min(a,.95)})`;
-        const rad=(.6+z*1.5)*(.8+.6*m);
-        ctx.beginPath();ctx.arc(px,py,rad,0,6.283);ctx.fill();
+        ctx.globalAlpha=Math.min((.12+z*.55)*(.45+.55*Math.abs(h)*1.8),.95);
+        ctx.fillStyle=PAL[Math.round(m*23)];
+        const rad=(.6+z*1.5)*(.8+.6*m)*(narrow?1.25:1);
+        if(rad<1.3){ctx.fillRect(px0-rad,py-rad,rad*2,rad*2)}
+        else{ctx.beginPath();ctx.arc(px0,py,rad,0,6.283);ctx.fill()}
       }
     }
+    ctx.globalAlpha=1;
   }
-  function loop(now){if(visible)draw(now-t0);if(!reduce)requestAnimationFrame(loop)}
-  size();window.__dqsWaveColors();draw(1200);
+  let last=0;
+  function loop(now){if(visible&&!document.hidden&&now-last>=33){last=now;draw(now-t0)}requestAnimationFrame(loop)}
+  const first=()=>{size();window.__dqsWaveColors();draw(1200)};
+  ('requestIdleCallback' in window)?requestIdleCallback(first,{timeout:800}):setTimeout(first,200);
   addEventListener('resize',()=>{size();draw(performance.now()-t0)});
   if('IntersectionObserver' in window)new IntersectionObserver(e=>{visible=e[0].isIntersecting}).observe(c);
-  if(!reduce)requestAnimationFrame(loop);
+  // start the motion once the page is idle, so it never competes with loading
+  if(!reduce){const go=()=>{if(!W)first();requestAnimationFrame(loop)};addEventListener('load',()=>('requestIdleCallback' in window)?requestIdleCallback(go,{timeout:2500}):setTimeout(go,1200),{once:true})}
 })();
 </script>
 

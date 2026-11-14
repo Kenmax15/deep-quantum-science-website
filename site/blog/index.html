@@ -4,22 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Blog · Deep Quantum Science</title>
-<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
-<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="Deep Quantum Science blog" href="https://deep-quantum-science.com/blog/feed.xml">
 <meta name="description" content="Articles on quantum physics, AI and our research, explained with real simulations.">
-<meta property="og:title" content="Blog · Deep Quantum Science">
-<meta property="og:description" content="Articles on quantum physics, AI and our research, explained with real simulations.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://deep-quantum-science.com/blog/index.html">
-<meta property="og:image" content="https://deep-quantum-science.com/blog/img/ising-hero.webp">
-<link rel="canonical" href="https://deep-quantum-science.com/blog/">
 <style>
-@font-face{font-family:"Alegreya";src:url("../assets/fonts/alegreya.woff") format("woff");font-weight:500 600;font-style:normal;font-display:swap}
-@font-face{font-family:"Alegreya";src:url("../assets/fonts/alegreya-italic.woff") format("woff");font-weight:500;font-style:italic;font-display:swap}
-@font-face{font-family:"IBM Plex Sans";src:url("../assets/fonts/plex-sans.woff") format("woff");font-weight:400 600;font-style:normal;font-display:swap}
-@font-face{font-family:"IBM Plex Mono";src:url("../assets/fonts/plex-mono-400.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:"IBM Plex Mono";src:url("../assets/fonts/plex-mono-500.woff") format("woff");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Alegreya";src:url("../assets/fonts/alegreya.woff2") format("woff2");font-weight:500 600;font-style:normal;font-display:swap}
+@font-face{font-family:"Alegreya";src:url("../assets/fonts/alegreya-italic.woff2") format("woff2");font-weight:500;font-style:italic;font-display:swap}
+@font-face{font-family:"IBM Plex Sans";src:url("../assets/fonts/plex-sans.woff2") format("woff2");font-weight:400 600;font-style:normal;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url("../assets/fonts/plex-mono-400.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url("../assets/fonts/plex-mono-500.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
 
 
 /* Layout: a night-blue lab notebook. Left-aligned, asymmetric two-column sections on a faint measurement grid; one live wavefield in the hero. */
@@ -50,7 +42,7 @@
 }
 @media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
   --night:#eceff7;--navy:#f8f9fc;--panel:#ffffff;--rule:#d8dbeb;--text:#15113a;--muted:#585676;
-  --mint:#0c8a73;--teal:#1fa088;--mint-ink:#ffffff;--text-2:#34375a;
+  --mint:#0a7462;--teal:#1fa088;--mint-ink:#ffffff;--text-2:#34375a;
   --glow:#d9f3ec;--glow-2:#e2defa;--portrait:#e6e3fb;
   --btn-a:#14a88d;--btn-mid:#0f957e;--btn-b:#0b7565;--btn-ink:#ffffff;
   --wave-lo:#7fcfc0;--wave-hi:#0b6f5f;--logo-filter:saturate(1.35) brightness(.78);
@@ -58,7 +50,7 @@
 }}
 :root[data-theme="light"]{
   --night:#eceff7;--navy:#f8f9fc;--panel:#ffffff;--rule:#d8dbeb;--text:#15113a;--muted:#585676;
-  --mint:#0c8a73;--teal:#1fa088;--mint-ink:#ffffff;--text-2:#34375a;
+  --mint:#0a7462;--teal:#1fa088;--mint-ink:#ffffff;--text-2:#34375a;
   --glow:#d9f3ec;--glow-2:#e2defa;--portrait:#e6e3fb;
   --btn-a:#14a88d;--btn-mid:#0f957e;--btn-b:#0b7565;--btn-ink:#ffffff;
   --wave-lo:#7fcfc0;--wave-hi:#0b6f5f;--logo-filter:saturate(1.35) brightness(.78);
@@ -415,19 +407,39 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
 .article th,.article td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
 .article th{color:var(--mint);font-weight:500}
 </style>
+<style id="dqs-base">img{max-width:100%;height:auto}</style>
+<link rel="canonical" href="https://deep-quantum-science.com/blog/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Deep Quantum Science">
+<meta property="og:title" content="Blog">
+<meta property="og:description" content="Articles on quantum physics, AI and our research, explained with real simulations.">
+<meta property="og:url" content="https://deep-quantum-science.com/blog/">
+<meta property="og:image" content="https://deep-quantum-science.com/assets/og/blog.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Blog">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0e082c">
+<script src="/assets/consent.js" defer></script>
 </head>
 <body>
 <nav class="nav" aria-label="Main navigation">
   <div class="wrap">
-    <a class="brand" href="../index.html" aria-label="Deep Quantum Science">
-      <img src="../assets/logo.png" alt="" width="34" height="37">
+    <a class="brand" href="../" aria-label="Deep Quantum Science">
+      <img src="../assets/logo-nav.webp" alt="" width="34" height="37">
       <span>Deep Quantum Science<small>Consulting · Regensburg</small></span>
     </a>
     <div class="links">
-      <a href="../index.html#leistungen"><span class="de">Leistungen</span><span class="en">Services</span></a>
-      <a href="../manuscript.html"><span class="de">Software</span><span class="en">Software</span></a>
-      <a href="../index.html#publikationen"><span class="de">Publikationen</span><span class="en">Publications</span></a>
-      <a href="index.html">Blog</a>
+      <a href="../#leistungen"><span class="de">Leistungen</span><span class="en">Services</span></a>
+      <a href="../manuscript"><span class="de">Software</span><span class="en">Software</span></a>
+      <a href="../#publikationen"><span class="de">Publikationen</span><span class="en">Publications</span></a>
+      <a href="./">Blog</a>
     </div>
     <div class="nav-actions">
       <button type="button" class="theme-btn" id="theme-toggle" aria-label="Switch light/dark mode" title="Light / dark mode">
@@ -438,7 +450,7 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
         <button type="button" id="lang-en" data-lang="en" aria-pressed="true">EN</button>
         <button type="button" id="lang-de" data-lang="de" aria-pressed="false">DE</button>
       </div>
-      <a class="btn btn-primary" href="../index.html#kontakt"><span class="de">Erstgespräch</span><span class="en">Free consultation</span></a>
+      <a class="btn btn-primary" href="../#kontakt"><span class="de">Erstgespräch</span><span class="en">Free consultation</span></a>
     </div>
   </div>
 </nav>
@@ -448,35 +460,35 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
   <p class="lead"><span class="en">Articles from Deep Quantum Science: our research made accessible, with real simulations behind every figure.</span><span class="de">Artikel von Deep Quantum Science: unsere Forschung verständlich aufbereitet, mit echten Simulationen hinter jeder Abbildung. Die Artikel sind auf Englisch.</span></p>
 </div></header>
 <main><div class="wrap"><div class="cards">
-  <a class="card" href="ising-chain-pfaffians.html"><img src="img/ising-hero.webp" alt="" loading="lazy"><div class="c-body">
+  <a class="card" href="ising-chain-pfaffians"><img fetchpriority="high" width="1280" height="720" src="img/ising-hero.webp" alt=""><div class="c-body">
     <p class="meta"><span class="tag">Research explained</span> · <time datetime="2026-11-06">6 November 2026</time></p>
     <h2><span class="en">Everything from pairs: the quantum Ising chain in the Dirac basis</span><span class="de">Alles aus Paaren: die Quanten-Ising-Kette in der Dirac-Basis</span></h2>
     <p>Appendix C of our paper: in the Dirac basis, every amplitude of the Ising ground state is a Pfaffian of one pair matrix, which obeys a single matrix Riccati equation.</p></div></a>
-  <a class="card" href="from-bits-to-trits-spin-1.html"><img src="img/trit-hero.webp" alt="" loading="lazy"><div class="c-body">
+  <a class="card" href="from-bits-to-trits-spin-1"><img loading="lazy" decoding="async" width="1280" height="720" src="img/trit-hero.webp" alt=""><div class="c-body">
     <p class="meta"><span class="tag">Research explained</span> · <time datetime="2026-11-05">5 November 2026</time></p>
     <h2><span class="en">From bits to trits: spin-1 operators as base-3 numbers</span><span class="de">Von Bits zu Trits: Spin-1 im Dreiersystem</span></h2>
     <p>A spin 1 has three positions. Read them as the digits 0, 1, 2, and spin-1 operators become jumps between integers written in base 3.</p></div></a>
-  <a class="card" href="haldane-chain.html"><img src="img/haldane-hero.webp" alt="" loading="lazy"><div class="c-body">
+  <a class="card" href="haldane-chain"><img loading="lazy" decoding="async" width="1280" height="720" src="img/haldane-hero.webp" alt=""><div class="c-body">
     <p class="meta"><span class="tag">Research explained</span> · <time datetime="2026-11-05">5 November 2026</time></p>
     <h2><span class="en">The Haldane chain: a gap that should not be there</span><span class="de">Die Haldane-Kette: eine unerwartete Energielücke</span></h2>
     <p>Integer spins keep an energy gap, hide a perfect up–down order and carry half spins at their ends. We compute it all exactly with our base-3 representation.</p></div></a>
-  <a class="card" href="perturbation-theory-matrix-machine.html"><img src="img/mm-hero.webp" alt="" loading="lazy"><div class="c-body">
+  <a class="card" href="perturbation-theory-matrix-machine"><img loading="lazy" decoding="async" width="1280" height="720" src="img/mm-hero.webp" alt=""><div class="c-body">
     <p class="meta"><span class="tag">Research explained</span> · <time datetime="2026-11-04">4 November 2026</time></p>
     <h2><span class="en">One machine, all the energies: perturbation theory with matrices</span><span class="de">Eine Maschine für alle Energien</span></h2>
     <p>A compact matrix recursion gives every eigenvalue and eigenstate at once, to any order. We run it, and show exactly when and why it breaks.</p></div></a>
-  <a class="card" href="many-body-localization.html"><img src="img/mbl-hero.webp" alt="" loading="lazy"><div class="c-body">
+  <a class="card" href="many-body-localization"><img loading="lazy" decoding="async" width="1280" height="720" src="img/mbl-hero.webp" alt=""><div class="c-body">
     <p class="meta"><span class="tag">Physics explained</span> · <time datetime="2026-11-04">4 November 2026</time></p>
     <h2><span class="en">Can a quantum system remember its past? Many-body localisation</span><span class="de">Kann sich ein Quantensystem erinnern?</span></h2>
     <p>Most systems forget where they started. With strong disorder, interacting quantum spins can refuse to. Three fingerprints, computed exactly.</p></div></a>
-  <a class="card" href="how-deepq-manuscript-works.html"><img src="img/dq-pipeline.webp" alt="" loading="lazy"><div class="c-body">
+  <a class="card" href="how-deepq-manuscript-works"><img loading="lazy" decoding="async" width="1540" height="792" src="img/dq-pipeline.webp" alt=""><div class="c-body">
     <p class="meta"><span class="tag">Software · Open design</span> · <time datetime="2026-11-04">4 November 2026</time></p>
     <h2><span class="en">How to build a Word ⇄ LaTeX converter: the design of DeepQ Manuscript</span><span class="de">Wie man einen Word-⇄-LaTeX-Konverter baut</span></h2>
     <p>The architecture and the algorithms behind DeepQ Manuscript, explained step by step with figures and pseudocode. Free to read, reuse and build upon.</p></div></a>
-  <a class="card" href="quantum-spins-are-binary-numbers.html"><img src="img/spins-hero.webp" alt="" loading="lazy"><div class="c-body">
+  <a class="card" href="quantum-spins-are-binary-numbers"><img loading="lazy" decoding="async" width="1280" height="720" src="img/spins-hero.webp" alt=""><div class="c-body">
     <p class="meta"><span class="tag">Research</span> · <time datetime="2026-11-03">3 November 2026</time></p>
     <h2><span class="en">Quantum spins are just binary numbers</span><span class="de">Quantenspins sind Binärzahlen</span></h2>
     <p>Read a chain of spins as a binary number, and spin operators become simple jumps between integers: the idea behind our Dirac representation.</p></div></a>
-  <a class="card" href="perturbation-theory-explained.html"><img src="img/pt-hero.webp" alt="" loading="lazy"><div class="c-body">
+  <a class="card" href="perturbation-theory-explained"><img loading="lazy" decoding="async" width="1280" height="720" src="img/pt-hero.webp" alt=""><div class="c-body">
     <p class="meta"><span class="tag">Research explained</span> · <time datetime="2026-11-03">3 November 2026</time></p>
     <h2><span class="en">Perturbation theory explained like you’re 10</span><span class="de">Störungstheorie, kindgerecht erklärt</span></h2>
     <p>Tiny magnets on a bumpy road: how physicists estimate energies when the exact problem is too hard, step by step and with real numbers.</p></div></a>
@@ -484,7 +496,7 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
 <footer>
   <div class="wrap">
     <span>© <span id="year">2026</span> Deep Quantum Science Consulting · Regensburg</span>
-    <span class="motto">The future is you!</span><div class="legal"><a href="../impressum.html"><span class="en">Legal notice</span><span class="de">Impressum</span></a><a href="../datenschutz.html"><span class="en">Privacy</span><span class="de">Datenschutz</span></a></div>
+    <span class="motto">The future is you!</span><div class="legal"><a href="../impressum"><span class="en">Legal notice</span><span class="de">Impressum</span></a><a href="../terms"><span class="en">Terms</span><span class="de">AGB</span></a><a href="../datenschutz"><span class="en">Privacy</span><span class="de">Datenschutz</span></a></div>
     <div class="social">
       <a href="https://www.linkedin.com/in/maseim-bassis-kenmoe-22077" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://www.youtube.com/@DeepQuantumScience" target="_blank" rel="noopener">YouTube</a>

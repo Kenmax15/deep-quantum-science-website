@@ -4,23 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Perturbation theory explained like you’re 10 · Deep Quantum Science</title>
-<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
-<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="Deep Quantum Science blog" href="https://deep-quantum-science.com/blog/feed.xml">
 <meta name="description" content="Tiny magnets on a bumpy road: how physicists estimate energies when the exact problem is too hard, step by step and with real numbers.">
-<meta property="og:title" content="Perturbation theory explained like you’re 10 · Deep Quantum Science">
-<meta property="og:description" content="Tiny magnets on a bumpy road: how physicists estimate energies when the exact problem is too hard, step by step and with real numbers.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://deep-quantum-science.com/blog/perturbation-theory-explained.html">
-<meta property="og:image" content="https://deep-quantum-science.com/blog/img/pt-hero.webp">
-<link rel="canonical" href="https://deep-quantum-science.com/blog/perturbation-theory-explained.html">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Perturbation theory explained like you’re 10", "description": "Tiny magnets on a bumpy road: how physicists estimate energies when the exact problem is too hard, step by step and with real numbers.", "datePublished": "2026-11-03", "image": "https://deep-quantum-science.com/blog/img/pt-hero.webp", "author": {"@type": "Organization", "name": "Deep Quantum Science"}, "publisher": {"@type": "Organization", "name": "Deep Quantum Science", "logo": "https://deep-quantum-science.com/assets/logo.png"}, "mainEntityOfPage": "https://deep-quantum-science.com/blog/perturbation-theory-explained.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Perturbation theory explained like you’re 10", "description": "Tiny magnets on a bumpy road: how physicists estimate energies when the exact problem is too hard, step by step and with real numbers.", "datePublished": "2026-11-03", "image": "https://deep-quantum-science.com/blog/img/pt-hero.webp", "author": {"@type": "Organization", "name": "Deep Quantum Science"}, "publisher": {"@type": "Organization", "name": "Deep Quantum Science", "logo": "https://deep-quantum-science.com/assets/logo.png"}, "mainEntityOfPage": "https://deep-quantum-science.com/blog/perturbation-theory-explained"}</script>
 <style>
-@font-face{font-family:"Alegreya";src:url("../assets/fonts/alegreya.woff") format("woff");font-weight:500 600;font-style:normal;font-display:swap}
-@font-face{font-family:"Alegreya";src:url("../assets/fonts/alegreya-italic.woff") format("woff");font-weight:500;font-style:italic;font-display:swap}
-@font-face{font-family:"IBM Plex Sans";src:url("../assets/fonts/plex-sans.woff") format("woff");font-weight:400 600;font-style:normal;font-display:swap}
-@font-face{font-family:"IBM Plex Mono";src:url("../assets/fonts/plex-mono-400.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:"IBM Plex Mono";src:url("../assets/fonts/plex-mono-500.woff") format("woff");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Alegreya";src:url("../assets/fonts/alegreya.woff2") format("woff2");font-weight:500 600;font-style:normal;font-display:swap}
+@font-face{font-family:"Alegreya";src:url("../assets/fonts/alegreya-italic.woff2") format("woff2");font-weight:500;font-style:italic;font-display:swap}
+@font-face{font-family:"IBM Plex Sans";src:url("../assets/fonts/plex-sans.woff2") format("woff2");font-weight:400 600;font-style:normal;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url("../assets/fonts/plex-mono-400.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url("../assets/fonts/plex-mono-500.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
 
 
 /* Layout: a night-blue lab notebook. Left-aligned, asymmetric two-column sections on a faint measurement grid; one live wavefield in the hero. */
@@ -51,7 +43,7 @@
 }
 @media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
   --night:#eceff7;--navy:#f8f9fc;--panel:#ffffff;--rule:#d8dbeb;--text:#15113a;--muted:#585676;
-  --mint:#0c8a73;--teal:#1fa088;--mint-ink:#ffffff;--text-2:#34375a;
+  --mint:#0a7462;--teal:#1fa088;--mint-ink:#ffffff;--text-2:#34375a;
   --glow:#d9f3ec;--glow-2:#e2defa;--portrait:#e6e3fb;
   --btn-a:#14a88d;--btn-mid:#0f957e;--btn-b:#0b7565;--btn-ink:#ffffff;
   --wave-lo:#7fcfc0;--wave-hi:#0b6f5f;--logo-filter:saturate(1.35) brightness(.78);
@@ -59,7 +51,7 @@
 }}
 :root[data-theme="light"]{
   --night:#eceff7;--navy:#f8f9fc;--panel:#ffffff;--rule:#d8dbeb;--text:#15113a;--muted:#585676;
-  --mint:#0c8a73;--teal:#1fa088;--mint-ink:#ffffff;--text-2:#34375a;
+  --mint:#0a7462;--teal:#1fa088;--mint-ink:#ffffff;--text-2:#34375a;
   --glow:#d9f3ec;--glow-2:#e2defa;--portrait:#e6e3fb;
   --btn-a:#14a88d;--btn-mid:#0f957e;--btn-b:#0b7565;--btn-ink:#ffffff;
   --wave-lo:#7fcfc0;--wave-hi:#0b6f5f;--logo-filter:saturate(1.35) brightness(.78);
@@ -416,19 +408,39 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
 .article th,.article td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
 .article th{color:var(--mint);font-weight:500}
 </style>
+<style id="dqs-base">img{max-width:100%;height:auto}</style>
+<link rel="canonical" href="https://deep-quantum-science.com/blog/perturbation-theory-explained">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Deep Quantum Science">
+<meta property="og:title" content="Perturbation theory explained like you’re 10">
+<meta property="og:description" content="Tiny magnets on a bumpy road: how physicists estimate energies when the exact problem is too hard, step by step and with real numbers.">
+<meta property="og:url" content="https://deep-quantum-science.com/blog/perturbation-theory-explained">
+<meta property="og:image" content="https://deep-quantum-science.com/assets/og/pt-hero.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Perturbation theory explained like you’re 10">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0e082c">
+<script src="/assets/consent.js" defer></script>
 </head>
 <body>
 <nav class="nav" aria-label="Main navigation">
   <div class="wrap">
-    <a class="brand" href="../index.html" aria-label="Deep Quantum Science">
-      <img src="../assets/logo.png" alt="" width="34" height="37">
+    <a class="brand" href="../" aria-label="Deep Quantum Science">
+      <img src="../assets/logo-nav.webp" alt="" width="34" height="37">
       <span>Deep Quantum Science<small>Consulting · Regensburg</small></span>
     </a>
     <div class="links">
-      <a href="../index.html#leistungen"><span class="de">Leistungen</span><span class="en">Services</span></a>
-      <a href="../manuscript.html"><span class="de">Software</span><span class="en">Software</span></a>
-      <a href="../index.html#publikationen"><span class="de">Publikationen</span><span class="en">Publications</span></a>
-      <a href="index.html">Blog</a>
+      <a href="../#leistungen"><span class="de">Leistungen</span><span class="en">Services</span></a>
+      <a href="../manuscript"><span class="de">Software</span><span class="en">Software</span></a>
+      <a href="../#publikationen"><span class="de">Publikationen</span><span class="en">Publications</span></a>
+      <a href="./">Blog</a>
     </div>
     <div class="nav-actions">
       <button type="button" class="theme-btn" id="theme-toggle" aria-label="Switch light/dark mode" title="Light / dark mode">
@@ -439,7 +451,7 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
         <button type="button" id="lang-en" data-lang="en" aria-pressed="true">EN</button>
         <button type="button" id="lang-de" data-lang="de" aria-pressed="false">DE</button>
       </div>
-      <a class="btn btn-primary" href="../index.html#kontakt"><span class="de">Erstgespräch</span><span class="en">Free consultation</span></a>
+      <a class="btn btn-primary" href="../#kontakt"><span class="de">Erstgespräch</span><span class="en">Free consultation</span></a>
     </div>
   </div>
 </nav>
@@ -449,12 +461,12 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
   <h1>Perturbation theory explained like you’re 10</h1>
   <p class="lead">Tiny magnets on a bumpy road: how physicists estimate energies when the exact problem is too hard, step by step and with real numbers.</p>
   <p class="lang-note de">Dieser Artikel ist auf Englisch verfügbar.</p>
-  <a class="watch" href="https://youtu.be/FgGHyZdjJX4" target="_blank" rel="noopener"><img src="img/pt-hero.webp" alt=""><div><b>Watch: Tiny magnets on a bumpy road (3:52)</b><span>YouTube · Research explained ↗</span></div></a>
+  <a class="watch" href="https://youtu.be/FgGHyZdjJX4" target="_blank" rel="noopener"><img fetchpriority="high" width="1280" height="720" src="img/pt-hero.webp" alt=""><div><b>Watch: Tiny magnets on a bumpy road (3:52)</b><span>YouTube · Research explained ↗</span></div></a>
   
 <p>Most quantum problems cannot be solved exactly. Perturbation theory is the art of starting from an easy problem and adding small corrections, one at a time. Here is the idea, using the disordered spin chain from our paper.</p>
 <h2>The easy world: nobody moves</h2>
 <p>Take a row of six tiny magnets, each sitting on a random magnetic field (a "bump" in the road), with neighbours that feel each other. If the magnets cannot swap places, every arrangement has one fixed energy: a step on a ladder. With two magnets pointing down there are 15 arrangements, and we can compute every step exactly.</p>
-<figure><img src="img/pt-ladder.webp" alt="Frozen arrangements and their energy ladder" loading="lazy"><figcaption>The unperturbed problem: each frozen arrangement is a step on an energy ladder.</figcaption></figure>
+<figure><img loading="lazy" decoding="async" width="1280" height="720" src="img/pt-ladder.webp" alt="Frozen arrangements and their energy ladder"><figcaption>The unperturbed problem: each frozen arrangement is a step on an energy ladder.</figcaption></figure>
 <h2>Small hops</h2>
 <p>Now neighbouring up and down magnets may swap, with a small strength J. Draw each arrangement as a dot and each possible swap as a link: from any dot you can only hop to a few neighbouring dots. Because J is small, the system mostly stays home and only peeks next door.</p>
 <h2>The recipe</h2>
@@ -463,22 +475,22 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
 <li><b>Step 1 is zero.</b> After a single hop you are somewhere else, and only trips that come back home change the energy.</li>
 <li><b>Step 2: go and come back.</b> Each neighbour m gives a push |V<sub>nm</sub>|² / (E<sub>n</sub> − E<sub>m</sub>). Far-away energies barely matter; close energies matter a lot. Levels repel each other.</li>
 </ol>
-<figure><img src="img/pt-step2.webp" alt="Second-order correction: hop to a neighbour and back" loading="lazy"><figcaption>Second order: hop and come back. Here all neighbours sit higher and push the level down.</figcaption></figure>
+<figure><img loading="lazy" decoding="async" width="1280" height="720" src="img/pt-step2.webp" alt="Second-order correction: hop to a neighbour and back"><figcaption>Second order: hop and come back. Here all neighbours sit higher and push the level down.</figcaption></figure>
 <h2>A chessboard trick</h2>
 <p>Colour the arrangements like a chessboard. Every hop changes the colour (the graph is bipartite), so after an odd number of hops you can never be home. Steps 1 and 3 vanish exactly, and two simple terms already give the energy with an error of order J<sup>4</sup>.</p>
 <h2>Does it work?</h2>
 <p>We compared the two-term recipe with exact diagonalisation. The largest error over all 15 levels is 0.0005 at J = 0.2 and 0.0068 at J = 0.4: doubling J multiplies the error by about 16, exactly the J<sup>4</sup> we predicted. For large J the recipe breaks down, as expected for a small-J theory.</p>
-<figure><img src="img/pt-test.webp" alt="Exact energies versus perturbation theory as a function of J" loading="lazy"><figcaption>Exact energies (green) and the two-term recipe (yellow, dashed), with the error growing as J<sup>4</sup>.</figcaption></figure>
+<figure><img loading="lazy" decoding="async" width="1280" height="720" src="img/pt-test.webp" alt="Exact energies versus perturbation theory as a function of J"><figcaption>Exact energies (green) and the two-term recipe (yellow, dashed), with the error growing as J<sup>4</sup>.</figcaption></figure>
 <div class="note">Why it matters: the same hop-and-return picture explains when strong disorder traps a quantum system near its starting point, the physics of many-body localisation.</div>
 
   <div class="note">Paper: <a href="https://doi.org/10.1016/j.physb.2026.419578" target="_blank" rel="noopener">Dirac representation for lattice spin operators: Spin-1/2 and spin-1 cases</a>, <i>Physica B: Condensed Matter</i> (2026).</div>
-  <a class="btn btn-ghost back" href="index.html"><span class="en">← All articles</span><span class="de">← Alle Artikel</span></a>
+  <a class="btn btn-ghost back" href="./"><span class="en">← All articles</span><span class="de">← Alle Artikel</span></a>
 </div></article>
 </main>
 <footer>
   <div class="wrap">
     <span>© <span id="year">2026</span> Deep Quantum Science Consulting · Regensburg</span>
-    <span class="motto">The future is you!</span><div class="legal"><a href="../impressum.html"><span class="en">Legal notice</span><span class="de">Impressum</span></a><a href="../datenschutz.html"><span class="en">Privacy</span><span class="de">Datenschutz</span></a></div>
+    <span class="motto">The future is you!</span><div class="legal"><a href="../impressum"><span class="en">Legal notice</span><span class="de">Impressum</span></a><a href="../terms"><span class="en">Terms</span><span class="de">AGB</span></a><a href="../datenschutz"><span class="en">Privacy</span><span class="de">Datenschutz</span></a></div>
     <div class="social">
       <a href="https://www.linkedin.com/in/maseim-bassis-kenmoe-22077" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://www.youtube.com/@DeepQuantumScience" target="_blank" rel="noopener">YouTube</a>

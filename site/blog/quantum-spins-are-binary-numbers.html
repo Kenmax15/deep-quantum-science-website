@@ -4,23 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Quantum spins are just binary numbers · Deep Quantum Science</title>
-<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
-<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="Deep Quantum Science blog" href="https://deep-quantum-science.com/blog/feed.xml">
 <meta name="description" content="Read a chain of spins as a binary number, and spin operators become simple jumps between integers: the idea behind our Dirac representation.">
-<meta property="og:title" content="Quantum spins are just binary numbers · Deep Quantum Science">
-<meta property="og:description" content="Read a chain of spins as a binary number, and spin operators become simple jumps between integers: the idea behind our Dirac representation.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://deep-quantum-science.com/blog/quantum-spins-are-binary-numbers.html">
-<meta property="og:image" content="https://deep-quantum-science.com/blog/img/spins-hero.webp">
-<link rel="canonical" href="https://deep-quantum-science.com/blog/quantum-spins-are-binary-numbers.html">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Quantum spins are just binary numbers", "description": "Read a chain of spins as a binary number, and spin operators become simple jumps between integers: the idea behind our Dirac representation.", "datePublished": "2026-11-03", "image": "https://deep-quantum-science.com/blog/img/spins-hero.webp", "author": {"@type": "Organization", "name": "Deep Quantum Science"}, "publisher": {"@type": "Organization", "name": "Deep Quantum Science", "logo": "https://deep-quantum-science.com/assets/logo.png"}, "mainEntityOfPage": "https://deep-quantum-science.com/blog/quantum-spins-are-binary-numbers.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Quantum spins are just binary numbers", "description": "Read a chain of spins as a binary number, and spin operators become simple jumps between integers: the idea behind our Dirac representation.", "datePublished": "2026-11-03", "image": "https://deep-quantum-science.com/blog/img/spins-hero.webp", "author": {"@type": "Organization", "name": "Deep Quantum Science"}, "publisher": {"@type": "Organization", "name": "Deep Quantum Science", "logo": "https://deep-quantum-science.com/assets/logo.png"}, "mainEntityOfPage": "https://deep-quantum-science.com/blog/quantum-spins-are-binary-numbers"}</script>
 <style>
-@font-face{font-family:"Alegreya";src:url("../assets/fonts/alegreya.woff") format("woff");font-weight:500 600;font-style:normal;font-display:swap}
-@font-face{font-family:"Alegreya";src:url("../assets/fonts/alegreya-italic.woff") format("woff");font-weight:500;font-style:italic;font-display:swap}
-@font-face{font-family:"IBM Plex Sans";src:url("../assets/fonts/plex-sans.woff") format("woff");font-weight:400 600;font-style:normal;font-display:swap}
-@font-face{font-family:"IBM Plex Mono";src:url("../assets/fonts/plex-mono-400.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:"IBM Plex Mono";src:url("../assets/fonts/plex-mono-500.woff") format("woff");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Alegreya";src:url("../assets/fonts/alegreya.woff2") format("woff2");font-weight:500 600;font-style:normal;font-display:swap}
+@font-face{font-family:"Alegreya";src:url("../assets/fonts/alegreya-italic.woff2") format("woff2");font-weight:500;font-style:italic;font-display:swap}
+@font-face{font-family:"IBM Plex Sans";src:url("../assets/fonts/plex-sans.woff2") format("woff2");font-weight:400 600;font-style:normal;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url("../assets/fonts/plex-mono-400.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url("../assets/fonts/plex-mono-500.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
 
 
 /* Layout: a night-blue lab notebook. Left-aligned, asymmetric two-column sections on a faint measurement grid; one live wavefield in the hero. */
@@ -51,7 +43,7 @@
 }
 @media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
   --night:#eceff7;--navy:#f8f9fc;--panel:#ffffff;--rule:#d8dbeb;--text:#15113a;--muted:#585676;
-  --mint:#0c8a73;--teal:#1fa088;--mint-ink:#ffffff;--text-2:#34375a;
+  --mint:#0a7462;--teal:#1fa088;--mint-ink:#ffffff;--text-2:#34375a;
   --glow:#d9f3ec;--glow-2:#e2defa;--portrait:#e6e3fb;
   --btn-a:#14a88d;--btn-mid:#0f957e;--btn-b:#0b7565;--btn-ink:#ffffff;
   --wave-lo:#7fcfc0;--wave-hi:#0b6f5f;--logo-filter:saturate(1.35) brightness(.78);
@@ -59,7 +51,7 @@
 }}
 :root[data-theme="light"]{
   --night:#eceff7;--navy:#f8f9fc;--panel:#ffffff;--rule:#d8dbeb;--text:#15113a;--muted:#585676;
-  --mint:#0c8a73;--teal:#1fa088;--mint-ink:#ffffff;--text-2:#34375a;
+  --mint:#0a7462;--teal:#1fa088;--mint-ink:#ffffff;--text-2:#34375a;
   --glow:#d9f3ec;--glow-2:#e2defa;--portrait:#e6e3fb;
   --btn-a:#14a88d;--btn-mid:#0f957e;--btn-b:#0b7565;--btn-ink:#ffffff;
   --wave-lo:#7fcfc0;--wave-hi:#0b6f5f;--logo-filter:saturate(1.35) brightness(.78);
@@ -416,19 +408,39 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
 .article th,.article td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
 .article th{color:var(--mint);font-weight:500}
 </style>
+<style id="dqs-base">img{max-width:100%;height:auto}</style>
+<link rel="canonical" href="https://deep-quantum-science.com/blog/quantum-spins-are-binary-numbers">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Deep Quantum Science">
+<meta property="og:title" content="Quantum spins are just binary numbers">
+<meta property="og:description" content="Read a chain of spins as a binary number, and spin operators become simple jumps between integers: the idea behind our Dirac representation.">
+<meta property="og:url" content="https://deep-quantum-science.com/blog/quantum-spins-are-binary-numbers">
+<meta property="og:image" content="https://deep-quantum-science.com/assets/og/spins-hero.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Quantum spins are just binary numbers">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0e082c">
+<script src="/assets/consent.js" defer></script>
 </head>
 <body>
 <nav class="nav" aria-label="Main navigation">
   <div class="wrap">
-    <a class="brand" href="../index.html" aria-label="Deep Quantum Science">
-      <img src="../assets/logo.png" alt="" width="34" height="37">
+    <a class="brand" href="../" aria-label="Deep Quantum Science">
+      <img src="../assets/logo-nav.webp" alt="" width="34" height="37">
       <span>Deep Quantum Science<small>Consulting · Regensburg</small></span>
     </a>
     <div class="links">
-      <a href="../index.html#leistungen"><span class="de">Leistungen</span><span class="en">Services</span></a>
-      <a href="../manuscript.html"><span class="de">Software</span><span class="en">Software</span></a>
-      <a href="../index.html#publikationen"><span class="de">Publikationen</span><span class="en">Publications</span></a>
-      <a href="index.html">Blog</a>
+      <a href="../#leistungen"><span class="de">Leistungen</span><span class="en">Services</span></a>
+      <a href="../manuscript"><span class="de">Software</span><span class="en">Software</span></a>
+      <a href="../#publikationen"><span class="de">Publikationen</span><span class="en">Publications</span></a>
+      <a href="./">Blog</a>
     </div>
     <div class="nav-actions">
       <button type="button" class="theme-btn" id="theme-toggle" aria-label="Switch light/dark mode" title="Light / dark mode">
@@ -439,7 +451,7 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
         <button type="button" id="lang-en" data-lang="en" aria-pressed="true">EN</button>
         <button type="button" id="lang-de" data-lang="de" aria-pressed="false">DE</button>
       </div>
-      <a class="btn btn-primary" href="../index.html#kontakt"><span class="de">Erstgespräch</span><span class="en">Free consultation</span></a>
+      <a class="btn btn-primary" href="../#kontakt"><span class="de">Erstgespräch</span><span class="en">Free consultation</span></a>
     </div>
   </div>
 </nav>
@@ -449,12 +461,12 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
   <h1>Quantum spins are just binary numbers</h1>
   <p class="lead">Read a chain of spins as a binary number, and spin operators become simple jumps between integers: the idea behind our Dirac representation.</p>
   <p class="lang-note de">Dieser Artikel ist auf Englisch verfügbar.</p>
-  <a class="watch" href="https://youtu.be/Fhv4cZ8gtw0" target="_blank" rel="noopener"><img src="img/spins-hero.webp" alt=""><div><b>Watch: Quantum spins are just binary numbers (60 s)</b><span>YouTube · Research in 60 seconds ↗</span></div></a>
+  <a class="watch" href="https://youtu.be/Fhv4cZ8gtw0" target="_blank" rel="noopener"><img fetchpriority="high" width="1280" height="720" src="img/spins-hero.webp" alt=""><div><b>Watch: Quantum spins are just binary numbers (60 s)</b><span>YouTube · Research in 60 seconds ↗</span></div></a>
   
 <p>Spin systems are everywhere in physics: magnets, qubits, cold atoms in optical lattices. Their standard description uses tensor products of small matrices, one per site. That is exact, but it quickly becomes hard to read and to compute with. In our paper in <i>Physica B</i> we start from a much simpler picture.</p>
 <h2>Spins are bits</h2>
 <p>Write spin up as <b>0</b> and spin down as <b>1</b>. A row of K spins is then a string of K bits, and therefore an ordinary integer n between 0 and 2<sup>K</sup>−1. For three spins, ↑↓↑ is 010, which is the number 2.</p>
-<figure><img src="img/spins-pattern.webp" alt="Counting from 0 to 15: each spin site follows a regular square-wave pattern" loading="lazy"><figcaption>Counting through all configurations: every site follows a regular pattern, not a random one.</figcaption></figure>
+<figure><img loading="lazy" decoding="async" width="1280" height="720" src="img/spins-pattern.webp" alt="Counting from 0 to 15: each spin site follows a regular square-wave pattern"><figcaption>Counting through all configurations: every site follows a regular pattern, not a random one.</figcaption></figure>
 <p>If you count from 0 upwards, each site flips with a perfectly regular rhythm: the last site every step, the one before every two steps, and so on. Site j has a weight q<sub>j</sub> = 2<sup>K−j</sup>.</p>
 <h2>Flipping a spin is a jump</h2>
 <p>Turning spin j from up to down adds q<sub>j</sub> to the number. So the lowering operator is nothing but a jump on the number line:</p>
@@ -469,17 +481,17 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
 <li><b>Exact algebra.</b> [S<sup>+</sup>, S<sup>−</sup>] = 2S<sup>z</sup> holds exactly. We checked numerically that the operators coincide with the usual tensor products.</li>
 <li><b>Spin chains become hopping problems.</b> The Heisenberg (XXZ) chain turns into a single particle hopping on a graph of configurations.</li>
 </ul>
-<figure><img src="img/spins-graph.webp" alt="Configuration graph: each node is a spin configuration, each link a spin exchange" loading="lazy"><figcaption>The Heisenberg chain as a particle hopping on a graph of configurations.</figcaption></figure>
+<figure><img loading="lazy" decoding="async" width="1280" height="720" src="img/spins-graph.webp" alt="Configuration graph: each node is a spin configuration, each link a spin exchange"><figcaption>The Heisenberg chain as a particle hopping on a graph of configurations.</figcaption></figure>
 <p>The paper also treats spin-1, where each site carries three states instead of two. The same ideas power the next two articles on perturbation theory.</p>
 
   <div class="note">Paper: <a href="https://doi.org/10.1016/j.physb.2026.419578" target="_blank" rel="noopener">Dirac representation for lattice spin operators: Spin-1/2 and spin-1 cases</a>, <i>Physica B: Condensed Matter</i> (2026).</div>
-  <a class="btn btn-ghost back" href="index.html"><span class="en">← All articles</span><span class="de">← Alle Artikel</span></a>
+  <a class="btn btn-ghost back" href="./"><span class="en">← All articles</span><span class="de">← Alle Artikel</span></a>
 </div></article>
 </main>
 <footer>
   <div class="wrap">
     <span>© <span id="year">2026</span> Deep Quantum Science Consulting · Regensburg</span>
-    <span class="motto">The future is you!</span><div class="legal"><a href="../impressum.html"><span class="en">Legal notice</span><span class="de">Impressum</span></a><a href="../datenschutz.html"><span class="en">Privacy</span><span class="de">Datenschutz</span></a></div>
+    <span class="motto">The future is you!</span><div class="legal"><a href="../impressum"><span class="en">Legal notice</span><span class="de">Impressum</span></a><a href="../terms"><span class="en">Terms</span><span class="de">AGB</span></a><a href="../datenschutz"><span class="en">Privacy</span><span class="de">Datenschutz</span></a></div>
     <div class="social">
       <a href="https://www.linkedin.com/in/maseim-bassis-kenmoe-22077" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://www.youtube.com/@DeepQuantumScience" target="_blank" rel="noopener">YouTube</a>

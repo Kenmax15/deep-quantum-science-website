@@ -4,57 +4,133 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy policy · Deep Quantum Science</title>
-<meta name="robots" content="noindex">
-<script>try{var t=localStorage.getItem("dqs-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<meta name="description" content="How Deep Quantum Science handles personal data: hosting, consent, contact form, audience measurement and licence purchases.">
+<script>try{var t=localStorage.getItem("dqs-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;var l=localStorage.getItem("dqs-lang");if(l==="de")document.documentElement.dataset.lang="de"}catch(e){}</script>
 <style>
-@font-face{font-family:"Alegreya";src:url("assets/fonts/alegreya.woff") format("woff");font-weight:500 600;font-style:normal;font-display:swap}
-@font-face{font-family:"Alegreya";src:url("assets/fonts/alegreya-italic.woff") format("woff");font-weight:500;font-style:italic;font-display:swap}
-@font-face{font-family:"IBM Plex Sans";src:url("assets/fonts/plex-sans.woff") format("woff");font-weight:400 600;font-style:normal;font-display:swap}
-@font-face{font-family:"IBM Plex Mono";src:url("assets/fonts/plex-mono-400.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:"IBM Plex Mono";src:url("assets/fonts/plex-mono-500.woff") format("woff");font-weight:500;font-style:normal;font-display:swap}
-</style>
-<style>
-:root{color-scheme:dark;--navy:#0e082c;--rule:#2a2360;--text:#ecf5f3;--muted:#aaa6cc;--mint:#92ffd8;--p:#cfd3e6;--todo-bg:#5a4a00;--todo-fg:#ffe9a3}
-@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--navy:#f8f9fc;--rule:#d8dbeb;--text:#15113a;--muted:#585676;--mint:#0c8a73;--p:#34375a;--todo-bg:#fff0b3;--todo-fg:#6b4e00;color-scheme:light}}
-:root[data-theme="light"]{--navy:#f8f9fc;--rule:#d8dbeb;--text:#15113a;--muted:#585676;--mint:#0c8a73;--p:#34375a;--todo-bg:#fff0b3;--todo-fg:#6b4e00;color-scheme:light}
+@font-face{font-family:"Alegreya";src:url("/assets/fonts/alegreya.woff2") format("woff2");font-weight:500 600;font-style:normal;font-display:swap}
+@font-face{font-family:"IBM Plex Sans";src:url("/assets/fonts/plex-sans.woff2") format("woff2");font-weight:400 600;font-style:normal;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url("/assets/fonts/plex-mono-500.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
+:root{color-scheme:dark;--navy:#0e082c;--panel:#16103f;--rule:#2a2360;--text:#ecf5f3;--muted:#b3afd6;--mint:#92ffd8;--p:#d4d8ea}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--navy:#f8f9fc;--panel:#ffffff;--rule:#d8dbeb;--text:#15113a;--muted:#55536f;--mint:#0a7462;--p:#34375a;color-scheme:light}}
+:root[data-theme="light"]{--navy:#f8f9fc;--panel:#ffffff;--rule:#d8dbeb;--text:#15113a;--muted:#55536f;--mint:#0a7462;--p:#34375a;color-scheme:light}
+:root:not([data-lang="de"]) .de{display:none!important}
+:root[data-lang="de"] .en{display:none!important}
 *{box-sizing:border-box}
 body{margin:0;background:var(--navy);color:var(--text);font:400 16px/1.7 "IBM Plex Sans","Segoe UI",system-ui,sans-serif}
-.wrap{max-width:760px;margin:0 auto;padding:48px max(20px,env(safe-area-inset-left,0px)) 80px}
+.wrap{max-width:760px;margin:0 auto;padding:40px max(20px,env(safe-area-inset-left,0px)) 64px}
 a{color:var(--mint)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .back{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--muted);font:500 13px/1 "IBM Plex Mono",monospace;letter-spacing:.08em}
-.back img{width:28px}
-:root[data-theme="light"] .back img{filter:saturate(1.35) brightness(.78)}
-@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .back img{filter:saturate(1.35) brightness(.78)}}
-h1{font:500 clamp(34px,5vw,52px)/1.1 "Alegreya",Georgia,serif;margin:40px 0 28px}
-h2{font:600 22px/1.3 "Alegreya",Georgia,serif;margin:36px 0 10px}
+.back img{width:28px;height:auto}
+.lang{display:inline-flex;border:1px solid var(--rule);border-radius:999px;padding:3px}
+.lang button{border:0;background:transparent;color:var(--muted);font:500 12px/1 "IBM Plex Mono",monospace;padding:8px 11px;border-radius:999px;cursor:pointer;min-width:44px;min-height:32px}
+.lang button[aria-pressed="true"]{background:var(--panel);color:var(--text)}
+h1{font:500 clamp(32px,5vw,50px)/1.12 "Alegreya",Georgia,serif;margin:36px 0 24px}
+h2{font:600 21px/1.3 "Alegreya",Georgia,serif;margin:34px 0 8px}
 p,li{color:var(--p)}
-.todo{background:var(--todo-bg);color:var(--todo-fg);padding:1px 6px;border-radius:4px;font-family:"IBM Plex Mono",monospace;font-size:.9em}
-.note{margin-top:48px;padding-top:20px;border-top:1px solid var(--rule);font-size:14px;color:var(--muted)}
+.box{padding:14px 16px;border:1px solid var(--rule);border-radius:10px}
+.note{margin-top:44px;padding-top:18px;border-top:1px solid var(--rule);font-size:14px;color:var(--muted)}
+footer{border-top:1px solid var(--rule);margin-top:20px}
+footer .wrap{padding-top:22px;padding-bottom:28px;display:flex;flex-wrap:wrap;gap:12px 22px;font-size:14px;color:var(--muted)}
+footer .legal{display:flex;flex-wrap:wrap;gap:8px 18px}
+footer a{color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+footer a:hover{color:var(--text)}
+:focus-visible{outline:2px solid var(--mint);outline-offset:3px;border-radius:4px}
+.big{font:500 clamp(80px,16vw,150px)/1 "Alegreya",Georgia,serif;color:var(--mint);margin:30px 0 0}
+.btn{display:inline-flex;align-items:center;min-height:46px;padding:0 22px;border-radius:999px;font-weight:600;text-decoration:none;border:1px solid var(--rule);color:var(--text);margin:6px 10px 0 0}
+.btn.primary{background:var(--text);color:var(--navy);border-color:var(--text)}
 </style>
+<style id="dqs-base">img{max-width:100%;height:auto}</style>
+<link rel="canonical" href="https://deep-quantum-science.com/datenschutz">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Deep Quantum Science">
+<meta property="og:title" content="Privacy policy">
+<meta property="og:description" content="How Deep Quantum Science handles personal data: hosting, consent, contact form, audience measurement and licence purchases.">
+<meta property="og:url" content="https://deep-quantum-science.com/datenschutz">
+<meta property="og:image" content="https://deep-quantum-science.com/assets/og/home.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Privacy policy">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0e082c">
+<script src="/assets/consent.js" defer></script>
 </head>
-<body><div class="wrap">
-<a class="back" href="index.html"><img src="assets/logo.png" alt="">DEEP QUANTUM SCIENCE</a>
-<h1>Privacy policy <span style="color:var(--muted);font-size:.5em">(Datenschutzerklärung)</span></h1>
-<h2>1. Controller</h2>
-<p>Dr. Maseim Bassis Kenmoe, Deep Quantum Science Consulting, Prüfeninger Str. 121, 93049 Regensburg, Germany. Email: <a href="mailto:kenmoe@aims.edu.gh">kenmoe@aims.edu.gh</a></p>
+<body>
+<div class="wrap">
+<div class="top">
+  <a class="back" href="/"><img src="/assets/logo-nav.webp" alt="" width="28" height="30">DEEP QUANTUM SCIENCE</a>
+  <div class="lang" role="group" aria-label="Language / Sprache"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="de" aria-pressed="false">DE</button></div>
+</div>
+<main>
+
+<h1><span class="en">Privacy policy</span><span class="de">Datenschutzerklärung</span></h1>
+<div class="en">
+<h2>1. Who is responsible</h2>
+<p>Dr. Maseim Bassis Kenmoe, Deep Quantum Science Consulting, Prüfeninger Str. 121, 93049 Regensburg, Germany. Email: <a href="mailto:kenmoe@aims.edu.gh">kenmoe@aims.edu.gh</a>. We have not appointed a data protection officer, as we are not required to.</p>
 <h2>2. Hosting and server log files</h2>
-<p>This website is hosted by Netlify, Inc., 101 2nd Street, San Francisco, CA 94105, USA. When you visit the site, the host processes technically necessary data (such as IP address, date and time, the page requested and browser type) in server log files. The legal basis is Art. 6(1)(f) GDPR; our legitimate interest is the secure and stable operation of the website. Netlify keeps this data according to its own retention periods; details are in the <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">Netlify privacy statement</a>.</p>
-<p>Netlify is based in the USA and participates in the EU-U.S. Data Privacy Framework. Data transfers to Netlify are therefore based on the European Commission's adequacy decision for this framework (Art. 45 GDPR).</p>
-<h2>3. No cookies, no tracking</h2>
-<p>This website uses no cookies and no analytics or tracking tools, and loads no content from third parties. Fonts are served locally from this server.</p>
-<p>If you switch the language (EN/DE), your choice is stored only in your browser's local storage so the site opens in the same language next time. This information is never sent to us, and you can delete it at any time in your browser settings.</p>
-<h2>4. Contact by email</h2>
-<p>If you email us, we process your details in order to answer your enquiry (Art. 6(1)(b) or (f) GDPR). The data is deleted once it is no longer needed for that purpose and no statutory retention obligations apply.</p>
-<h2>5. Links to social networks</h2>
-<p>The website contains plain links to LinkedIn, YouTube and Facebook. No plugins are embedded; data is only transferred when you click a link and open the provider's page, where the provider's own privacy policy applies.</p>
-<h2>6. Software download</h2>
-<p>The installer of our software DeepQ Manuscript is provided via GitHub (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA). When you click the download button, your browser connects directly to GitHub, which processes your IP address and technical data under its own privacy statement. GitHub participates in the EU-U.S. Data Privacy Framework.</p>
-<h2>7. Buying a licence online</h2>
-<p><b>PayPal.</b> Payments are processed by PayPal (Europe) S.à r.l. et Cie, S.C.A., 22-24 Boulevard Royal, L-2449 Luxembourg. The PayPal payment button is loaded only after you click “Continue to payment”; from then on PayPal processes your data, may set cookies, and may perform a credit check for some payment methods, under its own privacy statement. We receive from PayPal your name, email address and the transaction details. Legal basis: Art. 6(1)(b) GDPR (performance of the contract).</p>
-<p><b>Licence and receipt by email.</b> We send your licence key and receipt with the email service Resend (Resend, Inc., USA; sending via servers in the EU region, Ireland). Resend processes your email address and the email content on our behalf. Resend is certified under the EU-U.S. Data Privacy Framework; transfers to the USA are based on the European Commission's adequacy decision (Art. 45 GDPR). Legal basis: Art. 6(1)(b) GDPR.</p>
-<p><b>Order records.</b> For each order we store the name on the licence, your email address, the PayPal transaction number, the licence key and the time of your consent, on our hosting provider Netlify. We keep these records as long as tax and commercial law requires (in Germany up to 10 years), and use them only to deliver your licence, answer your questions and meet our legal obligations. Legal basis: Art. 6(1)(b) and (c) GDPR.</p>
-<h2>8. Your rights</h2>
-<p>You have the right of access, rectification, erasure, restriction of processing, data portability and objection (Art. 15–21 GDPR). You may also lodge a complaint with a data protection supervisory authority, for example the Bavarian State Office for Data Protection Supervision (BayLDA).</p>
-<p class="note">Last updated: 3 November 2026</p>
-</div></body></html>
+<p>This website runs on Cloudflare Pages (Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA). When you visit the site, Cloudflare processes technically necessary data: IP address, date and time, the page requested, referrer and browser type. This is needed to deliver the site securely and to protect it against attacks (legal basis: Art. 6(1)(f) GDPR, our legitimate interest in a secure, stable website). Cloudflare deletes these logs after a short period under its own retention rules. Cloudflare participates in the EU-U.S. Data Privacy Framework; transfers to the USA rely on the European Commission's adequacy decision (Art. 45 GDPR). Cloudflare also hides our email address from spam robots on the page. More: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare privacy policy</a>.</p>
+<p>All connections are encrypted (HTTPS/TLS).</p>
+<h2>3. Cookies, local storage and your consent</h2>
+<p>This website sets <b>no cookies</b>. In your browser's local storage it keeps only three small settings, which never leave your device: your language (EN/DE), your light/dark choice, and your answer to the consent question. These are strictly necessary for the functions you choose (§ 25(2) no. 2 TDDDG) and need no consent. You can delete them at any time in your browser settings.</p>
+<h2>4. Audience measurement (only with your consent)</h2>
+<p>If you click “Accept statistics”, we count visits with <b>Cloudflare Web Analytics</b>. It sets no cookies, does not create a profile of you and does not follow you across websites. When the page loads, your browser sends Cloudflare anonymous technical data (page address, referrer, browser type, screen size, loading times); your IP address is used only to deliver the request and is not stored for analytics. We see only aggregated figures (for example, how many people visited a page). Legal basis: your consent, Art. 6(1)(a) GDPR and § 25(1) TDDDG. If you choose “Only necessary”, nothing is loaded. You can change your choice at any time with <a href="#" onclick="window.dqsConsent&&dqsConsent.open();return false">Cookie settings</a> (also at the bottom of every page); withdrawing consent does not affect the lawfulness of earlier processing.</p>
+<h2>5. Contact form and email</h2>
+<p>If you use the contact form, we process your name, email address, optional organisation and your message to answer your request (Art. 6(1)(b) GDPR for enquiries about our services, otherwise Art. 6(1)(f) GDPR). The form sends your message by email to us through the email service Resend (Resend, Inc., USA; servers in the EU, Ireland), which acts as our processor; Resend is certified under the EU-U.S. Data Privacy Framework. To block spam, a hidden field and the time spent on the form are checked, and the number of messages per visitor is limited; for this a one-way hash of your IP address is kept for one hour and then deleted automatically. We do not store your message on the website; we keep the email only as long as needed to handle your request, unless statutory retention periods apply.</p>
+<p>If you email us directly, we process your details in the same way.</p>
+<h2>6. Links to social networks</h2>
+<p>The site contains plain links to LinkedIn, YouTube and Facebook. No plugins are embedded; data is transferred to the provider only when you click a link, and then the provider's own privacy policy applies.</p>
+<h2>7. Software download</h2>
+<p>The installer of DeepQ Manuscript is provided via GitHub (GitHub, Inc., USA). When you click the download button, your browser connects directly to GitHub, which processes your IP address and technical data under its own privacy statement. GitHub participates in the EU-U.S. Data Privacy Framework.</p>
+<h2>8. Buying a licence online</h2>
+<p><b>PayPal.</b> Payments are processed by PayPal (Europe) S.à r.l. et Cie, S.C.A., 22-24 Boulevard Royal, L-2449 Luxembourg. The PayPal button is loaded only after you click “Continue to payment”; from then on PayPal processes your data, may set cookies and may perform a credit check for some payment methods, under its own privacy statement. We receive your name, email address and the transaction details. Legal basis: Art. 6(1)(b) GDPR.</p>
+<p><b>Licence and receipt by email.</b> We send your licence key and receipt through Resend (see section 5). Legal basis: Art. 6(1)(b) GDPR.</p>
+<p><b>Order records.</b> For each order we store the name on the licence, your email address, the PayPal transaction number, the licence key and the time of your consent with our host Cloudflare. We keep these records as long as tax and commercial law requires (in Germany up to 10 years). Legal basis: Art. 6(1)(b) and (c) GDPR.</p>
+<h2>9. Your rights</h2>
+<p>You have the right of access, rectification, erasure, restriction of processing, data portability and objection (Art. 15–21 GDPR), and the right to withdraw consent at any time (Art. 7(3) GDPR). You may lodge a complaint with a supervisory authority, for example the Bavarian State Office for Data Protection Supervision (BayLDA), Promenade 18, 91522 Ansbach.</p>
+<p class="note">Last updated: 14 November 2026</p>
+</div><div class="de">
+<h2>1. Verantwortlicher</h2>
+<p>Dr. Maseim Bassis Kenmoe, Deep Quantum Science Consulting, Prüfeninger Str. 121, 93049 Regensburg, Deutschland. E-Mail: <a href="mailto:kenmoe@aims.edu.gh">kenmoe@aims.edu.gh</a>. Ein Datenschutzbeauftragter ist nicht bestellt, da keine Pflicht dazu besteht.</p>
+<h2>2. Hosting und Server-Logdateien</h2>
+<p>Diese Website wird bei Cloudflare Pages betrieben (Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA). Beim Aufruf verarbeitet Cloudflare technisch notwendige Daten: IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, Referrer und Browsertyp. Das ist erforderlich, um die Website sicher auszuliefern und vor Angriffen zu schützen (Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO, unser berechtigtes Interesse an einer sicheren und stabilen Website). Cloudflare löscht diese Protokolle nach kurzer Zeit gemäß eigenen Fristen. Cloudflare nimmt am EU-U.S. Data Privacy Framework teil; Übermittlungen in die USA beruhen auf dem Angemessenheitsbeschluss der EU-Kommission (Art. 45 DSGVO). Cloudflare verbirgt außerdem unsere E-Mail-Adresse auf der Seite vor Spam-Robotern. Mehr: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Datenschutzerklärung von Cloudflare</a>.</p>
+<p>Alle Verbindungen sind verschlüsselt (HTTPS/TLS).</p>
+<h2>3. Cookies, lokaler Speicher und Ihre Einwilligung</h2>
+<p>Diese Website setzt <b>keine Cookies</b>. Im lokalen Speicher Ihres Browsers werden nur drei kleine Einstellungen abgelegt, die Ihr Gerät nie verlassen: Ihre Sprache (EN/DE), Ihre Wahl zwischen hellem und dunklem Design und Ihre Antwort auf die Einwilligungsfrage. Sie sind für die von Ihnen gewählten Funktionen unbedingt erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG) und bedürfen keiner Einwilligung. Sie können sie jederzeit in den Browser-Einstellungen löschen.</p>
+<h2>4. Reichweitenmessung (nur mit Ihrer Einwilligung)</h2>
+<p>Wenn Sie auf „Statistik erlauben“ klicken, zählen wir Besuche mit <b>Cloudflare Web Analytics</b>. Dabei werden keine Cookies gesetzt, kein Profil erstellt und Sie werden nicht über Websites hinweg verfolgt. Beim Laden der Seite übermittelt Ihr Browser anonyme technische Daten an Cloudflare (Seitenadresse, Referrer, Browsertyp, Bildschirmgröße, Ladezeiten); Ihre IP-Adresse wird nur zur Auslieferung verwendet und nicht für die Statistik gespeichert. Wir sehen nur zusammengefasste Zahlen (z. B. wie viele Personen eine Seite besucht haben). Rechtsgrundlage: Ihre Einwilligung, Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Wählen Sie „Nur notwendige“, wird nichts geladen. Sie können Ihre Wahl jederzeit über <a href="#" onclick="window.dqsConsent&&dqsConsent.open();return false">Cookie-Einstellungen</a> ändern (auch unten auf jeder Seite); der Widerruf berührt nicht die Rechtmäßigkeit der bis dahin erfolgten Verarbeitung.</p>
+<h2>5. Kontaktformular und E-Mail</h2>
+<p>Wenn Sie das Kontaktformular nutzen, verarbeiten wir Ihren Namen, Ihre E-Mail-Adresse, die optionale Organisation und Ihre Nachricht, um Ihre Anfrage zu beantworten (Art. 6 Abs. 1 lit. b DSGVO bei Anfragen zu unseren Leistungen, sonst Art. 6 Abs. 1 lit. f DSGVO). Das Formular sendet Ihre Nachricht per E-Mail über den Dienst Resend (Resend, Inc., USA; Server in der EU, Irland) an uns; Resend ist unser Auftragsverarbeiter und nach dem EU-U.S. Data Privacy Framework zertifiziert. Zum Schutz vor Spam werden ein verstecktes Feld und die Verweildauer im Formular geprüft und die Zahl der Nachrichten pro Besucher begrenzt; dazu wird ein nicht umkehrbarer Hashwert Ihrer IP-Adresse eine Stunde lang gespeichert und dann automatisch gelöscht. Ihre Nachricht wird nicht auf der Website gespeichert; die E-Mail bewahren wir nur so lange auf, wie es für die Bearbeitung nötig ist, sofern keine gesetzlichen Aufbewahrungspflichten bestehen.</p>
+<p>Schreiben Sie uns direkt eine E-Mail, verarbeiten wir Ihre Angaben auf die gleiche Weise.</p>
+<h2>6. Links zu sozialen Netzwerken</h2>
+<p>Die Website enthält einfache Links zu LinkedIn, YouTube und Facebook. Es sind keine Plugins eingebunden; Daten gehen erst an den Anbieter, wenn Sie einen Link anklicken, und dann gilt dessen Datenschutzerklärung.</p>
+<h2>7. Software-Download</h2>
+<p>Das Installationsprogramm von DeepQ Manuscript wird über GitHub bereitgestellt (GitHub, Inc., USA). Wenn Sie auf den Download-Button klicken, verbindet sich Ihr Browser direkt mit GitHub, das Ihre IP-Adresse und technische Daten gemäß eigener Datenschutzerklärung verarbeitet. GitHub nimmt am EU-U.S. Data Privacy Framework teil.</p>
+<h2>8. Online-Kauf einer Lizenz</h2>
+<p><b>PayPal.</b> Zahlungen wickelt PayPal (Europe) S.à r.l. et Cie, S.C.A., 22-24 Boulevard Royal, L-2449 Luxemburg ab. Der PayPal-Button wird erst geladen, wenn Sie auf „Weiter zur Zahlung“ klicken; ab dann verarbeitet PayPal Ihre Daten, setzt ggf. Cookies und führt bei manchen Zahlarten eine Bonitätsprüfung durch, gemäß eigener Datenschutzerklärung. Wir erhalten Ihren Namen, Ihre E-Mail-Adresse und die Transaktionsdaten. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
+<p><b>Lizenz und Beleg per E-Mail.</b> Lizenzschlüssel und Beleg senden wir über Resend (siehe Abschnitt 5). Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
+<p><b>Bestelldaten.</b> Zu jeder Bestellung speichern wir den Namen auf der Lizenz, Ihre E-Mail-Adresse, die PayPal-Transaktionsnummer, den Lizenzschlüssel und den Zeitpunkt Ihrer Zustimmung bei unserem Hoster Cloudflare, so lange es das Steuer- und Handelsrecht verlangt (in Deutschland bis zu 10 Jahre). Rechtsgrundlage: Art. 6 Abs. 1 lit. b und c DSGVO.</p>
+<h2>9. Ihre Rechte</h2>
+<p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch (Art. 15–21 DSGVO) sowie das Recht, eine Einwilligung jederzeit zu widerrufen (Art. 7 Abs. 3 DSGVO). Sie können sich bei einer Aufsichtsbehörde beschweren, z. B. beim Bayerischen Landesamt für Datenschutzaufsicht (BayLDA), Promenade 18, 91522 Ansbach.</p>
+<p class="note">Stand: 14. November 2026</p>
+</div>
+
+</main>
+</div>
+<footer><div class="wrap">
+  <span>© <span id="year">2026</span> Deep Quantum Science Consulting · Regensburg</span>
+  <div class="legal"><a href="impressum"><span class="en">Legal notice</span><span class="de">Impressum</span></a><a href="terms"><span class="en">Terms</span><span class="de">AGB</span></a><a href="datenschutz"><span class="en">Privacy</span><span class="de">Datenschutz</span></a></div>
+</div></footer>
+<script>
+(function(){var r=document.documentElement;function s(l){r.dataset.lang=l;r.lang=l;document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.lang===l))});try{localStorage.setItem('dqs-lang',l)}catch(e){}}
+var v=null;try{v=localStorage.getItem('dqs-lang')}catch(e){}s(v==='de'?'de':'en');
+document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){s(b.dataset.lang)})});
+var y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();})();
+</script>
+</body>
+</html>
