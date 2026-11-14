@@ -20,6 +20,11 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = ROOT / 'site'
 BASE = 'https://deep-quantum-science.com'
 SKIP = {'google25dc491646750c89.html'}
+BASE_CSS = ('img{max-width:100%;height:auto}'
+            '.nav .links a{position:relative}'
+            '.nav .links a.active,.nav .links a[aria-current]{color:var(--text)}'
+            '.nav .links a.active::after,.nav .links a[aria-current]::after{content:"";position:absolute;left:0;right:0;bottom:-6px;'
+            'height:2px;border-radius:2px;background:var(--mint)}')
 
 DESC = {   # used only when a page has no description of its own
     'index.html': 'Deep Quantum Science Consulting: AI, machine learning and deep learning consulting, data analysis and scientific simulation from Regensburg, Germany.',
@@ -133,12 +138,13 @@ def polish(p: pathlib.Path):
     head = head.replace('</head>', icons + '</head>', 1)
 
     # images keep their proportions whatever width the layout gives them
-    if 'id="dqs-base"' not in head:
-        head = head.replace('</head>', '<style id="dqs-base">img{max-width:100%;height:auto}</style>\n</head>', 1)
+    # and the navigation shows where you are (assets/nav.js sets .active / aria-current)
+    head = re.sub(r'<style id="dqs-base">.*?</style>\n?', '', head, flags=re.S)
+    head = head.replace('</head>', '<style id="dqs-base">' + BASE_CSS + '</style>\n</head>', 1)
 
     # consent banner + audience measurement (loaded only after consent)
-    head = re.sub(r'<script src="/assets/consent\.js"[^>]*></script>\n?', '', head)
-    head = head.replace('</head>', '<script src="/assets/consent.js" defer></script>\n</head>', 1)
+    head = re.sub(r'<script src="/assets/(consent|nav)\.js"[^>]*></script>\n?', '', head)
+    head = head.replace('</head>', '<script src="/assets/consent.js" defer></script>\n<script src="/assets/nav.js" defer></script>\n</head>', 1)
 
     # fonts: WOFF2
     head = re.sub(r'(fonts/[\w-]+)\.woff"\) format\("woff"\)', r'\1.woff2") format("woff2")', head)

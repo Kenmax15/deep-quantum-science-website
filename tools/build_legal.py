@@ -9,7 +9,7 @@ import pathlib
 
 SITE = pathlib.Path(__file__).resolve().parent.parent / 'site'
 UPDATED = ('14 November 2026', '14. November 2026')
-OWNER = 'Dr. Maseim Bassis Kenmoe, Deep Quantum Science Consulting, Prüfeninger Str. 121, 93049 Regensburg'
+OWNER = 'Dr. Maseim Bassis Kenmoe, Deep Quantum Science Consulting, Regensburg'
 MAIL = '<a href="mailto:kenmoe@aims.edu.gh">kenmoe@aims.edu.gh</a>'
 
 
@@ -157,26 +157,26 @@ IMPRESSUM = f"""
 <h1>{bi('Legal notice', 'Impressum')}</h1>
 {block(f'''
 <h2>Information pursuant to § 5 DDG</h2>
-<p>Dr. Maseim Bassis Kenmoe<br>Deep Quantum Science Consulting<br>Prüfeninger Str. 121<br>93049 Regensburg<br>Germany</p>
+<p>Dr. Maseim Bassis Kenmoe<br>Deep Quantum Science Consulting<br>Regensburg, Germany</p>
 <h2>Contact</h2>
 <p>Email: {MAIL}<br>Contact form: <a href="/#kontakt">deep-quantum-science.com/#kontakt</a></p>
 <h2>VAT</h2>
 <p>Small business under § 19 UStG: no VAT is charged.</p>
 <h2>Responsible for content (§ 18(2) MStV)</h2>
-<p>Dr. Maseim Bassis Kenmoe, address as above.</p>
+<p>Dr. Maseim Bassis Kenmoe (contact as above).</p>
 <h2>Consumer dispute resolution</h2>
 <p>We are neither obliged nor willing to take part in dispute resolution proceedings before a consumer arbitration board.</p>
 <h2>Links to other websites</h2>
 <p>This website links to external websites (for example LinkedIn, YouTube and Facebook). We have no influence over their content; the respective provider is responsible for it.</p>
 ''', f'''
 <h2>Angaben gemäß § 5 DDG</h2>
-<p>Dr. Maseim Bassis Kenmoe<br>Deep Quantum Science Consulting<br>Prüfeninger Str. 121<br>93049 Regensburg<br>Deutschland</p>
+<p>Dr. Maseim Bassis Kenmoe<br>Deep Quantum Science Consulting<br>Regensburg, Deutschland</p>
 <h2>Kontakt</h2>
 <p>E-Mail: {MAIL}<br>Kontaktformular: <a href="/#kontakt">deep-quantum-science.com/#kontakt</a></p>
 <h2>Umsatzsteuer</h2>
 <p>Kleinunternehmer gemäß § 19 UStG: Es wird keine Umsatzsteuer berechnet.</p>
 <h2>Verantwortlich für den Inhalt (§ 18 Abs. 2 MStV)</h2>
-<p>Dr. Maseim Bassis Kenmoe, Anschrift wie oben.</p>
+<p>Dr. Maseim Bassis Kenmoe (Kontakt wie oben).</p>
 <h2>Verbraucherstreitbeilegung</h2>
 <p>Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
 <h2>Links auf andere Websites</h2>
