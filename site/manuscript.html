@@ -25,14 +25,14 @@
 /* Layout: a night-blue lab notebook. Left-aligned, asymmetric two-column sections on a faint measurement grid; one live wavefield in the hero. */
 :root{
   color-scheme:dark;
-  --night:#0e1322;      /* deepest ground */
-  --navy:#111829;       /* logo navy */
-  --panel:#172036;      /* raised surfaces */
-  --rule:#273149;       /* hairlines */
-  --text:#e9ece8;       /* body text */
-  --muted:#9ba3b4;      /* secondary text, lavender-biased */
-  --mint:#7fd8c0;       /* logo highlight */
-  --teal:#2a9a84;       /* logo shadow */
+  --night:#0b0724;      /* deepest ground */
+  --navy:#0e082c;       /* logo navy */
+  --panel:#150e3b;      /* raised surfaces */
+  --rule:#2a2360;       /* hairlines */
+  --text:#ecf5f3;       /* body text */
+  --muted:#aaa6cc;      /* secondary text, lavender-biased */
+  --mint:#92ffd8;       /* logo highlight */
+  --teal:#26a58e;       /* logo shadow */
   --mint-ink:#062a24;   /* text on mint */
   --display:"Alegreya",Georgia,"Times New Roman",serif;
   --sans:"IBM Plex Sans","Segoe UI",system-ui,-apple-system,sans-serif;
@@ -44,23 +44,23 @@
   --step-3:clamp(34px,3.4vw + 1rem,54px);
   --step-4:clamp(42px,5vw + 1rem,80px);
   --wrap:1180px;
-  --text-2:#cbd1da;--glow:#0e1322;--glow-2:#0e1322;--portrait:#172036;
-  --btn-a:#7fd8c0;--btn-mid:#7fd8c0;--btn-b:#7fd8c0;--btn-ink:#08201b;
-  --wave-lo:#2a9a84;--wave-hi:#7fd8c0;--logo-filter:none;
+  --text-2:#cfd3e6;--glow:#1a1250;--glow-2:#22186a;--portrait:#1d1660;
+  --btn-a:#92ffd8;--btn-mid:#5fe0bd;--btn-b:#26a58e;--btn-ink:#062a24;
+  --wave-lo:#26a58e;--wave-hi:#92ffd8;--logo-filter:none;
 }
 @media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
-  --night:#f3f2ee;--navy:#faf9f6;--panel:#ffffff;--rule:#dcd9d0;--text:#1c1f2b;--muted:#5c606c;
-  --mint:#0d7a66;--teal:#12806b;--mint-ink:#ffffff;--text-2:#363a46;
-  --glow:#f3f2ee;--glow-2:#f3f2ee;--portrait:#ffffff;
-  --btn-a:#0d7a66;--btn-mid:#0d7a66;--btn-b:#0d7a66;--btn-ink:#ffffff;
+  --night:#eceff7;--navy:#f8f9fc;--panel:#ffffff;--rule:#d8dbeb;--text:#15113a;--muted:#585676;
+  --mint:#0c8a73;--teal:#1fa088;--mint-ink:#ffffff;--text-2:#34375a;
+  --glow:#d9f3ec;--glow-2:#e2defa;--portrait:#e6e3fb;
+  --btn-a:#14a88d;--btn-mid:#0f957e;--btn-b:#0b7565;--btn-ink:#ffffff;
   --wave-lo:#7fcfc0;--wave-hi:#0b6f5f;--logo-filter:saturate(1.35) brightness(.78);
   color-scheme:light;
 }}
 :root[data-theme="light"]{
-  --night:#f3f2ee;--navy:#faf9f6;--panel:#ffffff;--rule:#dcd9d0;--text:#1c1f2b;--muted:#5c606c;
-  --mint:#0d7a66;--teal:#12806b;--mint-ink:#ffffff;--text-2:#363a46;
-  --glow:#f3f2ee;--glow-2:#f3f2ee;--portrait:#ffffff;
-  --btn-a:#0d7a66;--btn-mid:#0d7a66;--btn-b:#0d7a66;--btn-ink:#ffffff;
+  --night:#eceff7;--navy:#f8f9fc;--panel:#ffffff;--rule:#d8dbeb;--text:#15113a;--muted:#585676;
+  --mint:#0c8a73;--teal:#1fa088;--mint-ink:#ffffff;--text-2:#34375a;
+  --glow:#d9f3ec;--glow-2:#e2defa;--portrait:#e6e3fb;
+  --btn-a:#14a88d;--btn-mid:#0f957e;--btn-b:#0b7565;--btn-ink:#ffffff;
   --wave-lo:#7fcfc0;--wave-hi:#0b6f5f;--logo-filter:saturate(1.35) brightness(.78);
   color-scheme:light;
 }
@@ -372,40 +372,6 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
 .faq details p{padding:0 0 20px;color:var(--text-2);max-width:70ch}
 @media(max-width:900px){.p-hero .wrap,.trial-grid,.buy{grid-template-columns:1fr}.dirs{grid-template-columns:1fr}.feat{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.dl{padding:20px}.dl .meta b{font-size:16px}.feat{grid-template-columns:1fr}.counter{grid-template-columns:1fr 1fr}.spec th{width:110px}.dl{grid-template-columns:1fr}.dl .btn{width:100%}}
-</style>
-<style>
-/* Natural look: flat surfaces, solid colours, no glows, gradients, blur or measurement grid */
-.mint{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:var(--mint)}
-.nav{background:var(--night);backdrop-filter:none;-webkit-backdrop-filter:none}
-.label{letter-spacing:.08em}
-.brand small{letter-spacing:.14em}
-.btn{border-radius:6px}
-.btn-primary{background:var(--btn-a);color:var(--btn-ink);box-shadow:none}
-.btn-primary:hover{transform:none;box-shadow:none;background:var(--teal);color:#fff}
-.btn-ghost:hover{background:transparent}
-.btn:hover .arr{transform:none}
-.hero,.p-hero{background:var(--night)}
-.grid-bg{background-image:none}
-.example,.aud li,.pub .pre,.stack span,.copy{border-radius:4px}
-.example{background:transparent}
-.bridge,.aud,.feat{border-radius:8px}
-.bridge{background:transparent}
-.offer{border-radius:8px;border-color:var(--rule);border-left:3px solid var(--teal);background:var(--panel)}
-.tool-feature{border-radius:8px;background:var(--panel)}
-.tool-feature p,.tool-feature ul{color:var(--text-2)}
-.tool-feature .badge{background:transparent;border:1px solid var(--teal);color:var(--mint);border-radius:4px}
-.convert span{border-radius:4px;background:var(--night);border-color:var(--rule)}
-.tool,.counter div,.dir,.dl{border-radius:8px}
-.portrait{border-radius:8px;background:var(--panel)}
-.portrait img{filter:var(--logo-filter)}
-.post{border-radius:8px;background:transparent}
-.post:hover{transform:none}
-.contact{background:var(--night)}
-.contact-card{border-radius:8px;background:var(--panel);backdrop-filter:none;-webkit-backdrop-filter:none}
-.shot{border-radius:8px;box-shadow:none}
-.price-card{border-radius:8px;border-color:var(--rule);border-top:3px solid var(--teal);background:var(--panel)}
-.dir.w .badge2{background:#2f6fd6}.dir.t .badge2{background:#0e8a79}
-.motto{letter-spacing:.12em;color:var(--muted)}
 </style>
 </head>
 <body>
