@@ -38,14 +38,14 @@
   --step-4:clamp(42px,5vw + 1rem,80px);
   --wrap:1180px;
   --text-2:#cfd3e6;--glow:#1a1250;--glow-2:#22186a;--portrait:#1d1660;
-  --btn-a:#92ffd8;--btn-mid:#5fe0bd;--btn-b:#26a58e;--btn-ink:#062a24;
+  --btn-a:#92ffd8;--btn-mid:#5fe0bd;--btn-b:#26a58e;--btn-ink:#062a24;--field-line:#6b65a6;
   --wave-lo:#26a58e;--wave-hi:#92ffd8;--logo-filter:none;
 }
 @media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
   --night:#eceff7;--navy:#f8f9fc;--panel:#ffffff;--rule:#d8dbeb;--text:#15113a;--muted:#585676;
   --mint:#0a7462;--teal:#1fa088;--mint-ink:#ffffff;--text-2:#34375a;--err:#b4232a;
   --glow:#d9f3ec;--glow-2:#e2defa;--portrait:#e6e3fb;
-  --btn-a:#14a88d;--btn-mid:#0f957e;--btn-b:#0b7565;--btn-ink:#ffffff;
+  --btn-a:#0c7d69;--btn-mid:#0b7262;--btn-b:#0a6253;--btn-ink:#ffffff;--field-line:#7d80a0;
   --wave-lo:#7fcfc0;--wave-hi:#0b6f5f;--logo-filter:saturate(1.35) brightness(.78);
   color-scheme:light;
 }}
@@ -53,7 +53,7 @@
   --night:#eceff7;--navy:#f8f9fc;--panel:#ffffff;--rule:#d8dbeb;--text:#15113a;--muted:#585676;
   --mint:#0a7462;--teal:#1fa088;--mint-ink:#ffffff;--text-2:#34375a;--err:#b4232a;
   --glow:#d9f3ec;--glow-2:#e2defa;--portrait:#e6e3fb;
-  --btn-a:#14a88d;--btn-mid:#0f957e;--btn-b:#0b7565;--btn-ink:#ffffff;
+  --btn-a:#0c7d69;--btn-mid:#0b7262;--btn-b:#0a6253;--btn-ink:#ffffff;--field-line:#7d80a0;
   --wave-lo:#7fcfc0;--wave-hi:#0b6f5f;--logo-filter:saturate(1.35) brightness(.78);
   color-scheme:light;
 }
@@ -105,8 +105,26 @@ p{margin:0}
 .btn .arr{transition:transform .2s}
 .btn:hover .arr{transform:translateX(3px)}
 .nav .btn{min-height:40px;padding:0 16px;font-size:14px}
-@media(max-width:1180px){.links{display:none}.nav-actions{margin-left:auto}}
-@media(max-width:520px){.nav .btn{display:none}.brand small{display:none}.brand span{font-size:14.5px;letter-spacing:.04em}.brand img{width:28px}.nav .wrap{gap:10px}.brand{gap:9px;min-width:0}.lang button{padding:6px 8px}}
+.links-contact,.links-theme{display:none}
+.menu-btn{display:none;place-items:center;width:44px;height:44px;border-radius:999px;border:1px solid var(--rule);background:transparent;color:var(--text);cursor:pointer;transition:border-color .2s,color .2s}
+.menu-btn:hover{border-color:var(--teal);color:var(--mint)}
+.menu-btn svg{width:20px;height:20px}
+.menu-btn path{transition:transform .25s cubic-bezier(.16,1,.3,1),opacity .2s;transform-origin:12px 12px}
+.nav.open .menu-btn .l1{transform:translateY(5px) rotate(45deg)}
+.nav.open .menu-btn .l2{opacity:0}
+.nav.open .menu-btn .l3{transform:translateY(-5px) rotate(-45deg)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(max-width:1180px){
+  .nav-actions{margin-left:auto}
+  .menu-btn{display:grid}
+  .links{display:none;position:absolute;top:100%;left:0;right:0;margin:0;flex-direction:column;gap:0;padding:8px max(16px,env(safe-area-inset-left,0px)) 20px;background:var(--night);border-bottom:1px solid var(--rule);box-shadow:0 24px 40px -24px rgba(0,0,0,.45);max-height:calc(100dvh - 68px);overflow-y:auto}
+  .nav.open .links{display:flex}
+  .links a{display:flex;align-items:center;min-height:48px;font-size:16px;color:var(--text);border-bottom:1px solid var(--rule)}
+  .links .links-theme{font:inherit;font-size:16px;text-align:left;background:none;border:0;border-bottom:1px solid var(--rule);color:var(--text);cursor:pointer;min-height:48px;padding:0}
+  .links a.links-contact{display:inline-flex;justify-content:center;align-self:stretch;margin-top:16px;min-height:48px;border:0;border-radius:999px;font-weight:600;background:linear-gradient(100deg,var(--btn-a),var(--btn-mid) 55%,var(--btn-b));color:var(--btn-ink)}
+}
+@media(min-width:700px) and (max-width:1180px){.links{padding-inline:32px}}
+@media(max-width:520px){.nav .btn{display:none}.brand small{display:none}.brand span{font-size:14.5px;letter-spacing:.04em}.brand img{width:28px}.nav .wrap{gap:10px}.brand{gap:9px;min-width:0}.lang button{padding:6px 8px}.nav-actions{gap:8px}.nav-actions .theme-btn{display:none}.links .links-theme{display:flex;align-items:center}}
 
 /* ---------- Hero ---------- */
 .hero{position:relative;overflow:hidden;background:radial-gradient(70% 90% at 80% 30%,var(--glow) 0,transparent 70%),var(--night);border-bottom:1px solid var(--rule)}
@@ -255,40 +273,69 @@ section.block{padding-block:clamp(72px,10vw,128px);border-bottom:1px solid var(-
 
 /* Contact */
 .contact{position:relative;overflow:hidden;background:radial-gradient(60% 120% at 0% 100%,color-mix(in srgb,var(--teal) 30%,transparent),transparent 60%),radial-gradient(50% 90% at 100% 0%,var(--glow-2),transparent 70%),var(--night)}
-.contact .wrap{padding-block:clamp(72px,10vw,120px);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,6vw,80px);align-items:center}
+.contact .wrap{padding-block:clamp(72px,10vw,120px);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,6vw,80px);align-items:start}
+.contact-intro{position:sticky;top:120px}
 .contact h2{font-size:var(--step-4);line-height:1.02}
-.contact .lead{margin-top:22px}
-.contact-card{display:grid;gap:18px;padding:28px;border-radius:22px;border:1px solid var(--rule);background:color-mix(in srgb,var(--panel) 85%,transparent);backdrop-filter:blur(8px)}
-.contact-row{display:grid;gap:6px}
-.contact-row .label{color:var(--muted)}
-.mail{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.mail code{font:500 15px/1.4 var(--mono);color:var(--text);user-select:all;overflow-wrap:anywhere}
-.copy{border:1px solid var(--rule);background:transparent;color:var(--mint);font:500 12px/1 var(--mono);padding:7px 10px;border-radius:7px;cursor:pointer}
-.copy:hover{border-color:var(--teal)}
-.contact-card .btn{width:100%}
-.channels{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.cform{display:grid;gap:14px}
-.field{display:grid;gap:6px}
+.contact .lead{margin-top:22px;max-width:56ch}
+.next{list-style:none;margin:36px 0 0;padding:0;display:grid;gap:14px;counter-reset:n;max-width:46ch}
+.next li{counter-increment:n;display:grid;grid-template-columns:30px 1fr;gap:12px;align-items:baseline;color:var(--text-2)}
+.next li::before{content:counter(n);display:grid;place-items:center;width:30px;height:30px;border-radius:999px;border:1px solid var(--field-line);font:500 13px/1 var(--mono);color:var(--mint);transform:translateY(-1px)}
+.contact-card{display:grid;gap:22px;padding:clamp(20px,3vw,32px);border-radius:22px;border:1px solid var(--rule);background:color-mix(in srgb,var(--panel) 92%,transparent)}
+.cform{display:grid;gap:16px}
+.topic{border:0;margin:0;padding:0;min-width:0}
+.topic legend{padding:0;margin-bottom:8px;font:500 14px/1.4 var(--sans);color:var(--text)}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.seg label{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--field-line);font:500 14px/1.2 var(--sans);color:var(--text-2);cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.seg label:hover{border-color:var(--mint);color:var(--text)}
+.seg input:checked+label{background:var(--mint);border-color:var(--mint);color:var(--mint-ink)}
+.seg input:focus-visible+label{outline:2px solid var(--mint);outline-offset:2px}
+.field{display:grid;gap:6px;position:relative}
 .field label{font:500 14px/1.4 var(--sans);color:var(--text)}
-.field label small{color:var(--muted);font-weight:400}
-.field input[type=text],.field input[type=email],.field textarea{width:100%;font:400 16px/1.5 var(--sans);color:var(--text);background:var(--navy);border:1px solid var(--rule);border-radius:12px;padding:11px 14px}
-.field textarea{resize:vertical;min-height:120px}
+.field label small{color:var(--muted);font-weight:400;font-size:13px}
+.field input[type=text],.field input[type=email],.field textarea{width:100%;font:400 16px/1.5 var(--sans);color:var(--text);caret-color:var(--mint);background:var(--navy);border:1px solid var(--field-line);border-radius:12px;padding:11px 14px;transition:border-color .2s}
+.field input[type=text]:hover,.field input[type=email]:hover,.field textarea:hover{border-color:var(--muted)}
+.field textarea{resize:vertical;min-height:132px}
 .field input:focus-visible,.field textarea:focus-visible{outline:2px solid var(--mint);outline-offset:1px;border-color:transparent}
-.field [aria-invalid="true"]{border-color:var(--err)}
-.field .err{margin:0;font-size:13.5px;color:var(--err)}
-.field .err:empty{display:none}
-.field.check{grid-template-columns:auto 1fr;align-items:start;column-gap:10px}
-.field.check input{width:20px;height:20px;margin-top:2px;accent-color:var(--mint)}
-.field.check label{font-weight:400;color:var(--text-2)}
-.field.check label a{color:var(--text)}
+.field :is(input,textarea)[aria-invalid="true"]{border-color:var(--err)}
+.field .hint{font-size:13.5px;line-height:1.45;color:var(--muted)}
+.field .err{margin:0;font-size:13.5px;line-height:1.45;color:var(--err)}
+.field .err:empty,.cform .status:empty{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.field.check{grid-template-columns:auto 1fr;align-items:start;column-gap:12px}
+.field.check input{appearance:none;-webkit-appearance:none;display:grid;place-items:center;width:22px;height:22px;margin:1px 0 0;border:1.5px solid var(--field-line);border-radius:6px;background:var(--navy);cursor:pointer;transition:background .15s,border-color .15s}
+.field.check input::after{content:"";width:12px;height:12px;background:var(--mint-ink);clip-path:polygon(14% 52%,0 66%,38% 100%,100% 22%,86% 9%,38% 72%);transform:scale(0);transition:transform .15s cubic-bezier(.16,1,.3,1)}
+.field.check input:checked{background:var(--mint);border-color:var(--mint)}
+.field.check input:checked::after{transform:scale(1)}
+.field.check input[aria-invalid="true"]{border-color:var(--err)}
+.field.check label{font-weight:400;color:var(--text-2);cursor:pointer}
+.field.check label a{color:var(--text);text-underline-offset:3px}
 .field.check .err{grid-column:1/-1}
+.req-note{font-size:13px;color:var(--muted)}
+.contact [hidden]{display:none!important}
 .hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
-.cform .status{margin:0;font-size:15px;color:var(--text-2)}
-.cform .status:empty{display:none}
-.cform .status.ok{color:var(--mint)}
+.cform .btn{width:100%}
+.cform .status{margin:0;font-size:15px;line-height:1.5;color:var(--text-2)}
 .cform .status.bad{color:var(--err)}
 .cform button[disabled]{opacity:.6;cursor:progress}
-@media(max-width:860px){.contact .wrap{grid-template-columns:1fr}}
+.sent{display:grid;gap:14px;padding:4px 0 6px}
+.sent[hidden]{display:none}
+.sent h3{font-size:var(--step-2);line-height:1.15;outline:none}
+.sent h3::before{content:"";display:block;width:44px;height:44px;margin-bottom:16px;border-radius:999px;background:var(--mint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23062a24' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/22px no-repeat}
+:root[data-eff="light"] .sent h3::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E")}
+.sent p{color:var(--text-2)}
+.sent .btn{justify-self:start}
+.contact-alt{display:grid;gap:12px;padding-top:20px;border-top:1px solid var(--rule);font-size:15px}
+.contact-row{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px}
+.alt-label{min-width:7.5em;color:var(--muted);font-size:14px}
+.mail{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap}
+.mail a{font-weight:500;color:var(--text);text-decoration:underline;text-decoration-color:var(--field-line);text-underline-offset:4px;overflow-wrap:anywhere;padding-block:10px}
+.mail a:hover{text-decoration-color:var(--mint)}
+.copy{min-height:40px;min-width:44px;padding:0 12px;border:1px solid var(--rule);background:transparent;color:var(--mint);font:500 13px/1 var(--sans);border-radius:999px;cursor:pointer}
+.copy:hover{border-color:var(--teal)}
+.contact-social{display:flex;flex-wrap:wrap;gap:0 20px}
+.contact-social a{display:inline-flex;align-items:center;min-height:44px;color:var(--text-2);text-decoration:underline;text-decoration-color:var(--field-line);text-underline-offset:4px}
+.contact-social a:hover{color:var(--text);text-decoration-color:var(--mint)}
+@media(max-width:860px){.contact .wrap{grid-template-columns:1fr}.contact-intro{position:static}.next{margin-top:28px}}
 
 /* Footer */
 footer{background:var(--night)}
@@ -340,7 +387,7 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
       <img src="assets/logo-nav.webp" alt="" width="34" height="37">
       <span>Deep Quantum Science<small>Consulting · Regensburg</small></span>
     </a>
-    <div class="links">
+    <div class="links" id="nav-links">
       <a href="#leistungen"><span class="de">Leistungen</span><span class="en">Services</span></a>
       <a href="#ansatz"><span class="de">Ansatz</span><span class="en">Approach</span></a>
       <a href="#ablauf"><span class="de">Ablauf</span><span class="en">Process</span></a>
@@ -348,6 +395,8 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
       <a href="#ueber"><span class="de">Über uns</span><span class="en">About</span></a>
       <a href="#publikationen"><span class="de">Publikationen</span><span class="en">Publications</span></a>
       <a href="blog/">Blog</a>
+      <button type="button" class="links-theme" id="theme-toggle-2"><span class="de">Hell / Dunkel</span><span class="en">Light / dark mode</span></button>
+      <a href="#kontakt" class="links-contact"><span class="de">Kontakt</span><span class="en">Contact</span></a>
     </div>
     <div class="nav-actions">
       <button type="button" class="theme-btn" id="theme-toggle" aria-label="Switch light/dark mode" title="Light / dark mode">
@@ -359,6 +408,9 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
         <button type="button" id="lang-de" data-lang="de" aria-pressed="false">DE</button>
       </div>
       <a class="btn btn-primary" href="#kontakt"><span class="de">Erstgespräch</span><span class="en">Free consultation</span></a>
+      <button type="button" class="menu-btn" id="menu-toggle" aria-expanded="false" aria-controls="nav-links"><span class="sr"><span class="de">Menü</span><span class="en">Menu</span></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path class="l1" d="M4 7h16"/><path class="l2" d="M4 12h16"/><path class="l3" d="M4 17h16"/></svg>
+      </button>
     </div>
   </div>
 </nav>
@@ -371,7 +423,7 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
       <h1><span class="de">Physik trifft <em class="mint">künstliche Intelligenz.</em></span><span class="en">Where physics meets <em class="mint">artificial intelligence.</em></span></h1>
       <p class="lead"><span class="de">Wir helfen Unternehmen und Forschungseinrichtungen, komplexe Probleme mit Machine Learning, Datenanalyse und Simulation zu lösen und schneller zu innovieren.</span><span class="en">We help companies and research institutes solve complex problems with machine learning, data analysis and simulation, so they can innovate faster.</span></p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#kontakt"><span class="de">Kostenloses Erstgespräch</span><span class="en">Book a free consultation</span><span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-primary" href="#kontakt"><span class="de">Kostenloses Erstgespräch</span><span class="en">Free consultation</span><span class="arr" aria-hidden="true">→</span></a>
         <a class="btn btn-ghost" href="#leistungen"><span class="de">Leistungen ansehen</span><span class="en">See services</span></a>
       </div>
       <p class="eq" aria-hidden="true"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi mathvariant="normal">ℏ</mi><mtext> </mtext><msub><mi mathvariant="normal">∂</mi><mi>t</mi></msub><mi>ψ</mi><mo>=</mo><mover accent="true"><mi>H</mi><mo>^</mo></mover><mi>ψ</mi></mrow><annotation encoding="application/x-tex">i\hbar\,\partial_t\psi=\hat{H}\psi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">i</span><span class="mord">ℏ</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord" style="margin-right:0.0556em;">∂</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0556em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.0359em;">ψ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1412em;vertical-align:-0.1944em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9468em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.0813em;">H</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.0359em;">ψ</span></span></span></span><b><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span></b><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>y</mi><mo>^</mo></mover><mo>=</mo><msub><mi>f</mi><mi>θ</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\hat{y}=f_{\theta}(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1076em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">θ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span></p>
@@ -626,53 +678,67 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
 
 <section class="contact" id="kontakt">
   <div class="wrap">
-    <div>
+    <div class="contact-intro">
       <p class="label"><span class="de">Kontakt</span><span class="en">Contact</span></p>
-      <h2 style="margin-top:18px"><span class="de">Lassen Sie uns über <em class="mint">Ihr Projekt</em> sprechen.</span><span class="en">Let's talk about <em class="mint">your project.</em></span></h2>
-      <p class="lead"><span class="de">Das Erstgespräch ist kostenlos. Erzählen Sie uns, welches Problem Sie lösen möchten, und wir finden gemeinsam heraus, ob KI, Datenanalyse oder Simulation der richtige Weg ist.</span><span class="en">The first conversation is free. Tell us which problem you want to solve, and together we'll work out whether AI, data analysis or simulation is the right approach.</span></p>
+      <h2 style="margin-top:18px"><span class="de">Sprechen wir über <em class="mint">Ihr Anliegen.</em></span><span class="en">Let's talk about <em class="mint">what you need.</em></span></h2>
+      <p class="lead"><span class="de">Ein Projekt in KI, Datenanalyse oder Simulation, ein Vortrag, eine Frage zu unseren Videos oder zum Manuskript: Wir lesen jede Nachricht persönlich. Das Erstgespräch zu einem Projekt ist kostenlos.</span><span class="en">A project in AI, data analysis or simulation, a talk, a question about our videos or the manuscript: we read every message ourselves. The first conversation about a project is free.</span></p>
+      <ol class="next">
+        <li><span class="de">Sie schreiben uns, was Sie vorhaben.</span><span class="en">You tell us what you have in mind.</span></li>
+        <li><span class="de">Wir antworten innerhalb von zwei Werktagen.</span><span class="en">We reply within two working days.</span></li>
+        <li><span class="de">Bei einem Projekt vereinbaren wir ein kostenloses Erstgespräch.</span><span class="en">For a project, we set up a free first conversation.</span></li>
+      </ol>
     </div>
     <div class="contact-card">
       <form id="contact-form" class="cform" action="/api/contact" method="post" novalidate>
+        <fieldset class="topic">
+          <legend><span class="en">What is it about?</span><span class="de">Worum geht es?</span></legend>
+          <div class="seg">
+            <input type="radio" name="topic" id="cf-topic-project" value="project" checked><label for="cf-topic-project"><span class="en">Project</span><span class="de">Projekt</span></label>
+            <input type="radio" name="topic" id="cf-topic-talk" value="talk"><label for="cf-topic-talk"><span class="en">Talk or teaching</span><span class="de">Vortrag oder Lehre</span></label>
+            <input type="radio" name="topic" id="cf-topic-other" value="other"><label for="cf-topic-other"><span class="en">Something else</span><span class="de">Etwas anderes</span></label>
+          </div>
+        </fieldset>
         <div class="field">
-          <label for="cf-name"><span class="en">Your name</span><span class="de">Ihr Name</span> *</label>
+          <label for="cf-name"><span class="en">Your name</span><span class="de">Ihr Name</span></label>
           <input id="cf-name" name="name" type="text" autocomplete="name" required minlength="2" maxlength="100" aria-describedby="cf-name-err">
           <p class="err" id="cf-name-err" aria-live="polite"></p>
         </div>
         <div class="field">
-          <label for="cf-email"><span class="en">Email</span><span class="de">E-Mail</span> *</label>
+          <label for="cf-email"><span class="en">Email</span><span class="de">E-Mail</span></label>
           <input id="cf-email" name="email" type="email" autocomplete="email" required maxlength="254" aria-describedby="cf-email-err">
           <p class="err" id="cf-email-err" aria-live="polite"></p>
         </div>
-        <div class="field">
-          <label for="cf-org"><span class="en">Company or institute</span><span class="de">Unternehmen oder Institut</span> <small>(optional)</small></label>
+        <div class="field" id="cf-org-field">
+          <label for="cf-org"><span class="en">Company or institute</span><span class="de">Unternehmen oder Institut</span> <small><span class="en">(optional)</span><span class="de">(optional)</span></small></label>
           <input id="cf-org" name="org" type="text" autocomplete="organization" maxlength="120">
         </div>
         <div class="field">
-          <label for="cf-msg"><span class="en">What would you like to solve?</span><span class="de">Was möchten Sie lösen?</span> *</label>
-          <textarea id="cf-msg" name="message" rows="5" required minlength="10" maxlength="5000" aria-describedby="cf-msg-err"></textarea>
+          <label for="cf-msg" id="cf-msg-label"><span class="en" data-t="project">What would you like to solve?</span><span class="de" data-t="project">Was möchten Sie lösen?</span><span class="en" data-t="talk" hidden>Which event, audience and date?</span><span class="de" data-t="talk" hidden>Welche Veranstaltung, welches Publikum, welcher Termin?</span><span class="en" data-t="other" hidden>Your message</span><span class="de" data-t="other" hidden>Ihre Nachricht</span></label>
+          <textarea id="cf-msg" name="message" rows="5" required minlength="10" maxlength="5000" aria-describedby="cf-msg-hint cf-msg-err"></textarea>
+          <p class="hint" id="cf-msg-hint"><span class="en" data-t="project">A few sentences are enough: the problem, the data you have, and your goal.</span><span class="de" data-t="project">Ein paar Sätze genügen: das Problem, Ihre vorhandenen Daten und Ihr Ziel.</span><span class="en" data-t="talk" hidden>Tell us the topic you have in mind, the audience and the format.</span><span class="de" data-t="talk" hidden>Nennen Sie uns Thema, Publikum und Format.</span><span class="en" data-t="other" hidden>Questions about a video, an article or DeepQ Manuscript are welcome.</span><span class="de" data-t="other" hidden>Fragen zu einem Video, einem Artikel oder zu DeepQ Manuscript sind willkommen.</span></p>
           <p class="err" id="cf-msg-err" aria-live="polite"></p>
         </div>
         <div class="hp" aria-hidden="true"><label for="cf-website">Website</label><input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
         <input type="hidden" name="t" id="cf-t">
         <div class="field check">
           <input id="cf-consent" name="consent" type="checkbox" required aria-describedby="cf-consent-err">
-          <label for="cf-consent"><span class="en">I agree that my details are used to answer my request, as described in the <a href="datenschutz">privacy policy</a>.</span><span class="de">Ich bin einverstanden, dass meine Angaben zur Beantwortung meiner Anfrage verwendet werden, wie in der <a href="datenschutz">Datenschutzerklärung</a> beschrieben.</span> *</label>
+          <label for="cf-consent"><span class="en">I agree that my details are used to answer my request, as described in the <a href="datenschutz">privacy policy</a>.</span><span class="de">Ich bin einverstanden, dass meine Angaben zur Beantwortung meiner Anfrage verwendet werden, wie in der <a href="datenschutz">Datenschutzerklärung</a> beschrieben.</span></label>
           <p class="err" id="cf-consent-err" aria-live="polite"></p>
         </div>
-        <button class="btn btn-primary" type="submit" id="cf-send"><span class="en">Request a free consultation</span><span class="de">Kostenloses Erstgespräch anfragen</span><span class="arr" aria-hidden="true">→</span></button>
+        <p class="req-note"><span class="en">All fields are required unless marked optional.</span><span class="de">Alle Felder sind Pflichtfelder, sofern nicht als optional markiert.</span></p>
+        <button class="btn btn-primary" type="submit" id="cf-send"><span class="en">Send message</span><span class="de">Nachricht senden</span><span class="arr" aria-hidden="true">→</span></button>
         <p class="status" id="cf-status" role="status" aria-live="polite"></p>
       </form>
-      <div class="contact-row">
-        <span class="label"><span class="en">Or by email</span><span class="de">Oder per E-Mail</span></span>
-        <div class="mail"><code id="mail">kenmoe@aims.edu.gh</code><button type="button" class="copy" id="copymail"><span class="de">Kopieren</span><span class="en">Copy</span></button></div>
+      <div class="sent" id="cf-sent" hidden>
+        <h3 id="cf-sent-title" tabindex="-1"><span class="en">Thank you, your message has arrived.</span><span class="de">Vielen Dank, Ihre Nachricht ist angekommen.</span></h3>
+        <p><span class="en">We will reply to <b class="sent-mail"></b> within two working days.</span><span class="de">Wir antworten an <b class="sent-mail"></b> innerhalb von zwei Werktagen.</span></p>
+        <button type="button" class="btn btn-ghost" id="cf-again"><span class="en">Write another message</span><span class="de">Weitere Nachricht schreiben</span></button>
       </div>
-      <div class="contact-row">
-        <span class="label"><span class="de">Standort</span><span class="en">Location</span></span>
-        <span>Regensburg, <span class="de">Deutschland</span><span class="en">Germany</span></span>
-      </div>
-      <div class="channels" style="margin-top:0">
-        <a class="btn btn-ghost" href="https://www.linkedin.com/in/maseim-bassis-kenmoe-22077" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn btn-ghost" href="https://www.youtube.com/@DeepQuantumScience" target="_blank" rel="noopener">YouTube</a>
+      <div class="contact-alt">
+        <p class="contact-row"><span class="alt-label"><span class="en">Or by email</span><span class="de">Oder per E-Mail</span></span>
+          <span class="mail"><a id="mail" href="mailto:deepqscience@gmail.com">deepqscience@gmail.com</a><button type="button" class="copy" id="copymail"><span class="de">Kopieren</span><span class="en">Copy</span></button></span></p>
+        <p class="contact-row"><span class="alt-label"><span class="de">Standort</span><span class="en">Location</span></span><span>Regensburg, <span class="de">Deutschland</span><span class="en">Germany</span></span></p>
+        <p class="contact-social"><a href="https://www.linkedin.com/in/maseim-bassis-kenmoe-22077" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.youtube.com/@DeepQuantumScience" target="_blank" rel="noopener">YouTube</a><a href="https://www.facebook.com/profile.php?id=61573518324805" target="_blank" rel="noopener">Facebook</a></p>
       </div>
     </div>
   </div>
@@ -711,41 +777,74 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
   new MutationObserver(syncTheme).observe(root,{attributes:true,attributeFilter:['data-theme']});
   document.getElementById('theme-toggle').addEventListener('click',()=>{const next=effTheme()==='light'?'dark':'light';root.dataset.theme=next;try{localStorage.setItem('dqs-theme',next)}catch(e){}syncTheme()});
 
-  /* copy e-mail */
-  /* contact form: validation in the browser (checked again on the server) */
-  const form=document.getElementById('contact-form');
+  /* mobile menu */
+  const nav=document.querySelector('.nav'),mbtn=document.getElementById('menu-toggle');
+  const t2=document.getElementById('theme-toggle-2');if(t2)t2.addEventListener('click',()=>document.getElementById('theme-toggle').click());
+  if(nav&&mbtn){
+    const setMenu=o=>{nav.classList.toggle('open',o);mbtn.setAttribute('aria-expanded',String(o))};
+    mbtn.addEventListener('click',()=>setMenu(!nav.classList.contains('open')));
+    document.querySelectorAll('#nav-links a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nav.classList.contains('open')){setMenu(false);mbtn.focus()}});
+    document.addEventListener('click',e=>{if(nav.classList.contains('open')&&!nav.contains(e.target))setMenu(false)});
+    matchMedia('(min-width:1181px)').addEventListener('change',e=>{if(e.matches)setMenu(false)});
+  }
+
+  /* contact form: validation in the browser (checked again on the server).
+     Messages are written in both languages, so they follow the language switch. */
+  const M={en:{name:'Please enter your name.',email:'Please enter a valid email address, for example name@example.com.',message:'Please describe your request in at least 10 characters.',consent:'Please agree to the privacy policy so we can answer you.',sending:'Sending…',rate:'Too many messages in a short time. Please try again in an hour, or write to us by email.',links:'Your message contains more than 3 web links. Please remove some and send again.',stale:'This page was open for a long time, so the form was reset for security. Please press “Send message” again.',fail:'Your message could not be sent. Please try again, or write to us by email.',copied:'Copied'},
+           de:{name:'Bitte geben Sie Ihren Namen ein.',email:'Bitte geben Sie eine gültige E-Mail-Adresse ein, zum Beispiel name@beispiel.de.',message:'Bitte beschreiben Sie Ihr Anliegen in mindestens 10 Zeichen.',consent:'Bitte stimmen Sie der Datenschutzerklärung zu, damit wir antworten können.',sending:'Wird gesendet…',rate:'Zu viele Nachrichten in kurzer Zeit. Bitte versuchen Sie es in einer Stunde erneut oder schreiben Sie uns eine E-Mail.',links:'Ihre Nachricht enthält mehr als 3 Weblinks. Bitte entfernen Sie einige und senden Sie erneut.',stale:'Diese Seite war lange geöffnet, daher wurde das Formular aus Sicherheitsgründen zurückgesetzt. Bitte klicken Sie erneut auf „Nachricht senden“.',fail:'Ihre Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie uns eine E-Mail.',copied:'Kopiert'}};
+  const both=k=>'<span class="en">'+M.en[k]+'</span><span class="de">'+M.de[k]+'</span>';
+  const $=id=>document.getElementById(id);
+  const form=$('contact-form');
   if(form){
-    const M={en:{name:'Please enter your name.',email:'Please enter a valid email address.',message:'Please describe your request (at least 10 characters).',consent:'Please agree to the privacy policy so we can answer you.',sending:'Sending…',ok:'Thank you! Your request has been sent. We will reply within two working days.',rate:'Too many messages in a short time. Please try again later or write to us by email.',fail:'Your message could not be sent. Please try again or write to us by email.'},
-             de:{name:'Bitte geben Sie Ihren Namen ein.',email:'Bitte geben Sie eine gültige E-Mail-Adresse ein.',message:'Bitte beschreiben Sie Ihr Anliegen (mindestens 10 Zeichen).',consent:'Bitte stimmen Sie der Datenschutzerklärung zu, damit wir antworten können.',sending:'Wird gesendet…',ok:'Vielen Dank! Ihre Anfrage wurde gesendet. Wir antworten innerhalb von zwei Werktagen.',rate:'Zu viele Nachrichten in kurzer Zeit. Bitte versuchen Sie es später oder schreiben Sie uns eine E-Mail.',fail:'Ihre Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie uns eine E-Mail.'}};
-    const tr=k=>M[root.dataset.lang==='de'?'de':'en'][k];
-    const $=id=>document.getElementById(id);
-    $('cf-t').value=String(Date.now());
+    const tf=$('cf-t');
+    tf.value=String(Date.now());
+    /* a tab left open for hours gets a fresh timestamp as soon as the visitor starts writing */
+    form.addEventListener('focusin',()=>{if(Date.now()-Number(tf.value)>3600e3)tf.value=String(Date.now())});
     const checks={name:()=>$('cf-name').value.trim().length>=2,email:()=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test($('cf-email').value.trim()),message:()=>$('cf-msg').value.trim().length>=10,consent:()=>$('cf-consent').checked};
     const ids={name:'cf-name',email:'cf-email',message:'cf-msg',consent:'cf-consent'};
-    function show(k,ok){const el=$(ids[k]);el.setAttribute('aria-invalid',String(!ok));$(ids[k]+'-err').textContent=ok?'':tr(k);}
-    Object.keys(checks).forEach(k=>$(ids[k]).addEventListener(k==='consent'?'change':'blur',()=>{if(k==='consent'||$(ids[k]).value!==''||$(ids[k]).getAttribute('aria-invalid')==='true')show(k,checks[k]())}));
+    function show(k,ok){const el=$(ids[k]);el.setAttribute('aria-invalid',String(!ok));$(ids[k]+'-err').innerHTML=ok?'':both(k);}
+    Object.keys(checks).forEach(k=>{
+      const el=$(ids[k]);
+      el.addEventListener(k==='consent'?'change':'blur',()=>{if(k==='consent'||el.value!==''||el.getAttribute('aria-invalid')==='true')show(k,checks[k]())});
+      if(k!=='consent')el.addEventListener('input',()=>{if(el.getAttribute('aria-invalid')==='true'&&checks[k]())show(k,true)});
+    });
+    /* request type: adapts the message label, hint and the company field */
+    function topic(){const v=(form.querySelector('input[name=topic]:checked')||{}).value||'project';
+      form.querySelectorAll('[data-t]').forEach(el=>{el.hidden=el.dataset.t!==v});
+      $('cf-org-field').hidden=v==='other';}
+    form.querySelectorAll('input[name=topic]').forEach(r=>r.addEventListener('change',topic));
+    topic();
+    const st=$('cf-status'),btn=$('cf-send'),sent=$('cf-sent');
+    const say=(k,cls)=>{st.className='status'+(cls?' '+cls:'');st.innerHTML=both(k)};
     form.addEventListener('submit',async e=>{
       e.preventDefault();
       let first=null;
       Object.keys(checks).forEach(k=>{const ok=checks[k]();show(k,ok);if(!ok&&!first)first=$(ids[k]);});
       if(first){first.focus();return;}
-      const st=$('cf-status'),btn=$('cf-send');
-      btn.disabled=true;st.className='status';st.textContent=tr('sending');
+      btn.disabled=true;say('sending');
       try{
-        const body={name:$('cf-name').value,email:$('cf-email').value,org:$('cf-org').value,message:$('cf-msg').value,consent:$('cf-consent').checked,website:$('cf-website').value,t:Number($('cf-t').value),lang:root.dataset.lang};
+        const tp=(form.querySelector('input[name=topic]:checked')||{}).value||'project';
+        const body={topic:tp,name:$('cf-name').value,email:$('cf-email').value,org:tp==='other'?'':$('cf-org').value,message:$('cf-msg').value,consent:$('cf-consent').checked,website:$('cf-website').value,t:Number(tf.value),lang:root.dataset.lang};
         const r=await fetch(form.action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
         const d=await r.json().catch(()=>({}));
-        if(r.ok&&d.ok){form.reset();$('cf-t').value=String(Date.now());st.className='status ok';st.textContent=tr('ok');}
-        else{st.className='status bad';st.textContent=tr(r.status===429?'rate':'fail');
-          if(d.fields)Object.keys(d.fields).forEach(k=>ids[k]&&show(k,false));}
-      }catch(err){st.className='status bad';st.textContent=tr('fail');}
+        if(r.ok&&d.ok){
+          document.querySelectorAll('.sent-mail').forEach(b=>b.textContent=body.email.trim());
+          form.reset();topic();tf.value=String(Date.now());st.className='status';st.textContent='';
+          form.hidden=true;sent.hidden=false;$('cf-sent-title').focus();
+        }else if(d.error==='stale'){tf.value=String(Date.now()-5000);say('stale','bad');}
+        else{say(r.status===429?'rate':d.error==='too_many_links'?'links':'fail','bad');
+          if(d.fields)Object.keys(d.fields).forEach(k=>ids[k]&&show(k,false));
+          if(d.error==='too_many_links')$('cf-msg').focus();}
+      }catch(err){say('fail','bad');}
       btn.disabled=false;
     });
+    $('cf-again').addEventListener('click',()=>{sent.hidden=true;form.hidden=false;$('cf-name').focus()});
   }
 
-  const cb=document.getElementById('copymail');
-  cb.addEventListener('click',()=>{const t=document.getElementById('mail').textContent;const done=()=>{cb.innerHTML=root.dataset.lang==='en'?'Copied':'Kopiert';setTimeout(()=>{cb.innerHTML='<span class="de">Kopieren</span><span class="en">Copy</span>'},1600)};
-    const sel=()=>{const r=document.createRange();r.selectNodeContents(document.getElementById('mail'));const s=getSelection();s.removeAllRanges();s.addRange(r)};
+  const cb=$('copymail');
+  if(cb)cb.addEventListener('click',()=>{const t=$('mail').textContent;const done=()=>{cb.innerHTML=both('copied');setTimeout(()=>{cb.innerHTML='<span class="de">Kopieren</span><span class="en">Copy</span>'},1600)};
+    const sel=()=>{const r=document.createRange();r.selectNodeContents($('mail'));const s=getSelection();s.removeAllRanges();s.addRange(r)};
     try{navigator.clipboard.writeText(t).then(done,sel)}catch(e){sel()}});
 
   /* hero wavefield: two-source interference on a perspective grid */

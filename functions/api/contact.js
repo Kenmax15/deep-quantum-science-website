@@ -3,11 +3,14 @@
 // Server-side checks (the browser checks are only a convenience):
 //   • required fields, lengths, email syntax, consent to the privacy policy
 //   • anti-spam: hidden honeypot field, minimum time on the page, link limit,
+//     (a form older than 24 h gets a real "stale" answer so a person can resend;
+//     only the honeypot and the too-fast case answer a silent "ok"),
 //     and at most 5 messages per hour per visitor (IP address stored only as a
 //     salted SHA-256 hash, for one hour, in the KV namespace bound as ORDERS)
 // The message is emailed to OWNER_EMAIL through Resend (RESEND_API_KEY); the
 // visitor's address is set as reply-to. No message is stored on the server.
 
+const TOPICS = { project: 'Project', talk: 'Talk or teaching', other: 'Other' };
 const MAX = { name: 100, email: 254, org: 120, message: 5000 };
 const EMAIL_RE = /^[^\s@<>()[\]\\,;:"]+@[^\s@<>()[\]\\,;:"]+\.[^\s@<>()[\]\\,;:"]{2,}$/;
 const json = (body, status = 200) =>
@@ -36,11 +39,14 @@ export async function onRequestPost({ request, env }) {
     website: String(data.website || ''),          // honeypot: humans never see it
     t: Number(data.t || 0),                      // when the form was shown (ms)
     lang: data.lang === 'de' ? 'de' : 'en',
+    topic: TOPICS[data.topic] ? data.topic : 'project',
   };
 
   // Spam traps: answer "ok" so bots learn nothing, but send nothing.
   const age = Date.now() - f.t;
-  if (f.website || !f.t || age < 3000 || age > 24 * 3600 * 1000) return json({ ok: true });
+  if (f.website || !f.t || age < 3000) return json({ ok: true });
+  // A form left open for more than a day: tell the visitor, the browser refreshes the timestamp.
+  if (age > 24 * 3600 * 1000) return json({ ok: false, error: 'stale' }, 409);
   if ((f.message.match(/https?:\/\//gi) || []).length > 3) return json({ ok: false, error: 'too_many_links' }, 422);
 
   const errors = {};
@@ -62,11 +68,11 @@ export async function onRequestPost({ request, env }) {
   }
 
   if (!env.RESEND_API_KEY || !env.OWNER_EMAIL) return json({ ok: false, error: 'unavailable' }, 503);
-  const subject = `Website enquiry from ${f.name}${f.org ? ' (' + f.org + ')' : ''}`;
-  const text = `Name: ${f.name}\nEmail: ${f.email}\nOrganisation: ${f.org || '-'}\nLanguage: ${f.lang}\n` +
+  const subject = `Website enquiry [${TOPICS[f.topic]}] from ${f.name}${f.org ? ' (' + f.org + ')' : ''}`;
+  const text = `Topic: ${TOPICS[f.topic]}\nName: ${f.name}\nEmail: ${f.email}\nOrganisation: ${f.org || '-'}\nLanguage: ${f.lang}\n` +
     `Consent to privacy policy: yes (${new Date().toISOString()})\n\n${f.message}\n`;
   const html = `<div style="font-family:Segoe UI,Arial,sans-serif;line-height:1.55;color:#15113a">
-<p><b>Name:</b> ${esc(f.name)}<br><b>Email:</b> ${esc(f.email)}<br><b>Organisation:</b> ${esc(f.org || '-')}<br>
+<p><b>Topic:</b> ${TOPICS[f.topic]}<br><b>Name:</b> ${esc(f.name)}<br><b>Email:</b> ${esc(f.email)}<br><b>Organisation:</b> ${esc(f.org || '-')}<br>
 <b>Language:</b> ${f.lang} · consent to privacy policy given</p>
 <pre style="white-space:pre-wrap;font:15px/1.55 Segoe UI,Arial,sans-serif">${esc(f.message)}</pre></div>`;
   const res = await fetch('https://api.resend.com/emails', {
