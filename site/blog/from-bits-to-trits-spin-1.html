@@ -16,7 +16,7 @@
 
 
 /* Layout: a night-blue lab notebook. Left-aligned, asymmetric two-column sections on a faint measurement grid; one live wavefield in the hero. */
-:root{--ease-out:cubic-bezier(.23,1,.32,1);--ease-in-out:cubic-bezier(.77,0,.175,1);
+:root{--ease-out:cubic-bezier(.23,1,.32,1);--ease-in-out:cubic-bezier(.77,0,.175,1);--ease-drawer:cubic-bezier(.32,.72,0,1);
   color-scheme:dark;
   --night:#0b0724;      /* deepest ground */
   --navy:#0e082c;       /* logo navy */
@@ -106,8 +106,28 @@ p{margin:0}
 .btn-ghost:hover{border-color:var(--teal);background:color-mix(in srgb,var(--panel) 60%,transparent)}
 .btn .arr{transition:transform 200ms var(--ease-out)}
 .nav .btn{min-height:40px;padding:0 16px;font-size:14px}
-@media(max-width:1180px){.links{display:none}.nav-actions{margin-left:auto}}
-@media(max-width:520px){.nav .btn{display:none}.brand small{display:none}.brand span{font-size:14.5px;letter-spacing:.04em}.brand img{width:28px}.nav .wrap{gap:10px}.brand{gap:9px;min-width:0}.lang button{padding:6px 8px}}
+.links-contact,.links-theme{display:none}
+.menu-btn{display:none;place-items:center;width:44px;height:44px;border-radius:999px;border:1px solid var(--rule);background:transparent;color:var(--text);cursor:pointer;transition:border-color 200ms ease,color 200ms ease,transform 160ms var(--ease-out)}
+.menu-btn:hover{border-color:var(--teal);color:var(--mint)}
+.theme-btn:active,.menu-btn:active,.copy:active,.lang button:active{transform:scale(.94)}
+.menu-btn svg{width:20px;height:20px}
+.menu-btn path{transition:transform 220ms var(--ease-in-out),opacity 150ms ease;transform-origin:12px 12px}
+.nav.open .menu-btn .l1{transform:translateY(5px) rotate(45deg)}
+.nav.open .menu-btn .l2{opacity:0}
+.nav.open .menu-btn .l3{transform:translateY(-5px) rotate(-45deg)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(max-width:1180px){
+  .nav-actions{margin-left:auto}
+  .menu-btn{display:grid}
+  .links{display:none;position:absolute;top:100%;left:0;right:0;margin:0;flex-direction:column;gap:0;padding:8px max(16px,env(safe-area-inset-left,0px)) 20px;background:var(--night);border-bottom:1px solid var(--rule);box-shadow:0 24px 40px -24px rgba(0,0,0,.45);max-height:calc(100dvh - 68px);overflow-y:auto}
+  .nav.open .links{display:flex;transition:opacity 200ms var(--ease-out),transform 240ms var(--ease-drawer)}
+  @starting-style{.nav.open .links{opacity:0;transform:translateY(-8px)}}
+  .links a{display:flex;align-items:center;min-height:48px;font-size:16px;color:var(--text);border-bottom:1px solid var(--rule)}
+  .links .links-theme{font:inherit;font-size:16px;text-align:left;background:none;border:0;border-bottom:1px solid var(--rule);color:var(--text);cursor:pointer;min-height:48px;padding:0}
+  .links a.links-contact{display:inline-flex;justify-content:center;align-self:stretch;margin-top:16px;min-height:48px;border:0;border-radius:999px;font-weight:600;background:linear-gradient(100deg,var(--btn-a),var(--btn-mid) 55%,var(--btn-b));color:var(--btn-ink)}
+}
+@media(min-width:700px) and (max-width:1180px){.links{padding-inline:32px}}
+@media(max-width:520px){.nav .btn{display:none}.brand small{display:none}.brand span{font-size:14.5px;letter-spacing:.04em}.brand img{width:28px}.nav .wrap{gap:10px}.brand{gap:9px;min-width:0}.lang button{padding:6px 8px}.nav-actions{gap:8px}.nav-actions .theme-btn{display:none}.links .links-theme{display:flex;align-items:center}}
 
 /* ---------- Hero ---------- */
 .hero{position:relative;overflow:hidden;background:radial-gradient(70% 90% at 80% 30%,var(--glow) 0,transparent 70%),var(--night);border-bottom:1px solid var(--rule)}
@@ -434,7 +454,7 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
 <meta name="theme-color" content="#0e082c">
 <style id="dqs-base">img{max-width:100%;height:auto}.nav .links a{position:relative}.nav .links a.active,.nav .links a[aria-current]{color:var(--text)}.nav .links a.active::after,.nav .links a[aria-current]::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;border-radius:2px;background:var(--mint)}</style>
 <script src="/assets/consent.js" defer></script>
-<script src="/assets/nav.js" defer></script>
+<script src="/assets/nav.js?v=2" defer></script>
 </head>
 <body>
 <nav class="nav" aria-label="Main navigation">
@@ -443,11 +463,13 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
       <img src="../assets/logo-nav.webp" alt="" width="34" height="37">
       <span>Deep Quantum Science<small>Consulting · Regensburg</small></span>
     </a>
-    <div class="links">
+    <div class="links" id="nav-links">
       <a href="../#leistungen"><span class="de">Leistungen</span><span class="en">Services</span></a>
       <a href="../manuscript"><span class="de">Software</span><span class="en">Software</span></a>
       <a href="../#publikationen"><span class="de">Publikationen</span><span class="en">Publications</span></a>
       <a href="./">Blog</a>
+      <button type="button" class="links-theme" id="theme-toggle-2"><span class="de">Hell / Dunkel</span><span class="en">Light / dark mode</span></button>
+      <a href="../#kontakt" class="links-contact"><span class="de">Kontakt</span><span class="en">Contact</span></a>
     </div>
     <div class="nav-actions">
       <button type="button" class="theme-btn" id="theme-toggle" aria-label="Switch light/dark mode" title="Light / dark mode">
@@ -459,6 +481,9 @@ footer .wrap{padding-block:36px;display:flex;flex-wrap:wrap;align-items:center;j
         <button type="button" id="lang-de" data-lang="de" aria-pressed="false">DE</button>
       </div>
       <a class="btn btn-primary" href="../#kontakt"><span class="de">Erstgespräch</span><span class="en">Free consultation</span></a>
+      <button type="button" class="menu-btn" id="menu-toggle" data-menu="auto" aria-expanded="false" aria-controls="nav-links"><span class="sr"><span class="de">Menü</span><span class="en">Menu</span></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path class="l1" d="M4 7h16"/><path class="l2" d="M4 12h16"/><path class="l3" d="M4 17h16"/></svg>
+      </button>
     </div>
   </div>
 </nav>

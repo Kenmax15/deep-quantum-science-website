@@ -47,3 +47,19 @@
   sections.forEach(function (s) { s.a.addEventListener('click', function () { mark(s.a); }); });
   update();
 })();
+
+/* Mobile menu for pages whose menu button carries data-menu="auto"
+ * (blog and manuscript pages; the home page wires its own). */
+(function () {
+  'use strict';
+  var nav = document.querySelector('.nav'), btn = document.getElementById('menu-toggle');
+  if (!nav || !btn || btn.getAttribute('data-menu') !== 'auto') return;
+  function set(o) { nav.classList.toggle('open', o); btn.setAttribute('aria-expanded', String(o)); }
+  btn.addEventListener('click', function () { set(!nav.classList.contains('open')); });
+  Array.prototype.forEach.call(document.querySelectorAll('#nav-links a'), function (a) { a.addEventListener('click', function () { set(false); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && nav.classList.contains('open')) { set(false); btn.focus(); } });
+  document.addEventListener('click', function (e) { if (nav.classList.contains('open') && !nav.contains(e.target)) set(false); });
+  if (window.matchMedia) matchMedia('(min-width:1181px)').addEventListener('change', function (e) { if (e.matches) set(false); });
+  var t2 = document.getElementById('theme-toggle-2'), t1 = document.getElementById('theme-toggle');
+  if (t2 && t1) t2.addEventListener('click', function () { t1.click(); });
+})();
