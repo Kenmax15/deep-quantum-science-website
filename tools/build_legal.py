@@ -10,7 +10,7 @@ import pathlib
 SITE = pathlib.Path(__file__).resolve().parent.parent / 'site'
 UPDATED = ('14 November 2026', '14. November 2026')
 OWNER = 'Dr. Maseim Bassis Kenmoe, Deep Quantum Science Consulting, Regensburg'
-MAIL = '<a href="mailto:kenmoe@aims.edu.gh">kenmoe@aims.edu.gh</a>'
+MAIL = '<a href="mailto:deepqscience@gmail.com">deepqscience@gmail.com</a>'
 
 
 def bi(en, de):
@@ -211,7 +211,7 @@ TERMS = f"""
 <p><b>Early expiry.</b> For digital content not supplied on a physical medium, your right of withdrawal expires once we have begun performing the contract (by sending the licence key), provided that you have expressly agreed that we begin before the end of the withdrawal period and have confirmed that you know you lose your right of withdrawal once performance begins. For online purchases you give this consent by ticking the box before payment. For orders by email, include this statement if you want your key immediately:</p>
 <p class="box">{WITHDRAW_STATEMENT[0]}</p>
 <p><b>Model withdrawal form</b> (complete and return it only if you wish to withdraw):<br>
-To: {OWNER}, Germany, kenmoe@aims.edu.gh<br>
+To: {OWNER}, Germany, deepqscience@gmail.com<br>
 I/We hereby give notice that I/we withdraw from my/our contract for the supply of the following digital content: DeepQ Manuscript licence<br>
 Ordered on: ________ · Name of consumer(s): ________ · Address of consumer(s): ________<br>
 Signature (only if this form is sent on paper): ________ · Date: ________</p>
@@ -238,7 +238,7 @@ Signature (only if this form is sent on paper): ________ · Date: ________</p>
 <p><b>Vorzeitiges Erlöschen.</b> Bei digitalen Inhalten, die nicht auf einem körperlichen Datenträger geliefert werden, erlischt Ihr Widerrufsrecht, sobald wir mit der Ausführung des Vertrags begonnen haben (Versand des Lizenzschlüssels), nachdem Sie ausdrücklich zugestimmt haben, dass wir vor Ablauf der Widerrufsfrist beginnen, und Ihre Kenntnis davon bestätigt haben, dass Sie dadurch Ihr Widerrufsrecht verlieren. Beim Online-Kauf erteilen Sie diese Zustimmung durch das Häkchen vor der Zahlung. Bei Bestellung per E-Mail fügen Sie bitte folgende Erklärung ein, wenn Sie den Schlüssel sofort erhalten möchten:</p>
 <p class="box">{WITHDRAW_STATEMENT[1]}</p>
 <p><b>Muster-Widerrufsformular</b> (füllen Sie es nur aus und senden Sie es zurück, wenn Sie den Vertrag widerrufen wollen):<br>
-An: {OWNER}, Deutschland, kenmoe@aims.edu.gh<br>
+An: {OWNER}, Deutschland, deepqscience@gmail.com<br>
 Hiermit widerrufe(n) ich/wir den von mir/uns abgeschlossenen Vertrag über die Bereitstellung der folgenden digitalen Inhalte: Lizenz DeepQ Manuscript<br>
 Bestellt am: ________ · Name des/der Verbraucher(s): ________ · Anschrift des/der Verbraucher(s): ________<br>
 Unterschrift (nur bei Mitteilung auf Papier): ________ · Datum: ________</p>
